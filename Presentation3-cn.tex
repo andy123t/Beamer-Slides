@@ -13,12 +13,12 @@
 \mode<presentation>{
 
 %------- Beamer theme ------
-%\usetheme{Madrid}
-%\usetheme{Boadilla}
-%\usetheme{Frankfurt}
-%\usetheme{Warsaw}
-\usetheme{CambridgeUS}
+\usetheme{Frankfurt}
 %\usetheme{Montpellier}
+%\usetheme{Warsaw}
+%\usetheme{CambridgeUS}
+%\usetheme{Boadilla}
+
 
 %------- Color theme ------
 \usecolortheme{rose}
@@ -34,17 +34,38 @@
 \usefonttheme{serif}
 \usefonttheme{professionalfonts}
 
-\setbeamersize{text margin left=0.5cm, text margin right=0.5cm}
-
 %\setbeamertemplate{headline}{}
 %\setbeamertemplate{footline}{}
 \setbeamertemplate{blocks}[rounded][shadow=true]
 \setbeamertemplate{navigation symbols}{}
-%\setbeamertemplate{itemize items}[square]  % ball, circle, square
+\setbeamertemplate{itemize items}[circle]  % ball, circle
 \setbeamertemplate{enumerate items}[default]
 %\setbeamertemplate{section in toc}[square]
 
+\setbeamersize{text margin left=0.75cm, text margin right=0.75cm}
+
+% change the style of headline
+\setbeamertemplate{headline}{
+\begin{beamercolorbox}[ht=4.5ex]{section in head/foot}
+   \vskip2pt\insertsectionnavigationhorizontal{\textwidth}{}{}\vskip2pt
+   %\vskip2pt\insertnavigation{\paperwidth}\vskip2pt
+\end{beamercolorbox}
+\begin{beamercolorbox}[colsep=1.5pt,ht=.3ex]{upper separation line head}
+\end{beamercolorbox}
 }
+
+\definecolor{foot}{rgb}{0.5,0.2,0.5}
+\setbeamertemplate{footline}{
+  \hfill%
+  %\usebeamercolor[fg]{page number in head/foot}%
+  \usebeamercolor[foot]{page number in head/foot}%
+  \usebeamerfont{page number in head/foot}%
+  \insertframenumber \,/\,\inserttotalframenumber
+  \kern1em\vskip2pt%
+}
+
+}
+
 
 %--------- 宏包  ----------
 \usepackage[UTF8,noindent]{ctex}
@@ -90,23 +111,30 @@
 \numberwithin{table}{section}
 \numberwithin{equation}{section}
 
-%---------- Theorem environment ----------
+%---------- 定理设置  --------------
 \setbeamertemplate{theorems}[numbered]
-\newtheorem{theorem}{Theorem}
+\addtobeamertemplate{theorem begin}{\normalfont}{}
+%\newtheorem{theorem}{Theorem}
+\newtheorem{theorem}{定理}
 \numberwithin{theorem}{section}
-\newtheorem{definition}{Definition}
+%\newtheorem{definition}{Definition}
+\newtheorem{definition}{定义}
 \numberwithin{definition}{section}
-\newtheorem{lemma}{Lemma}
+%\newtheorem{lemma}{Lemma}
+\newtheorem{lemma}{引理}
 \numberwithin{lemma}{section}
-\newtheorem{proposition}{Proposition}
+%\newtheorem{proposition}{Proposition}
+\newtheorem{proposition}{命题}
 \numberwithin{proposition}{section}
-\newtheorem{corollary}{Corollary}
+%\newtheorem{corollary}{Corollary}
+\newtheorem{corollary}{推论}
 \numberwithin{corollary}{section}
 \theoremstyle{example}
-\newtheorem{example}{Example}
+%\newtheorem{example}{Example}
+\newtheorem{example}{例}
 %\numberwithin{example}{section}
-\renewenvironment{proof}[1][Proof]{\textit{#1}:~~}{\qed\par}
-\newenvironment{solution}{\par\noindent\textit{Solution}:~~}{\par}
+\renewenvironment{proof}[1][证明]{\textbf{#1}:~~}{\qed\par}
+\newenvironment{solution}{\par\noindent\textbf{解}:~~}{\par}
 
 %---------- 调节公式的间距 ----------
 %\AtBeginDocument{
@@ -123,19 +151,18 @@
 \makeatother
 
 
-\AtBeginSection[]{
-\begin{frame}
-  \frametitle{目录} %\small
-  \vskip -5pt
-  \hspace*{1.5em}
-  \parbox[t]{.95\textwidth}{
-  \begin{minipage}[c][0.6\textheight]{\textwidth}
-  \tableofcontents[currentsection,currentsubsection,subsectionstyle=show/show/shaded]
-  \end{minipage}
-  }
-  \addtocounter{framenumber}{-1}
-\end{frame}
-}
+%\AtBeginSection[]{
+%\begin{frame}
+%  \frametitle{Outline} %\small
+%  \vskip -5pt
+%  \hspace*{1.5em}
+%  \parbox[t]{.95\textwidth}{
+%  \begin{minipage}[c][0.6\textheight]{\textwidth}
+%  \tableofcontents[currentsection,currentsubsection,subsectionstyle=show/show/shaded]
+%  \end{minipage} }
+%  \addtocounter{framenumber}{-1}
+%\end{frame}
+%}
 
 
 %---------- 自定义命令 ----------
@@ -162,15 +189,14 @@
 
 \begin{document}
 
-
 % only change the spacing of body text
 \setlength{\baselineskip}{15pt}
 
 
-
+{\setbeamertemplate{headline}{}
 \begin{frame}
 \titlepage % Print the title page as the first slide
-\end{frame}
+\end{frame}}
 
 
 \begin{frame}
@@ -183,7 +209,6 @@
   \end{minipage}
 }
 \end{frame}
-
 
 %--------------------------------------------------------------------------------
 %	PRESENTATION SLIDES
@@ -461,9 +486,10 @@ This statement requires citation \cite{Smith2012}. \\~
 
 
 %------------------------------------------------
+\section{}
+%------------------------------------------------
 
 
-%\setbeamertemplate{background canvas}[vertical shading][bottom=white,top=structure.fg!25]
 %\setbeamertemplate{headline}{}
 \begin{frame}
 %\sffamily
@@ -472,9 +498,6 @@ This statement requires citation \cite{Smith2012}. \\~
 Thank you!}
 \end{center}
 \end{frame}
-
-
-%------------------------------------------------
 
 
 \end{document}

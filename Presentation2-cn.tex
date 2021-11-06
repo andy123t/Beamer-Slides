@@ -13,12 +13,12 @@
 \mode<presentation>{
 
 %------- Beamer theme ------
-\usetheme{Frankfurt}
-%\usetheme{Montpellier}
-%\usetheme{Warsaw}
-%\usetheme{CambridgeUS}
+%\usetheme{Madrid}
 %\usetheme{Boadilla}
-
+%\usetheme{Frankfurt}
+%\usetheme{Warsaw}
+\usetheme{CambridgeUS}
+%\usetheme{Montpellier}
 
 %------- Color theme ------
 \usecolortheme{rose}
@@ -34,38 +34,34 @@
 \usefonttheme{serif}
 \usefonttheme{professionalfonts}
 
+\setbeamersize{text margin left=0.5cm, text margin right=0.5cm}
+
 %\setbeamertemplate{headline}{}
 %\setbeamertemplate{footline}{}
 \setbeamertemplate{blocks}[rounded][shadow=true]
 \setbeamertemplate{navigation symbols}{}
-\setbeamertemplate{itemize items}[circle]  % ball, circle
+%\setbeamertemplate{itemize items}[square]  % ball, circle, square
 \setbeamertemplate{enumerate items}[default]
 %\setbeamertemplate{section in toc}[square]
 
-\setbeamersize{text margin left=0.75cm, text margin right=0.75cm}
-
-% change the style of headline
-\setbeamertemplate{headline}{
-\begin{beamercolorbox}[ht=4.5ex]{section in head/foot}
-   \vskip2pt\insertsectionnavigationhorizontal{\textwidth}{}{}\vskip2pt
-   %\vskip2pt\insertnavigation{\paperwidth}\vskip2pt
-\end{beamercolorbox}
-\begin{beamercolorbox}[colsep=1.5pt,ht=.3ex]{upper separation line head}
-\end{beamercolorbox}
-}
-
-\definecolor{foot}{rgb}{0.5,0.2,0.5}
-\setbeamertemplate{footline}{%
-  \hfill%
-  %\usebeamercolor[fg]{page number in head/foot}%
-  \usebeamercolor[foot]{page number in head/foot}%
-  \usebeamerfont{page number in head/foot}%
-  \insertframenumber \,/\,\inserttotalframenumber
-  \kern1em\vskip2pt%
+\setbeamertemplate{footline}
+{
+  \leavevmode%
+  \hbox{%
+  \begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.25ex,dp=1ex,center]{author in head/foot}%
+    \usebeamerfont{author in head/foot}\insertshortauthor~(\insertshortinstitute)
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.25ex,dp=1ex,center]{title in head/foot}%
+    \usebeamerfont{title in head/foot}\insertshorttitle \hfill
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.25ex,dp=1ex,right]{date in head/foot}%
+    \usebeamerfont{date in head/foot}\hfill\insertshortdate{}\hfill %\kern1ex
+    \makebox[3em][r]{\insertframenumber\,/\,\inserttotalframenumber}\kern2ex
+  \end{beamercolorbox}}%
+  \vskip0pt%
 }
 
 }
-
 
 %--------- 宏包  ----------
 \usepackage[UTF8,noindent]{ctex}
@@ -111,30 +107,23 @@
 \numberwithin{table}{section}
 \numberwithin{equation}{section}
 
-%---------- 定理设置  --------------
+%---------- Theorem environment ----------
 \setbeamertemplate{theorems}[numbered]
-\addtobeamertemplate{theorem begin}{\normalfont}{}
-%\newtheorem{theorem}{Theorem}
-\newtheorem{theorem}{定理}
+\newtheorem{theorem}{Theorem}
 \numberwithin{theorem}{section}
-%\newtheorem{definition}{Definition}
-\newtheorem{definition}{定义}
+\newtheorem{definition}{Definition}
 \numberwithin{definition}{section}
-%\newtheorem{lemma}{Lemma}
-\newtheorem{lemma}{引理}
+\newtheorem{lemma}{Lemma}
 \numberwithin{lemma}{section}
-%\newtheorem{proposition}{Proposition}
-\newtheorem{proposition}{命题}
+\newtheorem{proposition}{Proposition}
 \numberwithin{proposition}{section}
-%\newtheorem{corollary}{Corollary}
-\newtheorem{corollary}{推论}
+\newtheorem{corollary}{Corollary}
 \numberwithin{corollary}{section}
 \theoremstyle{example}
-%\newtheorem{example}{Example}
-\newtheorem{example}{例}
+\newtheorem{example}{Example}
 %\numberwithin{example}{section}
-\renewenvironment{proof}[1][证明]{\textbf{#1}:~~}{\qed\par}
-\newenvironment{solution}{\par\noindent\textbf{解}:~~}{\par}
+\renewenvironment{proof}[1][Proof]{\textit{#1}:~~}{\qed\par}
+\newenvironment{solution}{\par\noindent\textit{Solution}:~~}{\par}
 
 %---------- 调节公式的间距 ----------
 %\AtBeginDocument{
@@ -151,18 +140,19 @@
 \makeatother
 
 
-%\AtBeginSection[]{
-%\begin{frame}
-%  \frametitle{Outline} %\small
-%  \vskip -5pt
-%  \hspace*{1.5em}
-%  \parbox[t]{.95\textwidth}{
-%  \begin{minipage}[c][0.6\textheight]{\textwidth}
-%  \tableofcontents[currentsection,currentsubsection,subsectionstyle=show/show/shaded]
-%  \end{minipage} }
-%  \addtocounter{framenumber}{-1}
-%\end{frame}
-%}
+\AtBeginSection[]{
+\begin{frame}
+  \frametitle{目录} %\small
+  \vskip -5pt
+  \hspace*{1.5em}
+  \parbox[t]{.95\textwidth}{
+  \begin{minipage}[c][0.6\textheight]{\textwidth}
+  \tableofcontents[currentsection,currentsubsection,subsectionstyle=show/show/shaded]
+  \end{minipage}
+  }
+  \addtocounter{framenumber}{-1}
+\end{frame}
+}
 
 
 %---------- 自定义命令 ----------
@@ -189,14 +179,15 @@
 
 \begin{document}
 
+
 % only change the spacing of body text
 \setlength{\baselineskip}{15pt}
 
 
-{\setbeamertemplate{headline}{}
+
 \begin{frame}
 \titlepage % Print the title page as the first slide
-\end{frame}}
+\end{frame}
 
 
 \begin{frame}
@@ -209,6 +200,7 @@
   \end{minipage}
 }
 \end{frame}
+
 
 %--------------------------------------------------------------------------------
 %	PRESENTATION SLIDES
@@ -486,10 +478,9 @@ This statement requires citation \cite{Smith2012}. \\~
 
 
 %------------------------------------------------
-\section{}
-%------------------------------------------------
 
 
+%\setbeamertemplate{background canvas}[vertical shading][bottom=white,top=structure.fg!25]
 %\setbeamertemplate{headline}{}
 \begin{frame}
 %\sffamily
@@ -498,6 +489,9 @@ This statement requires citation \cite{Smith2012}. \\~
 Thank you!}
 \end{center}
 \end{frame}
+
+
+%------------------------------------------------
 
 
 \end{document}
