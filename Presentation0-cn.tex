@@ -13,15 +13,16 @@
 \mode<presentation>{
 
 %------- Beamer theme ------
-\usetheme{Frankfurt}
-%\usetheme{Montpellier}
+\usetheme{default}
+%\usetheme{Madrid}
+%\usetheme{Boadilla}
+%\usetheme{Frankfurt}
 %\usetheme{Warsaw}
 %\usetheme{CambridgeUS}
-%\usetheme{Boadilla}
-
+%\usetheme{Montpellier}
 
 %------- Color theme ------
-\usecolortheme{rose}
+%\usecolortheme{rose}
 %\usecolortheme{orchid}
 %\usecolortheme{lily}
 %\usecolortheme{whale}
@@ -30,41 +31,43 @@
 
 %\usetheme{boxes}
 %\setbeamercovered{transparent}
-%\usefonttheme[onlymath]{serif}
-\usefonttheme{serif}
+\usefonttheme[onlymath]{serif}
+%\usefonttheme{serif}
 \usefonttheme{professionalfonts}
+
+\setbeamersize{text margin left=0.5cm, text margin right=0.5cm}
 
 %\setbeamertemplate{headline}{}
 %\setbeamertemplate{footline}{}
 \setbeamertemplate{blocks}[rounded][shadow=true]
 \setbeamertemplate{navigation symbols}{}
-\setbeamertemplate{itemize items}[circle]  % ball, circle
+%\setbeamertemplate{itemize items}[square]  % ball, circle, square
 \setbeamertemplate{enumerate items}[default]
 %\setbeamertemplate{section in toc}[square]
 
-\setbeamersize{text margin left=0.75cm, text margin right=0.75cm}
-
-% change the style of headline
-\setbeamertemplate{headline}{
-\begin{beamercolorbox}[ht=4.5ex]{section in head/foot}
-   \vskip2pt\insertsectionnavigationhorizontal{\textwidth}{}{}\vskip2pt
-   %\vskip2pt\insertnavigation{\paperwidth}\vskip2pt
-\end{beamercolorbox}
-\begin{beamercolorbox}[colsep=1.5pt,ht=.3ex]{upper separation line head}
-\end{beamercolorbox}
-}
-
-\definecolor{foot}{rgb}{0.5,0.2,0.5}
-\setbeamertemplate{footline}{
+\setbeamertemplate{footline}{%
   \hfill%
-  %\usebeamercolor[fg]{page number in head/foot}%
-  \usebeamercolor[foot]{page number in head/foot}%
+  \usebeamercolor[footer]{page number in head/foot}%
   \usebeamerfont{page number in head/foot}%
   \insertframenumber \,/\,\inserttotalframenumber
   \kern1em\vskip2pt%
 }
 
+\setbeamertemplate{frametitle}[default][center]
+\setbeamertemplate{section in toc}[sections numbered]
+
 }
+
+
+%\useoutertheme{split}
+\definecolor{darkred}{rgb}{0.5,0,0}
+\definecolor{footer}{rgb}{0.5,0.2,0.5}
+\setbeamercolor{frametitle}{fg=darkred}
+%\setbeamerfont{frametitle}{size=\LARGE}
+\setbeamercolor{title}{bg=black!5!white, fg=darkred}
+\setbeamercolor{subtitle}{bg=white, fg=darkred}
+\setbeamercolor{section in toc}{fg=darkred}
+\setbeamercolor{subsection in toc}{fg=darkred}
 
 
 %--------- 宏包  ----------
@@ -93,17 +96,19 @@
 
 %---------- 设置字体  ----------
 \setbeamerfont{normal text}{family=\rmfamily}
-\setbeamerfont{frametitle}{family=\rmfamily}
-\setbeamerfont{title}{family=\rmfamily}
-\setbeamerfont{subtitle}{family=\rmfamily}
+\setbeamerfont{frametitle}{family=\sffamily}
+\setbeamerfont{title}{family=\sffamily}
+\setbeamerfont{subtitle}{family=\sffamily}
 %\setbeamerfont{institute}{family=\kaishu}
 %\setbeamerfont{author}{family=\kaishu}
 %\setbeamerfont{date}{family=\rmfamily}
 \setbeamerfont{footline}{family=\rmfamily}
 \setbeamerfont{headline}{family=\sffamily}
-\setbeamerfont{section in toc}{family=\rmfamily}
-\setbeamerfont{subsection in toc}{family=\rmfamily}
+\setbeamerfont{section in toc}{family=\sffamily}
+\setbeamerfont{subsection in toc}{family=\sffamily}
 \AtBeginDocument{\usebeamerfont{normal text}}
+
+\setbeamerfont{caption}{family=\rmfamily}
 
 
 \setbeamertemplate{caption}[numbered]
@@ -111,11 +116,14 @@
 \numberwithin{table}{section}
 \numberwithin{equation}{section}
 
+
 %---------- 定理设置  --------------
+\theoremstyle{plain}
 \setbeamertemplate{theorems}[numbered]
-\addtobeamertemplate{theorem begin}{\normalfont}{}
+\addtobeamertemplate{theorem begin}{\normalfont\rmfamily}{}
+%\theoremstyle{definition}
 %\newtheorem{theorem}{Theorem}
-\newtheorem{theorem}{定理}
+\newtheorem{theorem}{定理} %\sffamily
 \numberwithin{theorem}{section}
 %\newtheorem{definition}{Definition}
 \newtheorem{definition}{定义}
@@ -127,7 +135,7 @@
 \newtheorem{proposition}{命题}
 \numberwithin{proposition}{section}
 %\newtheorem{corollary}{Corollary}
-\newtheorem{corollary}{推论}
+\newtheorem{corollary}{引理}
 \numberwithin{corollary}{section}
 \theoremstyle{example}
 %\newtheorem{example}{Example}
@@ -151,18 +159,19 @@
 \makeatother
 
 
-%\AtBeginSection[]{
-%\begin{frame}
-%  \frametitle{Outline} %\small
-%  \vskip -5pt
-%  \hspace*{1.5em}
-%  \parbox[t]{.95\textwidth}{
-%  \begin{minipage}[c][0.6\textheight]{\textwidth}
-%  \tableofcontents[currentsection,currentsubsection,subsectionstyle=show/show/shaded]
-%  \end{minipage} }
-%  \addtocounter{framenumber}{-1}
-%\end{frame}
-%}
+\AtBeginSection[]{
+\begin{frame}
+  \frametitle{目录} %\small
+  \vskip -5pt
+  \hspace*{1.5em}
+  \parbox[t]{.95\textwidth}{
+  \begin{minipage}[c][0.6\textheight]{\textwidth}
+  \tableofcontents[currentsection,currentsubsection,subsectionstyle=show/show/shaded]
+  \end{minipage}
+  }
+  \addtocounter{framenumber}{-1}
+\end{frame}
+}
 
 
 %---------- 自定义命令 ----------
@@ -188,6 +197,7 @@
 \graphicspath{{./figures/}}
 
 \begin{document}
+
 
 % only change the spacing of body text
 \setlength{\baselineskip}{15pt}
@@ -486,10 +496,9 @@ This statement requires citation \cite{Smith2012}. \\~
 
 
 %------------------------------------------------
-\section{}
-%------------------------------------------------
 
 
+%\setbeamertemplate{background canvas}[vertical shading][bottom=white,top=structure.fg!25]
 %\setbeamertemplate{headline}{}
 \begin{frame}
 %\sffamily
@@ -498,6 +507,9 @@ This statement requires citation \cite{Smith2012}. \\~
 Thank you!}
 \end{center}
 \end{frame}
+
+
+%------------------------------------------------
 
 
 \end{document}

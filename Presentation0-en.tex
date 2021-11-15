@@ -17,7 +17,8 @@
 \mode<presentation>{
 
 %------- Beamer theme ------
-\usetheme{Madrid}
+\usetheme{default}
+%\usetheme{Madrid}
 %\usetheme{Boadilla}
 %\usetheme{Frankfurt}
 %\usetheme{Warsaw}
@@ -29,8 +30,8 @@
 %\usecolortheme{orchid}
 
 %\setbeamertemplate{background canvas}[vertical shading][bottom=red!10,top=blue!10]
-%\usefonttheme[onlymath]{serif}
-\usefonttheme{serif}
+\usefonttheme[onlymath]{serif}
+%\usefonttheme{serif}
 %\setbeamercovered{transparent}
 %\usetheme{boxes}
 
@@ -42,24 +43,30 @@
 \setbeamertemplate{enumerate items}[default]
 %\setbeamertemplate{section in toc}[square]
 
-\setbeamertemplate{footline}
-{
-  \leavevmode%
-  \hbox{%
-  \begin{beamercolorbox}[wd=.3\paperwidth,ht=2.25ex,dp=1ex,center]{author in head/foot}%
-    \usebeamerfont{author in head/foot}\insertshortauthor~(\insertshortinstitute)
-  \end{beamercolorbox}%
-  \begin{beamercolorbox}[wd=.4\paperwidth,ht=2.25ex,dp=1ex,center]{title in head/foot}%
-    \usebeamerfont{title in head/foot}\insertshorttitle \hfill
-  \end{beamercolorbox}%
-  \begin{beamercolorbox}[wd=.3\paperwidth,ht=2.25ex,dp=1ex,right]{date in head/foot}%
-    \usebeamerfont{date in head/foot}\hfill\insertshortdate{}\hfill %\kern1ex
-    \makebox[3em][r]{\insertframenumber\,/\,\inserttotalframenumber}\kern2ex
-  \end{beamercolorbox}}%
-  \vskip0pt%
+\setbeamertemplate{footline}{%
+  \hfill%
+  \usebeamercolor[footer]{page number in head/foot}%
+  \usebeamerfont{page number in head/foot}%
+  \insertframenumber \,/\,\inserttotalframenumber
+  \kern1em\vskip2pt%
 }
 
+\setbeamertemplate{frametitle}[default][center]
+\setbeamertemplate{section in toc}[sections numbered]
+
 }
+
+
+%\useoutertheme{split}
+\definecolor{darkred}{rgb}{0.5,0,0}
+\definecolor{footer}{rgb}{0.5,0.2,0.5}
+\setbeamercolor{frametitle}{fg=darkred}
+%\setbeamerfont{frametitle}{size=\LARGE}
+\setbeamercolor{title}{bg=black!5!white, fg=darkred}
+\setbeamercolor{subtitle}{bg=white, fg=darkred}
+\setbeamercolor{section in toc}{fg=darkred}
+\setbeamercolor{subsection in toc}{fg=darkred}
+
 
 %----------- Packages -------------
 %\usepackage[latin1]{inputenc}
@@ -91,6 +98,7 @@
 
 %---------- Set fonts ----------
 %\setbeamerfont{normal text}{family=\rmfamily}
+\setbeamerfont{title}{family=\sffamily}
 %\AtBeginDocument{\usebeamerfont{normal text}}
 
 
@@ -113,6 +121,7 @@
 \renewenvironment{proof}[1][Proof]{\textit{#1}:~~}{\qed\par}
 \newenvironment{solution}{\par\noindent\textbf{Solution}:~~}{\par}
 
+
 \setbeamertemplate{caption}[numbered]
 \numberwithin{figure}{section}
 \numberwithin{table}{section}
@@ -129,7 +138,7 @@
 %}
 
 \makeatletter
-\newcommand\HUGE{\@setfontsize\Huge{28}{32}}
+\newcommand\HUGE{\@setfontsize\Huge{32}{36}}
 \makeatother
 
 %---------- Define new commands ----------
@@ -305,6 +314,7 @@ This is a theorem environment.
 \begin{proof}
   This is a proof environment.
 \end{proof}
+
 \end{frame}
 
 
@@ -454,7 +464,6 @@ This statement requires citation \cite{Smith2012}.
 %\setbeamertemplate{background canvas}[vertical shading][bottom=white,top=structure.fg!25]
 %\setbeamertemplate{headline}{}
 \begin{frame}
-\rmfamily
 \begin{center}
 \HUGE{\textcolor[RGB]{165,3,3}{Thank~you!}}
 \end{center}

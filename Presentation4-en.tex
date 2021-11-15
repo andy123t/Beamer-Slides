@@ -1,7 +1,7 @@
 %======================================================%
 %   Beamer Presentation
 %   LaTeX Template
-%   compile using PDFTeXify, PDFLaTeX
+%   compile using PDFTeXify or PDFLaTeX
 %======================================================%
 
 %--------------------------------------------------------------------------------
@@ -10,126 +10,62 @@
 
 \documentclass[notheorems,11pt,compress]{beamer}
 
-
+% The Beamer class comes with a number of default slide themes
+% which change the colors and layouts of slides. Below this is a list
+% of all the themes, uncomment each in turn to see what they look like.
 
 %------- Beamer theme ------
-%\usetheme{Frankfurt}
-%\usetheme{Montpellier}
-%\usetheme{Warsaw}
-%\usetheme{CambridgeUS}
+\usetheme{Frankfurt}
 %\usetheme{Boadilla}
-
+%\usetheme{Montpellier}
 
 %------- Color theme ------
 \usecolortheme{rose}
-%\usecolortheme{orchid}
-%\usecolortheme{lily}
+%\usecolortheme{beaver}
 %\usecolortheme{whale}
-%\usecolortheme{dolphin}
-%\usecolortheme{seahorse}
 
-%\usetheme{boxes}
-%\setbeamercovered{transparent}
-%\usefonttheme[onlymath]{serif}
+
+%\usefonttheme[onlymath]{serif}  % only math serif font
 \usefonttheme{serif}
-\usefonttheme{professionalfonts}
+%\setbeamercovered{transparent}
+%\usetheme{boxes}
 
 %\setbeamertemplate{headline}{}
 %\setbeamertemplate{footline}{}
 \setbeamertemplate{blocks}[rounded][shadow=true]
 \setbeamertemplate{navigation symbols}{}
-\setbeamertemplate{itemize items}[circle]  % ball, circle
+\setbeamertemplate{itemize items}[circle]  %square, ball, circle
 \setbeamertemplate{enumerate items}[default]
 %\setbeamertemplate{section in toc}[square]
-\setbeamertemplate{section in toc}
-{\leavevmode\leftskip=2ex%
-  \llap{%
-    \usebeamerfont*{section number projected}%
-    \usebeamercolor{section number projected}%
-    \begin{pgfpicture}{-1ex}{0ex}{1ex}{2ex}
-      \color{darkorange}
-      \pgfpathcircle{\pgfpoint{0pt}{.75ex}}{1.3ex}
-      \pgfusepath{fill}
-      \pgftext[base]{\color{fg}\inserttocsectionnumber}
-    \end{pgfpicture}\kern1.25ex%
-  }%
-  \inserttocsection\par
-}
-
 
 \setbeamersize{text margin left=0.5cm, text margin right=0.5cm}
 
-\definecolor{darkblue}{rgb}{0.02,0.24,0.44}
-\definecolor{darkorange}{rgb}{0.80,0.4,0.1}
-\definecolor{lightgray}{rgb}{0.78,0.78,0.78}
-\definecolor{darkgray}{rgb}{0.30,0.30,0.30}
-\definecolor{darkgreen}{rgb}{0.02,0.18,0.20}
-\definecolor{footer}{rgb}{0.5,0.2,0.5}
-
-\setbeamercolor{frametitle}{fg=darkblue,bg=black!5}
-\setbeamercolor{section in head/foot}{bg=black,fg=darkorange}
-\setbeamercolor{lower separation line head}{bg=darkblue}
-\setbeamertemplate{section in head/foot shaded}{\color{lightgray}
-\usebeamertemplate{section in head/foot}}
-
-\setbeamercolor{title in head/foot}{bg=darkgreen,fg=black!5}
-\setbeamercolor{section in toc}{fg=darkorange}
-
-\setbeamercolor{structure}{fg=darkblue}
-\setbeamercolor{alerted text}{fg=darkorange}
-
-%\setbeamertemplate{section in toc}[sections numbered]
-%\setbeamertemplate{subsection in toc}[subsections numbered]
-%\setbeamertemplate{section in toc}[ball unnumbered]
-%\setbeamertemplate{subsection in toc}[ball unnumbered]
-
 % change the style of headline
 \setbeamertemplate{headline}{
-\begin{beamercolorbox}[ht=4.5ex]{section in head/foot} %,dp=0.0ex
+\begin{beamercolorbox}[ht=4.5ex]{section in head/foot}
    \vskip2pt\insertsectionnavigationhorizontal{\textwidth}{}{}\vskip2pt
    %\vskip2pt\insertnavigation{\paperwidth}\vskip2pt
 \end{beamercolorbox}
-\begin{beamercolorbox}[colsep=1.5pt]{lower separation line head} %
+\begin{beamercolorbox}[colsep=1.5pt,ht=.3ex]{upper separation line head}
 \end{beamercolorbox}
 }
 
-%\addtobeamertemplate{frametitle}{}{\vspace*{-3ex}}
-
-\setbeamertemplate{frametitle}{%
-    \nointerlineskip%
-    \begin{beamercolorbox}[wd=\paperwidth,ht=2.75ex,dp=1ex]{frametitle}
-        \hspace*{1.5ex}\insertframetitle%
-    \end{beamercolorbox}%
-}
-
-%\setbeamertemplate{footline}{%
-%  \hfill%
-%  %\usebeamercolor[fg]{page number in head/foot}%
-%  \usebeamercolor[footer]{page number in head/foot}%
-%  \usebeamerfont{page number in head/foot}%
-%  \insertframenumber \,/\,\inserttotalframenumber
-%  \kern1em\vskip3pt%
-%}
-
-\setbeamertemplate{footline}
-{%
-  \leavevmode%
-  \begin{beamercolorbox}[wd=0.25\paperwidth,ht=2.5ex,dp=1.125ex,leftskip=.3cm,rightskip=.3cm plus1fil]{title in head/foot}%
-    \usebeamerfont{title in head/foot} ~~\insertshortauthor~(\insertshortinstitute) \hfill
-  \end{beamercolorbox}%
-  \begin{beamercolorbox}[wd=0.5\paperwidth,ht=2.5ex,dp=1.125ex,leftskip=.3cm,rightskip=.3cm plus1fil]{title in head/foot}%
-    \usebeamerfont{title in head/foot}\centering \insertshorttitle
-  \end{beamercolorbox}%
-  \begin{beamercolorbox}[wd=0.25\paperwidth,ht=2.5ex,dp=1.125ex,leftskip=.3cm,rightskip=.3cm plus1fil]{title in head/foot}%
-    \usebeamerfont{title in head/foot} \hfill
-    \insertframenumber\,/\,\inserttotalframenumber\kern2pt%
-  \end{beamercolorbox}%
-  \vskip0pt%
+\definecolor{footer}{rgb}{0.5,0.2,0.5}
+\setbeamertemplate{footline}{%
+  \hfill%
+  %\usebeamercolor[fg]{page number in head/foot}% gray
+  \usebeamercolor[footer]{page number in head/foot}%
+  \usebeamerfont{page number in head/foot}%
+  \insertframenumber \,/\,\inserttotalframenumber
+  \kern1em\vskip2pt%
 }
 
 
-%--------- Package  ----------
-\usepackage[UTF8,noindent]{ctex}
+%----------- Packages -------------
+%\usepackage[latin1]{inputenc}
+%\usepackage{times}
+%\usepackage[T1]{fontenc}
+
 \usepackage[english]{babel}
 \usepackage{amsmath,amssymb,version}
 \usepackage{graphicx,fancybox,mathrsfs,multirow}
@@ -139,14 +75,11 @@
 \usepackage{tabularx,array,makecell}
 \usepackage{color,xcolor}
 \usepackage{cases}
-\usepackage{tcolorbox}
 \usepackage{mathtools}
 \usepackage{tikz}
 
-
 %---------- Set line spacing ----------
 %\renewcommand{\baselinestretch}{1.15}
-
 
 %---------- Define new table commands ----------
 \newcolumntype{P}[1]{>{\centering \arraybackslash}p{#1}}
@@ -156,33 +89,25 @@
 
 
 %---------- Set fonts ----------
+%\setbeamerfont{normal text}{family=\rmfamily}
+%\AtBeginDocument{\usebeamerfont{normal text}}
+
 \setbeamerfont{normal text}{family=\rmfamily}
-\setbeamerfont{frametitle}{family=\sffamily}
-%\setbeamerfont{frametitle}{family=\rmfamily,series=\bfseries}
-\setbeamerfont{title}{family=\sffamily}
-\setbeamerfont{subtitle}{family=\sffamily}
-\setbeamerfont{institute}{family=\rmfamily}
-\setbeamerfont{author}{family=\rmfamily}
-\setbeamerfont{date}{family=\rmfamily}
+%\setbeamerfont{frametitle}{family=\rmfamily}
+%\setbeamerfont{title}{family=\rmfamily}
+%\setbeamerfont{subtitle}{family=\rmfamily}
+%\setbeamerfont{institute}{family=\rmfamily}
+%\setbeamerfont{author}{family=\rmfamily}
+%\setbeamerfont{date}{family=\rmfamily}
+%\setbeamerfont{footline}{family=\rmfamily}
 \setbeamerfont{headline}{family=\sffamily}
-\setbeamerfont{footline}{family=\sffamily}
-\setbeamerfont{section in toc}{family=\rmfamily}
-\setbeamerfont{subsection in toc}{family=\rmfamily}
+%\setbeamerfont{section in toc}{family=\rmfamily}
+%\setbeamerfont{subsection in toc}{family=\rmfamily}
 \AtBeginDocument{\usebeamerfont{normal text}}
-
-\setbeamercolor{title}{fg=darkblue,bg=black!10}
-\setbeamercolor{subtitle}{fg=darkblue!80}
-%\setbeamercolor{institute}{fg=white}
-%\setbeamercolor{author}{fg=white}
-%\setbeamercolor{date}{fg=white}
-
-\setbeamertemplate{caption}[numbered]
-\numberwithin{figure}{section}
-\numberwithin{table}{section}
-\numberwithin{equation}{section}
 
 %---------- Theorem environment ----------
 \setbeamertemplate{theorems}[numbered]
+\addtobeamertemplate{theorem begin}{\normalfont}{}
 \newtheorem{theorem}{Theorem}
 \numberwithin{theorem}{section}
 \newtheorem{definition}{Definition}
@@ -197,7 +122,7 @@
 \newtheorem{example}{Example}
 %\numberwithin{example}{section}
 \renewenvironment{proof}[1][Proof]{\textit{#1}:~~}{\qed\par}
-\newenvironment{solution}{\par\noindent\textit{Solution}:~~}{\par}
+\newenvironment{solution}{\par\noindent\textbf{Solution}:~~}{\par}
 
 \setbeamertemplate{caption}[numbered]
 \numberwithin{figure}{section}
@@ -215,12 +140,30 @@
 %}
 
 \makeatletter
-\newcommand\HUGE{\@setfontsize\Huge{32}{36}}
+\newcommand\HUGE{\@setfontsize\Huge{28}{32}}
 \makeatother
 
 %---------- Define new commands ----------
 \newcommand{\red}[1]{\textcolor{red}{#1}}
 \newcommand{\blue}[1]{\textcolor{blue}{#1}}
+
+
+%\bibliographystyle{apalike}
+
+%\AtBeginSection[]{
+%\begin{frame}
+%  \frametitle{Outline} %\small
+%  \vskip -5pt
+%  \hspace*{1.5em}
+%  \parbox[t]{.95\textwidth}{
+%  \begin{minipage}[c][0.6\textheight]{\textwidth}
+%  \tableofcontents[currentsection,hideallsubsections]
+%  %\tableofcontents[currentsection,currentsubsection,subsectionstyle=show/show/shaded]
+%  \end{minipage}
+%  }
+%  \addtocounter{framenumber}{-1}
+%\end{frame}
+%}
 
 
 %--------------------------------------------------------------------------------
@@ -240,7 +183,6 @@
 
 
 \graphicspath{{./figures/}}
-
 
 \begin{document}
 
@@ -513,11 +455,13 @@ This statement requires citation \cite{Smith2012}.
 \end{frame}
 
 
+%------------------------------------------------
+%\setbeamertemplate{background canvas}[vertical shading][bottom=white,top=structure.fg!25]
 %\setbeamertemplate{headline}{}
 \begin{frame}
 \rmfamily
 \begin{center}
-\HUGE{\textcolor{darkorange}{Thank you!}}
+\HUGE{\textcolor[RGB]{165,3,3}{Thank~you!}}
 \end{center}
 \end{frame}
 

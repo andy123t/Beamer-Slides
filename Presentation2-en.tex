@@ -8,7 +8,8 @@
 %   PACKAGES AND THEMES
 %--------------------------------------------------------------------------------
 
-\documentclass[notheorems,11pt,compress]{beamer}
+\documentclass[notheorems,11pt]{beamer}
+%\documentclass[notheorems,11pt,compress]{beamer}
 
 % The Beamer class comes with a number of default slide themes
 % which change the colors and layouts of slides. Below this is a list
@@ -17,11 +18,11 @@
 \mode<presentation>{
 
 %------- Beamer theme ------
+\usetheme{Warsaw}
 %\usetheme{Madrid}
 %\usetheme{Boadilla}
 %\usetheme{Frankfurt}
-%\usetheme{Warsaw}
-\usetheme{CambridgeUS}
+%\usetheme{CambridgeUS}
 %\usetheme{Montpellier}
 
 %------- Color theme ------
@@ -46,14 +47,14 @@
 {
   \leavevmode%
   \hbox{%
-  \begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.25ex,dp=1ex,center]{author in head/foot}%
-    \usebeamerfont{author in head/foot}\insertshortauthor~(\insertshortinstitute)
+  \begin{beamercolorbox}[wd=.5\paperwidth,ht=2.25ex,dp=1ex,right]{author in head/foot}%
+    \usebeamerfont{author in head/foot}\hfill\insertshortauthor\kern3ex
   \end{beamercolorbox}%
-  \begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.25ex,dp=1ex,center]{title in head/foot}%
-    \usebeamerfont{title in head/foot}\insertshorttitle \hfill
+  \begin{beamercolorbox}[wd=.4\paperwidth,ht=2.25ex,dp=1ex,left]{title in head/foot}%
+    \usebeamerfont{title in head/foot}\kern3ex\insertshorttitle \hfill
   \end{beamercolorbox}%
-  \begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.25ex,dp=1ex,right]{date in head/foot}%
-    \usebeamerfont{date in head/foot}\hfill\insertshortdate{}\hfill %\kern1ex
+  \begin{beamercolorbox}[wd=.1\paperwidth,ht=2.25ex,dp=1ex,right]{title in head/foot}%
+    \usebeamerfont{title in head/foot}\hfill %\kern1ex
     \makebox[3em][r]{\insertframenumber\,/\,\inserttotalframenumber}\kern2ex
   \end{beamercolorbox}}%
   \vskip0pt%
@@ -90,13 +91,13 @@
 
 
 %---------- Set fonts ----------
-\setbeamerfont{normal text}{family=\rmfamily}
-\setbeamerfont{headline}{family=\sffamily}
-\AtBeginDocument{\usebeamerfont{normal text}}
+%\setbeamerfont{normal text}{family=\rmfamily}
+%\AtBeginDocument{\usebeamerfont{normal text}}
 
 
 %---------- Theorem environment ----------
 \setbeamertemplate{theorems}[numbered]
+\addtobeamertemplate{theorem begin}{\normalfont}{}
 \newtheorem{theorem}{Theorem}
 \numberwithin{theorem}{section}
 \newtheorem{definition}{Definition}
@@ -110,7 +111,8 @@
 \theoremstyle{example}
 \newtheorem{example}{Example}
 %\numberwithin{example}{section}
-\renewenvironment{proof}[1][Proof]{\textit{#1}:~}{\qed\par}
+\renewenvironment{proof}[1][Proof]{\textit{#1}:~~}{\qed\par}
+\newenvironment{solution}{\par\noindent\textbf{Solution}:~~}{\par}
 
 \setbeamertemplate{caption}[numbered]
 \numberwithin{figure}{section}
@@ -414,7 +416,7 @@ Uncomment the code on this slide to include your own image from the same directo
 \end{frame}
 
 %------------------------------------------------
-\section{Concluding remarks}
+%\section{Concluding remarks}
 %------------------------------------------------
 
 \begin{frame}[fragile] % Need to use the fragile option when verbatim is used in the slide
@@ -424,9 +426,6 @@ An example of the \verb|\cite| command to cite within the presentation:\\~
 This statement requires citation \cite{Smith2012}.
 \end{frame}
 
-
-%------------------------------------------------
-\section{}
 %------------------------------------------------
 
 
@@ -441,7 +440,18 @@ This statement requires citation \cite{Smith2012}.
 
 
 %------------------------------------------------
+%\thispagestyle{empty}
+%\setbeamertemplate{headline}{}
+%\setbeamertemplate{footline}{%
+%  \hfill%
+%  %\usebeamercolor[fg]{page number in head/foot}%
+%  \usebeamercolor[footer]{page number in head/foot}%
+%  \usebeamerfont{page number in head/foot}%
+%  \insertframenumber \,/\,\inserttotalframenumber
+%  \kern1em\vskip2pt%
+%}
 
+%------------------------------------------------
 %\setbeamertemplate{background canvas}[vertical shading][bottom=white,top=structure.fg!25]
 %\setbeamertemplate{headline}{}
 \begin{frame}

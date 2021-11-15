@@ -10,15 +10,13 @@
 
 \documentclass[notheorems,11pt,compress]{beamer}
 
-\mode<presentation>{
 
 %------- Beamer theme ------
-\usetheme{Frankfurt}
+%\usetheme{Frankfurt}
 %\usetheme{Montpellier}
 %\usetheme{Warsaw}
 %\usetheme{CambridgeUS}
 %\usetheme{Boadilla}
-
 
 %------- Color theme ------
 \usecolortheme{rose}
@@ -41,29 +39,83 @@
 \setbeamertemplate{itemize items}[circle]  % ball, circle
 \setbeamertemplate{enumerate items}[default]
 %\setbeamertemplate{section in toc}[square]
+\setbeamertemplate{section in toc}
+{\leavevmode\leftskip=2ex%
+  \llap{%
+    \usebeamerfont*{section number projected}%
+    \usebeamercolor{section number projected}%
+    \begin{pgfpicture}{-1ex}{0ex}{1ex}{2ex}
+      \color{darkorange}
+      \pgfpathcircle{\pgfpoint{0pt}{.75ex}}{1.3ex}
+      \pgfusepath{fill}
+      \pgftext[base]{\color{fg}\inserttocsectionnumber}
+    \end{pgfpicture}\kern1.25ex%
+  }%
+  \inserttocsection\par
+}
 
-\setbeamersize{text margin left=0.75cm, text margin right=0.75cm}
+
+\setbeamersize{text margin left=0.5cm, text margin right=0.5cm}
+
+\definecolor{darkblue}{rgb}{0.02,0.24,0.44}
+\definecolor{darkorange}{rgb}{0.80,0.4,0.1}
+\definecolor{lightgray}{rgb}{0.78,0.78,0.78}
+\definecolor{darkgray}{rgb}{0.30,0.30,0.30}
+\definecolor{darkgreen}{rgb}{0.02,0.18,0.20}
+\definecolor{footer}{rgb}{0.5,0.2,0.5}
+
+\setbeamercolor{frametitle}{fg=darkblue,bg=black!5}
+\setbeamercolor{section in head/foot}{bg=black,fg=darkorange}
+\setbeamercolor{lower separation line head}{bg=darkblue}
+\setbeamertemplate{section in head/foot shaded}{\color{lightgray}
+\usebeamertemplate{section in head/foot}}
+
+\setbeamercolor{title in head/foot}{bg=darkgreen,fg=black!5}
+\setbeamercolor{section in toc}{fg=darkorange}
+
+\setbeamercolor{structure}{fg=darkblue}
+\setbeamercolor{alerted text}{fg=darkorange}
+
+%\setbeamertemplate{section in toc}[sections numbered]
+%\setbeamertemplate{subsection in toc}[subsections numbered]
+%\setbeamertemplate{section in toc}[ball unnumbered]
+%\setbeamertemplate{subsection in toc}[ball unnumbered]
 
 % change the style of headline
 \setbeamertemplate{headline}{
-\begin{beamercolorbox}[ht=4.5ex]{section in head/foot}
+\begin{beamercolorbox}[ht=4.5ex]{section in head/foot} %,dp=0.0ex
    \vskip2pt\insertsectionnavigationhorizontal{\textwidth}{}{}\vskip2pt
    %\vskip2pt\insertnavigation{\paperwidth}\vskip2pt
 \end{beamercolorbox}
-\begin{beamercolorbox}[colsep=1.5pt,ht=.3ex]{upper separation line head}
+\begin{beamercolorbox}[colsep=1.5pt]{lower separation line head} %
 \end{beamercolorbox}
 }
 
-\definecolor{foot}{rgb}{0.5,0.2,0.5}
-\setbeamertemplate{footline}{
-  \hfill%
-  %\usebeamercolor[fg]{page number in head/foot}%
-  \usebeamercolor[foot]{page number in head/foot}%
-  \usebeamerfont{page number in head/foot}%
-  \insertframenumber \,/\,\inserttotalframenumber
-  \kern1em\vskip2pt%
+
+
+\setbeamertemplate{frametitle}{%
+    \nointerlineskip%
+    \begin{beamercolorbox}[wd=\paperwidth,ht=2.75ex,dp=1ex]{frametitle}
+        \hspace*{1.5ex}\insertframetitle%
+    \end{beamercolorbox}%
+    %\vspace*{-1ex}
 }
 
+
+\setbeamertemplate{footline}
+{%
+  \leavevmode%
+  \begin{beamercolorbox}[wd=0.25\paperwidth,ht=2.5ex,dp=1.125ex,leftskip=.3cm,rightskip=.3cm plus1fil]{title in head/foot}%
+    \usebeamerfont{title in head/foot} ~~\insertshortauthor~(\insertshortinstitute) \hfill
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=0.5\paperwidth,ht=2.5ex,dp=1.125ex,leftskip=.3cm,rightskip=.3cm plus1fil]{title in head/foot}%
+    \usebeamerfont{title in head/foot}\centering \insertshorttitle
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=0.25\paperwidth,ht=2.5ex,dp=1.125ex,leftskip=.3cm,rightskip=.3cm plus1fil]{title in head/foot}%
+    \usebeamerfont{title in head/foot} \hfill
+    \insertframenumber\,/\,\inserttotalframenumber\kern2pt
+  \end{beamercolorbox}%
+  \vskip0pt%
 }
 
 
@@ -78,8 +130,10 @@
 \usepackage{tabularx,array,makecell}
 \usepackage{color,xcolor}
 \usepackage{cases}
+\usepackage{tcolorbox}
 \usepackage{mathtools}
 \usepackage{tikz}
+
 
 %---------- 定义行距 ----------
 %\renewcommand{\baselinestretch}{1.15}
@@ -90,32 +144,39 @@
 \newcolumntype{C}{>{\centering \arraybackslash}X}
 \newcolumntype{R}{>{\raggedright \arraybackslash}X}
 
-
 %---------- 设置字体  ----------
 \setbeamerfont{normal text}{family=\rmfamily}
-\setbeamerfont{frametitle}{family=\rmfamily}
-\setbeamerfont{title}{family=\rmfamily}
-\setbeamerfont{subtitle}{family=\rmfamily}
-%\setbeamerfont{institute}{family=\kaishu}
-%\setbeamerfont{author}{family=\kaishu}
-%\setbeamerfont{date}{family=\rmfamily}
-\setbeamerfont{footline}{family=\rmfamily}
-\setbeamerfont{headline}{family=\sffamily}
+\setbeamerfont{frametitle}{family=\rmfamily,series=\bfseries}
+\setbeamerfont{title}{family=\sffamily}
+\setbeamerfont{subtitle}{family=\sffamily}
+\setbeamerfont{institute}{family=\rmfamily}
+\setbeamerfont{author}{family=\rmfamily}
+\setbeamerfont{date}{family=\rmfamily}
+\setbeamerfont{headline}{family=\sffamily} %,series=\bfseries
+\setbeamerfont{footline}{family=\sffamily} %\kaishu
 \setbeamerfont{section in toc}{family=\rmfamily}
 \setbeamerfont{subsection in toc}{family=\rmfamily}
 \AtBeginDocument{\usebeamerfont{normal text}}
 
+\setbeamercolor{title}{fg=darkblue,bg=black!10}
+\setbeamercolor{subtitle}{fg=darkblue!80}
+%\setbeamercolor{institute}{fg=white}
+%\setbeamercolor{author}{fg=white}
+%\setbeamercolor{date}{fg=white}
 
 \setbeamertemplate{caption}[numbered]
 \numberwithin{figure}{section}
 \numberwithin{table}{section}
 \numberwithin{equation}{section}
 
+
 %---------- 定理设置  --------------
+\theoremstyle{plain}
 \setbeamertemplate{theorems}[numbered]
 \addtobeamertemplate{theorem begin}{\normalfont}{}
+%\theoremstyle{definition}
 %\newtheorem{theorem}{Theorem}
-\newtheorem{theorem}{定理}
+\newtheorem{theorem}{定理} %\sffamily
 \numberwithin{theorem}{section}
 %\newtheorem{definition}{Definition}
 \newtheorem{definition}{定义}
@@ -127,7 +188,7 @@
 \newtheorem{proposition}{命题}
 \numberwithin{proposition}{section}
 %\newtheorem{corollary}{Corollary}
-\newtheorem{corollary}{推论}
+\newtheorem{corollary}{引理}
 \numberwithin{corollary}{section}
 \theoremstyle{example}
 %\newtheorem{example}{Example}
@@ -135,6 +196,7 @@
 %\numberwithin{example}{section}
 \renewenvironment{proof}[1][证明]{\textbf{#1}:~~}{\qed\par}
 \newenvironment{solution}{\par\noindent\textbf{解}:~~}{\par}
+
 
 %---------- 调节公式的间距 ----------
 %\AtBeginDocument{
@@ -154,7 +216,7 @@
 %\AtBeginSection[]{
 %\begin{frame}
 %  \frametitle{Outline} %\small
-%  \vskip -5pt
+%  %\vskip -5pt
 %  \hspace*{1.5em}
 %  \parbox[t]{.95\textwidth}{
 %  \begin{minipage}[c][0.6\textheight]{\textwidth}
@@ -174,15 +236,16 @@
 %	TITLE PAGE
 %--------------------------------------------------------------------------------
 
+
 \title[报告题目]{这是报告的题目这是报告的题目}
 
 \author[姓名]{报告人姓名}
 \institute[XX大学]{\vskip -10pt
-\small \textcolor{blue}{XX\,大学数学系}
+\small \textcolor{blue}{XX大学数学系}
 \vskip 10pt
 }
 
-\date[2021\,年\,X\,月\,X\,日]{第\,X\,届学术会议 \\[5pt] 2021\,年\,X\,月\,X\,日 }
+\date[2021.x.x]{第X届学术会议 \\[5pt] 2021.x.x }
 
 
 \graphicspath{{./figures/}}
@@ -193,7 +256,7 @@
 \setlength{\baselineskip}{15pt}
 
 
-{\setbeamertemplate{headline}{}
+{%\setbeamertemplate{headline}{}
 \begin{frame}
 \titlepage % Print the title page as the first slide
 \end{frame}}
@@ -201,7 +264,7 @@
 
 \begin{frame}
 \frametitle{目录}
-\vskip -5.6pt
+%\vskip -5.6pt
 \hspace*{1.5em}
 \parbox[t]{.95\textwidth}{
   \begin{minipage}[c][0.6\textheight]{\textwidth}
@@ -209,6 +272,7 @@
   \end{minipage}
 }
 \end{frame}
+
 
 %--------------------------------------------------------------------------------
 %	PRESENTATION SLIDES
@@ -500,5 +564,8 @@ Thank you!}
 \end{frame}
 
 
+
 \end{document}
+
+
 

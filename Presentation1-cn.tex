@@ -108,24 +108,34 @@
 \numberwithin{table}{section}
 \numberwithin{equation}{section}
 
-%---------- Theorem environment ----------
+
+%---------- 定理设置  --------------
+\theoremstyle{plain}
 \setbeamertemplate{theorems}[numbered]
 \addtobeamertemplate{theorem begin}{\normalfont}{}
-\newtheorem{theorem}{Theorem}
+%\theoremstyle{definition}
+%\newtheorem{theorem}{Theorem}
+\newtheorem{theorem}{定理} %\sffamily
 \numberwithin{theorem}{section}
-\newtheorem{definition}{Definition}
+%\newtheorem{definition}{Definition}
+\newtheorem{definition}{定义}
 \numberwithin{definition}{section}
-\newtheorem{lemma}{Lemma}
+%\newtheorem{lemma}{Lemma}
+\newtheorem{lemma}{引理}
 \numberwithin{lemma}{section}
-\newtheorem{proposition}{Proposition}
+%\newtheorem{proposition}{Proposition}
+\newtheorem{proposition}{命题}
 \numberwithin{proposition}{section}
-\newtheorem{corollary}{Corollary}
+%\newtheorem{corollary}{Corollary}
+\newtheorem{corollary}{引理}
 \numberwithin{corollary}{section}
 \theoremstyle{example}
-\newtheorem{example}{Example}
+%\newtheorem{example}{Example}
+\newtheorem{example}{例}
 %\numberwithin{example}{section}
-\renewenvironment{proof}[1][Proof]{\textit{#1}:~~}{\qed\par}
-\newenvironment{solution}{\par\noindent\textit{Solution}:~~}{\par}
+\renewenvironment{proof}[1][证明]{\textbf{#1}:~~}{\qed\par}
+\newenvironment{solution}{\par\noindent\textbf{解}:~~}{\par}
+
 
 %---------- 调节公式的间距 ----------
 %\AtBeginDocument{

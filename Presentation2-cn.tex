@@ -8,20 +8,21 @@
 %   PACKAGES AND THEMES
 %--------------------------------------------------------------------------------
 
-\documentclass[notheorems,11pt,compress]{beamer}
+\documentclass[notheorems,11pt]{beamer}
+%\documentclass[notheorems,11pt,compress]{beamer}
 
 \mode<presentation>{
 
 %------- Beamer theme ------
+\usetheme{Warsaw}
 %\usetheme{Madrid}
 %\usetheme{Boadilla}
 %\usetheme{Frankfurt}
-%\usetheme{Warsaw}
-\usetheme{CambridgeUS}
+%\usetheme{CambridgeUS}
 %\usetheme{Montpellier}
 
 %------- Color theme ------
-\usecolortheme{rose}
+%\usecolortheme{rose}
 %\usecolortheme{orchid}
 %\usecolortheme{lily}
 %\usecolortheme{whale}
@@ -48,18 +49,19 @@
 {
   \leavevmode%
   \hbox{%
-  \begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.25ex,dp=1ex,center]{author in head/foot}%
-    \usebeamerfont{author in head/foot}\insertshortauthor~(\insertshortinstitute)
+  \begin{beamercolorbox}[wd=.5\paperwidth,ht=2.25ex,dp=1ex,right]{author in head/foot}%
+    \usebeamerfont{author in head/foot}\hfill\insertshortauthor\kern3ex
   \end{beamercolorbox}%
-  \begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.25ex,dp=1ex,center]{title in head/foot}%
-    \usebeamerfont{title in head/foot}\insertshorttitle \hfill
+  \begin{beamercolorbox}[wd=.4\paperwidth,ht=2.25ex,dp=1ex,left]{title in head/foot}%
+    \usebeamerfont{title in head/foot}\kern3ex\insertshorttitle \hfill
   \end{beamercolorbox}%
-  \begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.25ex,dp=1ex,right]{date in head/foot}%
-    \usebeamerfont{date in head/foot}\hfill\insertshortdate{}\hfill %\kern1ex
+  \begin{beamercolorbox}[wd=.1\paperwidth,ht=2.25ex,dp=1ex,right]{title in head/foot}%
+    \usebeamerfont{title in head/foot}\hfill %\kern1ex
     \makebox[3em][r]{\insertframenumber\,/\,\inserttotalframenumber}\kern2ex
   \end{beamercolorbox}}%
   \vskip0pt%
 }
+
 
 }
 
@@ -100,30 +102,40 @@
 \setbeamerfont{section in toc}{family=\rmfamily}
 \setbeamerfont{subsection in toc}{family=\rmfamily}
 \AtBeginDocument{\usebeamerfont{normal text}}
-
+%\setbeamertemplate{theorems}[normal font]
 
 \setbeamertemplate{caption}[numbered]
 \numberwithin{figure}{section}
 \numberwithin{table}{section}
 \numberwithin{equation}{section}
 
-%---------- Theorem environment ----------
+
+%---------- 定理设置  --------------
+\theoremstyle{plain}
 \setbeamertemplate{theorems}[numbered]
-\newtheorem{theorem}{Theorem}
+\addtobeamertemplate{theorem begin}{\normalfont}{}
+%\theoremstyle{definition}
+%\newtheorem{theorem}{Theorem}
+\newtheorem{theorem}{定理} %\sffamily
 \numberwithin{theorem}{section}
-\newtheorem{definition}{Definition}
+%\newtheorem{definition}{Definition}
+\newtheorem{definition}{定义}
 \numberwithin{definition}{section}
-\newtheorem{lemma}{Lemma}
+%\newtheorem{lemma}{Lemma}
+\newtheorem{lemma}{引理}
 \numberwithin{lemma}{section}
-\newtheorem{proposition}{Proposition}
+%\newtheorem{proposition}{Proposition}
+\newtheorem{proposition}{命题}
 \numberwithin{proposition}{section}
-\newtheorem{corollary}{Corollary}
+%\newtheorem{corollary}{Corollary}
+\newtheorem{corollary}{引理}
 \numberwithin{corollary}{section}
 \theoremstyle{example}
-\newtheorem{example}{Example}
+%\newtheorem{example}{Example}
+\newtheorem{example}{例}
 %\numberwithin{example}{section}
-\renewenvironment{proof}[1][Proof]{\textit{#1}:~~}{\qed\par}
-\newenvironment{solution}{\par\noindent\textit{Solution}:~~}{\par}
+\renewenvironment{proof}[1][证明]{\textbf{#1}:~~}{\qed\par}
+\newenvironment{solution}{\par\noindent\textbf{解}:~~}{\par}
 
 %---------- 调节公式的间距 ----------
 %\AtBeginDocument{
@@ -184,10 +196,10 @@
 \setlength{\baselineskip}{15pt}
 
 
-
+{\setbeamertemplate{headline}{}
 \begin{frame}
 \titlepage % Print the title page as the first slide
-\end{frame}
+\end{frame}}
 
 
 \begin{frame}
@@ -200,7 +212,6 @@
   \end{minipage}
 }
 \end{frame}
-
 
 %--------------------------------------------------------------------------------
 %	PRESENTATION SLIDES
@@ -452,7 +463,7 @@ Uncomment the code on this slide to include your own image from the same directo
 \end{frame}
 
 %------------------------------------------------
-\section{总结与展望}
+%\section{总结与展望}
 %------------------------------------------------
 
 \begin{frame}[fragile] % Need to use the fragile option when verbatim is used in the slide
