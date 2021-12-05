@@ -1,7 +1,7 @@
 %======================================================%
 %   Beamer Presentation
 %   LaTeX Template
-%   compile using PDFTeXify, PDFLaTeX or XeLaTeX
+%   compile using PDFTeXify, PDFLaTeX
 %======================================================%
 
 %--------------------------------------------------------------------------------
@@ -12,69 +12,47 @@
 
 
 %------- Beamer theme ------
-\usetheme{Montpellier}
-%\usetheme{Frankfurt}
-%\usetheme{Boadilla}
+\usetheme{metropolis}
+%\metroset{sectionpage=none}
 
-%------- Color theme ------
-\usecolortheme{rose}
-%\usecolortheme{orchid}
-%\usecolortheme{lily}
-%\usecolortheme{whale}
-%\usecolortheme{dolphin}
-%\usecolortheme{seahorse}
+\usepackage[scale=2]{ccicons}
 
-%\usetheme{boxes}
-%\setbeamercovered{transparent}
+\makeatletter
+\setlength{\metropolis@titleseparator@linewidth}{1pt}
+\setlength{\metropolis@progressonsectionpage@linewidth}{1pt}
+\setlength{\metropolis@progressinheadfoot@linewidth}{1pt}
+\makeatother
+
+\metroset{block=fill}
+\usepackage{xspace}
+\newcommand{\themename}{\textbf{\textsc{metropolis}}\xspace}
+
+\makeatletter
+\setlength{\metropolis@frametitle@padding}{1.8ex} % <- default 2.2 ex
+\makeatother
+
 %\usefonttheme[onlymath]{serif}
 \usefonttheme{serif}
 \usefonttheme{professionalfonts}
 
 %\setbeamertemplate{headline}{}
 %\setbeamertemplate{footline}{}
-\setbeamertemplate{blocks}[rounded][shadow=true]
+\setbeamertemplate{blocks}[shadow=true]
 \setbeamertemplate{navigation symbols}{}
 \setbeamertemplate{itemize items}[circle]  % ball, circle
 \setbeamertemplate{enumerate items}[default]
 %\setbeamertemplate{section in toc}[square]
 
-\setbeamersize{text margin left=0.75cm, text margin right=0.75cm}
 
-% change the style of headline
-\setbeamertemplate{headline}{	% navigation bar of section (second headline)
-\begin{beamercolorbox}{section in head/foot}
-   \vskip0pt\insertnavigation{\paperwidth}\vskip2pt
-\end{beamercolorbox}
-\begin{beamercolorbox}[colsep=1.5pt,ht=.3ex]{upper separation line head}  % separator [colsep=1.5pt,ht=.3ex]
-\end{beamercolorbox}
-}
+\setbeamersize{text margin left=0.5cm, text margin right=0.5cm}
 
-%\definecolor{footer}{rgb}{0.5,0.2,0.5}
-%\setbeamertemplate{footline}{
-%  \hfill%
-%  %\usebeamercolor[fg]{page number in head/foot}%
-%  \usebeamercolor[footer]{page number in head/foot}%
-%  \usebeamerfont{page number in head/foot}%
-%  \insertframenumber \,/\,\inserttotalframenumber
-%  \kern1em\vskip2pt%
-%}
+\setbeamertemplate{section in toc}[sections numbered]
+%\setbeamertemplate{subsection in toc}[subsections numbered]
+%\setbeamertemplate{section in toc}[ball unnumbered]
+%\setbeamertemplate{subsection in toc}[ball unnumbered]
 
 
-\makeatletter
-\let\beamer@writeslidentry@miniframeson=\beamer@writeslidentry%
-\def\beamer@writeslidentry@miniframesoff{%
-  \expandafter\beamer@ifempty\expandafter{\beamer@framestartpage}{}% does not happen normally
-  {%else
-    % removed \addtocontents commands
-    \clearpage\beamer@notesactions%
-  }
-}
-\newcommand*{\miniframeson}{\let\beamer@writeslidentry=\beamer@writeslidentry@miniframeson}
-\newcommand*{\miniframesoff}{\let\beamer@writeslidentry=\beamer@writeslidentry@miniframesoff}
-\makeatother
-
-
-%--------- 宏包  ----------
+%--------- Package  ----------
 \usepackage[UTF8,noindent]{ctex}
 %\usepackage[english]{babel}
 \usepackage{amsmath,amssymb,version}
@@ -85,44 +63,57 @@
 \usepackage{tabularx,array,makecell}
 \usepackage{color,xcolor}
 \usepackage{cases}
+\usepackage{tcolorbox}
 \usepackage{mathtools}
 \usepackage{tikz}
 
-%---------- 定义行距 ----------
+
+\setbeamertemplate{footline}{%
+  \leavevmode%
+  \hskip3em \normalfont \insertshortauthor ~~$|$~~ \insertshorttitle \hfill
+  \insertframenumber\,/\,\inserttotalframenumber  \hskip2em \hfill
+  \vskip6pt%
+}
+
+%---------- Set line spacing ----------
 %\renewcommand{\baselinestretch}{1.15}
 
-%---------- 定义表格新命令 ----------
+
+%---------- Define new table commands ----------
 \newcolumntype{P}[1]{>{\centering \arraybackslash}p{#1}}
 \newcolumntype{L}{X}
 \newcolumntype{C}{>{\centering \arraybackslash}X}
 \newcolumntype{R}{>{\raggedleft \arraybackslash}X}
 
 
-%---------- 设置字体  ----------
+%---------- Set fonts ----------
 \setbeamerfont{normal text}{family=\rmfamily}
-\setbeamerfont{frametitle}{family=\rmfamily}
-\setbeamerfont{title}{family=\rmfamily}
-\setbeamerfont{subtitle}{family=\rmfamily}
-%\setbeamerfont{institute}{family=\kaishu}
-%\setbeamerfont{author}{family=\kaishu}
-%\setbeamerfont{date}{family=\rmfamily}
-\setbeamerfont{footline}{family=\rmfamily}
+%\setbeamerfont{frametitle}{family=\sffamily}
+\setbeamerfont{frametitle}{family=\rmfamily,series=\bfseries}
+\setbeamerfont{title}{family=\rmfamily,series=\bfseries}
+\setbeamerfont{subtitle}{family=\rmfamily,series=\bfseries}
+\setbeamerfont{institute}{family=\rmfamily}
+\setbeamerfont{author}{family=\rmfamily}
+\setbeamerfont{date}{family=\rmfamily}
 \setbeamerfont{headline}{family=\sffamily}
+\setbeamerfont{footline}{family=\sffamily}
 \setbeamerfont{section in toc}{family=\rmfamily}
 \setbeamerfont{subsection in toc}{family=\rmfamily}
 \AtBeginDocument{\usebeamerfont{normal text}}
 
 
-\setbeamertemplate{caption}[numbered]
-\numberwithin{figure}{section}
-\numberwithin{table}{section}
-\numberwithin{equation}{section}
+\definecolor{iron}{RGB}{0,82,67}
+\setbeamercolor{frametitle}{bg=iron}
+%\setbeamercolor{progress bar}{fg=iron,bg=iron}
+
 
 %---------- 定理设置  --------------
+\theoremstyle{plain}
 \setbeamertemplate{theorems}[numbered]
 \addtobeamertemplate{theorem begin}{\normalfont}{}
+%\theoremstyle{definition}
 %\newtheorem{theorem}{Theorem}
-\newtheorem{theorem}{定理}
+\newtheorem{theorem}{定理} %\sffamily
 \numberwithin{theorem}{section}
 %\newtheorem{definition}{Definition}
 \newtheorem{definition}{定义}
@@ -134,7 +125,7 @@
 \newtheorem{proposition}{命题}
 \numberwithin{proposition}{section}
 %\newtheorem{corollary}{Corollary}
-\newtheorem{corollary}{推论}
+\newtheorem{corollary}{引理}
 \numberwithin{corollary}{section}
 \theoremstyle{example}
 %\newtheorem{example}{Example}
@@ -143,7 +134,15 @@
 \renewenvironment{proof}[1][证明]{\textbf{#1}:~~}{\qed\par}
 \newenvironment{solution}{\par\noindent\textbf{解}:~~}{\par}
 
-%---------- 调节公式的间距 ----------
+
+\setbeamerfont{caption name}{family=\rmfamily,series=\normalfont}
+\setbeamertemplate{caption}[numbered]
+\numberwithin{figure}{section}
+\numberwithin{table}{section}
+\numberwithin{equation}{section}
+
+
+%---------- Adjust the spacing of formulas ----------
 %\AtBeginDocument{
 %	\setlength{\abovedisplayskip}{4pt plus 1pt minus 1pt}
 %	\setlength{\belowdisplayskip}{4pt plus 1pt minus 1pt}
@@ -152,27 +151,11 @@
 %	\setlength{\arraycolsep}{2pt}
 %}
 
-
 \makeatletter
 \newcommand\HUGE{\@setfontsize\Huge{28}{32}}
 \makeatother
 
-
-%\AtBeginSection[]{
-%\begin{frame}
-%  \frametitle{Outline} %\small
-%  \vskip -5pt
-%  \hspace*{1.5em}
-%  \parbox[t]{.95\textwidth}{
-%  \begin{minipage}[c][0.6\textheight]{\textwidth}
-%  \tableofcontents[currentsection,currentsubsection,subsectionstyle=show/show/shaded]
-%  \end{minipage} }
-%  \addtocounter{framenumber}{-1}
-%\end{frame}
-%}
-
-
-%---------- 自定义命令 ----------
+%---------- Define new commands ----------
 \newcommand{\red}[1]{\textcolor{red}{#1}}
 \newcommand{\blue}[1]{\textcolor{blue}{#1}}
 
@@ -181,16 +164,14 @@
 %	TITLE PAGE
 %--------------------------------------------------------------------------------
 
+
 \title[报告题目]{这是报告的题目这是报告的题目}
 
 \author[姓名]{报告人姓名}
-\institute[XX大学]{\vskip -10pt
-\small \textcolor{blue}{XX\,大学数学系}
-\vskip 10pt
-}
 
-\date[2021\,年\,X\,月\,X\,日]{第\,X\,届学术会议 \\[5pt] 2021\,年\,X\,月\,X\,日 }
+\institute[XX大学]{\small \textcolor{blue}{XX大学数学系} }
 
+\date[2021.x.x]{2021.x.x}
 
 \graphicspath{{./figures/}}
 
@@ -200,7 +181,7 @@
 \setlength{\baselineskip}{15pt}
 
 
-{\setbeamertemplate{headline}{}
+{\setbeamertemplate{footline}{}
 \begin{frame}
 \titlepage % Print the title page as the first slide
 \end{frame}}
@@ -208,7 +189,7 @@
 
 \begin{frame}
 \frametitle{目录}
-\vskip -5.6pt
+%\vskip -5.6pt
 \hspace*{1.5em}
 \parbox[t]{.95\textwidth}{
   \begin{minipage}[c][0.6\textheight]{\textwidth}
@@ -216,6 +197,7 @@
   \end{minipage}
 }
 \end{frame}
+
 
 %--------------------------------------------------------------------------------
 %	PRESENTATION SLIDES
@@ -492,22 +474,27 @@ This statement requires citation \cite{Smith2012}. \\~
 \end{frame}
 
 
-%------------------------------------------------
-\section{}
-%------------------------------------------------
+%\setbeamertemplate{headline}{}
+%\begin{frame}
+%%\sffamily
+%\begin{center}
+%\HUGE \textcolor[RGB]{165,3,3}{谢\quad 谢! \\[8pt]
+%Thank you!}
+%\end{center}
+%\end{frame}
 
-%------------------------------------------------
-% get rid of navigation bars in beamer
-\miniframesoff
 
-\setbeamertemplate{headline}{}
-\begin{frame}
-%\sffamily
-\begin{center}
-\HUGE \textcolor[RGB]{165,3,3}{谢\quad 谢! \\[8pt]
+\begin{frame}[standout]
+\HUGE{谢\quad 谢! \\[8pt]
 Thank you!}
-\end{center}
 \end{frame}
+
+
+%------------------------------------------------
+%%\setbeamertemplate{background canvas}[vertical shading][bottom=white,top=structure.fg!25]
+%\begin{frame}
+%\Huge{\centerline{The End}}
+%\end{frame}
 
 
 \end{document}

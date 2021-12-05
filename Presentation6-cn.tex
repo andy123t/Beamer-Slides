@@ -12,11 +12,13 @@
 
 
 %------- Beamer theme ------
+\usetheme{default}
+%\usetheme{Madrid}
+%\usetheme{Boadilla}
 %\usetheme{Frankfurt}
-%\usetheme{Montpellier}
 %\usetheme{Warsaw}
 %\usetheme{CambridgeUS}
-%\usetheme{Boadilla}
+%\usetheme{Montpellier}
 
 %------- Color theme ------
 \usecolortheme{rose}
@@ -32,91 +34,50 @@
 \usefonttheme{serif}
 \usefonttheme{professionalfonts}
 
+\setbeamersize{text margin left=0.75cm, text margin right=0.75cm}
+
 %\setbeamertemplate{headline}{}
 %\setbeamertemplate{footline}{}
 \setbeamertemplate{blocks}[rounded][shadow=true]
 \setbeamertemplate{navigation symbols}{}
-\setbeamertemplate{itemize items}[circle]  % ball, circle
-\setbeamertemplate{enumerate items}[default]
+
+% Itemize items: default (triangle), circle, square, ball
+\setbeamertemplate{itemize items}[circle]
+
+% Enumerate items: default, circle, square, ball
+%\setbeamertemplate{enumerate items}[square]
+%\setbeamertemplate{enumerate items}[circle]
+
 %\setbeamertemplate{section in toc}[square]
-\setbeamertemplate{section in toc}
-{\leavevmode\leftskip=2ex%
-  \llap{%
-    \usebeamerfont*{section number projected}%
-    \usebeamercolor{section number projected}%
-    \begin{pgfpicture}{-1ex}{0ex}{1ex}{2ex}
-      \color{darkorange}
-      \pgfpathcircle{\pgfpoint{0pt}{.75ex}}{1.3ex}
-      \pgfusepath{fill}
-      \pgftext[base]{\color{fg}\inserttocsectionnumber}
-    \end{pgfpicture}\kern1.25ex%
-  }%
-  \inserttocsection\par
+
+\setbeamertemplate{footline}{%
+  \hfill%
+  \usebeamercolor[footer]{page number in head/foot}%
+  \usebeamerfont{page number in head/foot}%
+  \insertframenumber \,/\,\inserttotalframenumber
+  \kern1em\vskip2pt%
 }
 
+\setbeamertemplate{headline}
+{ \leavevmode\begin{beamercolorbox}[wd=\paperwidth,ht=0.5ex,dp=1ex,left]{}
+\end{beamercolorbox} }
 
-\setbeamersize{text margin left=0.5cm, text margin right=0.5cm}
-
-\definecolor{darkblue}{rgb}{0.02,0.24,0.44}
-\definecolor{darkorange}{rgb}{0.80,0.4,0.1}
-\definecolor{lightgray}{rgb}{0.78,0.78,0.78}
-\definecolor{darkgray}{rgb}{0.30,0.30,0.30}
-\definecolor{darkgreen}{rgb}{0.02,0.18,0.20}
-\definecolor{footer}{rgb}{0.5,0.2,0.5}
-
-\setbeamercolor{frametitle}{fg=darkblue,bg=black!5}
-\setbeamercolor{section in head/foot}{bg=black,fg=darkorange}
 \setbeamercolor{lower separation line head}{bg=darkblue}
-\setbeamertemplate{section in head/foot shaded}{\color{lightgray}
-\usebeamertemplate{section in head/foot}}
 
-\setbeamercolor{title in head/foot}{bg=darkgreen,fg=black!5}
-\setbeamercolor{section in toc}{fg=darkorange}
-
-\setbeamercolor{structure}{fg=darkblue}
-\setbeamercolor{alerted text}{fg=darkorange}
-
-%\setbeamertemplate{section in toc}[sections numbered]
-%\setbeamertemplate{subsection in toc}[subsections numbered]
-%\setbeamertemplate{section in toc}[ball unnumbered]
-%\setbeamertemplate{subsection in toc}[ball unnumbered]
-
-% change the style of headline
-\setbeamertemplate{headline}{
-\begin{beamercolorbox}[ht=4.5ex]{section in head/foot} %,dp=0.0ex
-   \vskip2pt\insertsectionnavigationhorizontal{\textwidth}{}{}\vskip2pt
-   %\vskip2pt\insertnavigation{\paperwidth}\vskip2pt
-\end{beamercolorbox}
-\begin{beamercolorbox}[colsep=1.5pt]{lower separation line head} %
-\end{beamercolorbox}
-}
-
-
-
+%---------- frametitle add a line ----------
 \setbeamertemplate{frametitle}{%
-    \nointerlineskip%
-    \begin{beamercolorbox}[wd=\paperwidth,ht=2.75ex,dp=1ex]{frametitle}
-        \hspace*{1.5ex}\insertframetitle%
-    \end{beamercolorbox}%
-    %\vspace*{-1ex}
+  \leavevmode\linespread{1}\centering\insertframetitle\vskip-12pt
+  \begin{beamercolorbox}[colsep=0.5pt,wd=11.3cm]{lower separation line head}
+  \end{beamercolorbox}
 }
 
+%\useoutertheme{split}
+\definecolor{darkblue}{rgb}{0.18,0.18,0.64}
+\definecolor{footer}{rgb}{0.5,0.2,0.5}
+\setbeamercolor{frametitle}{fg=blue}
 
-\setbeamertemplate{footline}
-{%
-  \leavevmode%
-  \begin{beamercolorbox}[wd=0.25\paperwidth,ht=2.5ex,dp=1.125ex,leftskip=.3cm,rightskip=.3cm plus1fil]{title in head/foot}%
-    \usebeamerfont{title in head/foot} ~~\insertshortauthor~(\insertshortinstitute) \hfill
-  \end{beamercolorbox}%
-  \begin{beamercolorbox}[wd=0.5\paperwidth,ht=2.5ex,dp=1.125ex,leftskip=.3cm,rightskip=.3cm plus1fil]{title in head/foot}%
-    \usebeamerfont{title in head/foot}\centering \insertshorttitle
-  \end{beamercolorbox}%
-  \begin{beamercolorbox}[wd=0.25\paperwidth,ht=2.5ex,dp=1.125ex,leftskip=.3cm,rightskip=.3cm plus1fil]{title in head/foot}%
-    \usebeamerfont{title in head/foot} \hfill
-    \insertframenumber\,/\,\inserttotalframenumber\kern2pt
-  \end{beamercolorbox}%
-  \vskip0pt%
-}
+%\setbeamercolor{title}{bg=black!10!white, fg=blue}
+%\setbeamercolor{subtitle}{bg=black!10!white, fg=blue}
 
 
 %--------- 宏包  ----------
@@ -130,10 +91,8 @@
 \usepackage{tabularx,array,makecell}
 \usepackage{color,xcolor}
 \usepackage{cases}
-\usepackage{tcolorbox}
 \usepackage{mathtools}
 \usepackage{tikz}
-
 
 %---------- 定义行距 ----------
 %\renewcommand{\baselinestretch}{1.15}
@@ -144,31 +103,29 @@
 \newcolumntype{C}{>{\centering \arraybackslash}X}
 \newcolumntype{R}{>{\raggedleft \arraybackslash}X}
 
+
 %---------- 设置字体  ----------
 \setbeamerfont{normal text}{family=\rmfamily}
-\setbeamerfont{frametitle}{family=\rmfamily,series=\bfseries}
+\setbeamerfont{frametitle}{family=\sffamily}
 \setbeamerfont{title}{family=\sffamily}
-\setbeamerfont{subtitle}{family=\sffamily}
-\setbeamerfont{institute}{family=\rmfamily}
-\setbeamerfont{author}{family=\rmfamily}
-\setbeamerfont{date}{family=\rmfamily}
-\setbeamerfont{headline}{family=\sffamily} %,series=\bfseries
-\setbeamerfont{footline}{family=\sffamily} %\kaishu
-\setbeamerfont{section in toc}{family=\rmfamily}
-\setbeamerfont{subsection in toc}{family=\rmfamily}
+\setbeamerfont{subtitle}{family=\rmfamily}
+%\setbeamerfont{institute}{family=\kaishu}
+%\setbeamerfont{author}{family=\kaishu}
+%\setbeamerfont{date}{family=\rmfamily}
+\setbeamerfont{footline}{family=\rmfamily}
+\setbeamerfont{headline}{family=\sffamily}
+\setbeamerfont{section in toc}{family=\sffamily}
+\setbeamerfont{subsection in toc}{family=\sffamily}
 \AtBeginDocument{\usebeamerfont{normal text}}
-
-\setbeamercolor{title}{fg=darkblue,bg=black!10}
-\setbeamercolor{subtitle}{fg=darkblue!80}
-%\setbeamercolor{institute}{fg=white}
-%\setbeamercolor{author}{fg=white}
-%\setbeamercolor{date}{fg=white}
+\setbeamertemplate{theorems}[normal font]
 
 \setbeamertemplate{caption}[numbered]
 \numberwithin{figure}{section}
 \numberwithin{table}{section}
 \numberwithin{equation}{section}
 
+\setbeamertemplate{section in toc}[sections numbered]
+\setbeamertemplate{subsection in toc}[subsections numbered]
 
 %---------- 定理设置  --------------
 \theoremstyle{plain}
@@ -213,18 +170,19 @@
 \makeatother
 
 
-%\AtBeginSection[]{
-%\begin{frame}
-%  \frametitle{Outline} %\small
-%  %\vskip -5pt
-%  \hspace*{1.5em}
-%  \parbox[t]{.95\textwidth}{
-%  \begin{minipage}[c][0.6\textheight]{\textwidth}
-%  \tableofcontents[currentsection,currentsubsection,subsectionstyle=show/show/shaded]
-%  \end{minipage} }
-%  \addtocounter{framenumber}{-1}
-%\end{frame}
-%}
+\AtBeginSection[]{
+\begin{frame}
+  \frametitle{目录} %\small
+  \vskip -5pt
+  \hspace*{1.5em}
+  \parbox[t]{.95\textwidth}{
+  \begin{minipage}[c][0.6\textheight]{\textwidth}
+  \tableofcontents[currentsection,currentsubsection,subsectionstyle=show/show/shaded]
+  \end{minipage}
+  }
+  \addtocounter{framenumber}{-1}
+\end{frame}
+}
 
 
 %---------- 自定义命令 ----------
@@ -236,27 +194,27 @@
 %	TITLE PAGE
 %--------------------------------------------------------------------------------
 
-
 \title[报告题目]{这是报告的题目这是报告的题目}
 
 \author[姓名]{报告人姓名}
 \institute[XX大学]{\vskip -10pt
-\small \textcolor{blue}{XX大学数学系}
+\small \textcolor{blue}{XX\,大学数学系}
 \vskip 10pt
 }
 
-\date[2021.x.x]{第X届学术会议 \\[5pt] 2021.x.x }
+\date[2021\,年\,X\,月\,X\,日]{第\,X\,届学术会议 \\[5pt] 2021\,年\,X\,月\,X\,日 }
 
 
 \graphicspath{{./figures/}}
 
 \begin{document}
 
+
 % only change the spacing of body text
 \setlength{\baselineskip}{15pt}
 
 
-{%\setbeamertemplate{headline}{}
+{\setbeamertemplate{headline}{}
 \begin{frame}
 \titlepage % Print the title page as the first slide
 \end{frame}}
@@ -264,7 +222,7 @@
 
 \begin{frame}
 \frametitle{目录}
-%\vskip -5.6pt
+\vskip -5.6pt
 \hspace*{1.5em}
 \parbox[t]{.95\textwidth}{
   \begin{minipage}[c][0.6\textheight]{\textwidth}
@@ -272,7 +230,6 @@
   \end{minipage}
 }
 \end{frame}
-
 
 %--------------------------------------------------------------------------------
 %	PRESENTATION SLIDES
@@ -550,10 +507,9 @@ This statement requires citation \cite{Smith2012}. \\~
 
 
 %------------------------------------------------
-\section{}
-%------------------------------------------------
 
 
+%\setbeamertemplate{background canvas}[vertical shading][bottom=white,top=structure.fg!25]
 %\setbeamertemplate{headline}{}
 \begin{frame}
 %\sffamily
@@ -564,8 +520,8 @@ Thank you!}
 \end{frame}
 
 
+%------------------------------------------------
+
 
 \end{document}
-
-
 

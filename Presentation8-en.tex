@@ -1,7 +1,7 @@
 %======================================================%
 %   Beamer Presentation
 %   LaTeX Template
-%   compile using PDFTeXify or PDFLaTeX
+%   compile using PDFTeXify, PDFLaTeX
 %======================================================%
 
 %--------------------------------------------------------------------------------
@@ -10,68 +10,50 @@
 
 \documentclass[notheorems,11pt,compress]{beamer}
 
-% The Beamer class comes with a number of default slide themes
-% which change the colors and layouts of slides. Below this is a list
-% of all the themes, uncomment each in turn to see what they look like.
-
-\mode<presentation>{
 
 %------- Beamer theme ------
-\usetheme{default}
-%\usetheme{Madrid}
-%\usetheme{Boadilla}
-%\usetheme{Frankfurt}
-%\usetheme{Warsaw}
-%\usetheme{CambridgeUS}
-%\usetheme{Montpellier}
+\usetheme{metropolis}
+%\metroset{sectionpage=none}
 
-%------- Color theme ------
-\usecolortheme{rose}
-%\usecolortheme{orchid}
+\usepackage[scale=2]{ccicons}
 
-%\setbeamertemplate{background canvas}[vertical shading][bottom=red!10,top=blue!10]
-\usefonttheme[onlymath]{serif}
-%\usefonttheme{serif}
-%\setbeamercovered{transparent}
-%\usetheme{boxes}
+\makeatletter
+\setlength{\metropolis@titleseparator@linewidth}{1pt}
+\setlength{\metropolis@progressonsectionpage@linewidth}{1pt}
+\setlength{\metropolis@progressinheadfoot@linewidth}{1pt}
+\makeatother
+
+\metroset{block=fill}
+\usepackage{xspace}
+\newcommand{\themename}{\textbf{\textsc{metropolis}}\xspace}
+
+\makeatletter
+\setlength{\metropolis@frametitle@padding}{1.8ex} % <- default 2.2 ex
+\makeatother
+
+%\usefonttheme[onlymath]{serif}
+\usefonttheme{serif}
+\usefonttheme{professionalfonts}
 
 %\setbeamertemplate{headline}{}
 %\setbeamertemplate{footline}{}
-\setbeamertemplate{blocks}[rounded][shadow=true]
+\setbeamertemplate{blocks}[shadow=true]
 \setbeamertemplate{navigation symbols}{}
-\setbeamertemplate{itemize items}[circle]  %square, ball, circle
+\setbeamertemplate{itemize items}[circle]  % ball, circle
 \setbeamertemplate{enumerate items}[default]
 %\setbeamertemplate{section in toc}[square]
 
-\setbeamertemplate{footline}{%
-  \hfill%
-  \usebeamercolor[footer]{page number in head/foot}%
-  \usebeamerfont{page number in head/foot}%
-  \insertframenumber \,/\,\inserttotalframenumber
-  \kern1em\vskip2pt%
-}
 
-\setbeamertemplate{frametitle}[default][center]
+\setbeamersize{text margin left=0.5cm, text margin right=0.5cm}
+
 \setbeamertemplate{section in toc}[sections numbered]
-
-%\useoutertheme{split}
-\definecolor{darkred}{rgb}{0.5,0,0}
-\definecolor{footer}{rgb}{0.5,0.2,0.5}
-\setbeamercolor{frametitle}{fg=darkred}
-%\setbeamerfont{frametitle}{size=\LARGE}
-\setbeamercolor{title}{bg=black!5!white, fg=darkred}
-\setbeamercolor{subtitle}{bg=white, fg=darkred}
-\setbeamercolor{section in toc}{fg=darkred}
-\setbeamercolor{subsection in toc}{fg=darkred}
-
-}
+%\setbeamertemplate{subsection in toc}[subsections numbered]
+%\setbeamertemplate{section in toc}[ball unnumbered]
+%\setbeamertemplate{subsection in toc}[ball unnumbered]
 
 
-%----------- Packages -------------
-%\usepackage[latin1]{inputenc}
-%\usepackage{times}
-%\usepackage[T1]{fontenc}
-
+%--------- Package  ----------
+\usepackage[UTF8,noindent]{ctex}
 \usepackage[english]{babel}
 \usepackage{amsmath,amssymb,version}
 \usepackage{graphicx,fancybox,mathrsfs,multirow}
@@ -81,12 +63,21 @@
 \usepackage{tabularx,array,makecell}
 \usepackage{color,xcolor}
 \usepackage{cases}
+\usepackage{tcolorbox}
 \usepackage{mathtools}
 \usepackage{tikz}
-%\usepackage[UTF8,noindent]{ctex}
+
+
+\setbeamertemplate{footline}{%
+  \leavevmode%
+  \hskip3em \normalfont \insertshortauthor ~~$|$~~ \insertshorttitle \hfill
+  \insertframenumber\,/\,\inserttotalframenumber  \hskip2em \hfill
+  \vskip6pt%
+}
 
 %---------- Set line spacing ----------
 %\renewcommand{\baselinestretch}{1.15}
+
 
 %---------- Define new table commands ----------
 \newcolumntype{P}[1]{>{\centering \arraybackslash}p{#1}}
@@ -96,9 +87,24 @@
 
 
 %---------- Set fonts ----------
-%\setbeamerfont{normal text}{family=\rmfamily}
-\setbeamerfont{title}{family=\sffamily}
-%\AtBeginDocument{\usebeamerfont{normal text}}
+\setbeamerfont{normal text}{family=\rmfamily}
+%\setbeamerfont{frametitle}{family=\sffamily}
+\setbeamerfont{frametitle}{family=\rmfamily,series=\bfseries}
+\setbeamerfont{title}{family=\rmfamily,series=\bfseries}
+\setbeamerfont{subtitle}{family=\rmfamily,series=\bfseries}
+\setbeamerfont{institute}{family=\rmfamily}
+\setbeamerfont{author}{family=\rmfamily}
+\setbeamerfont{date}{family=\rmfamily}
+\setbeamerfont{headline}{family=\sffamily}
+\setbeamerfont{footline}{family=\sffamily}
+\setbeamerfont{section in toc}{family=\rmfamily}
+\setbeamerfont{subsection in toc}{family=\rmfamily}
+\AtBeginDocument{\usebeamerfont{normal text}}
+
+
+\definecolor{iron}{RGB}{0,82,67}
+\setbeamercolor{frametitle}{bg=iron}
+%\setbeamercolor{progress bar}{fg=iron,bg=iron}
 
 
 %---------- Theorem environment ----------
@@ -121,6 +127,7 @@
 \newenvironment{solution}{\par\noindent\textbf{Solution}:~~}{\par}
 
 
+\setbeamerfont{caption name}{family=\rmfamily,series=\normalfont}
 \setbeamertemplate{caption}[numbered]
 \numberwithin{figure}{section}
 \numberwithin{table}{section}
@@ -137,7 +144,7 @@
 %}
 
 \makeatletter
-\newcommand\HUGE{\@setfontsize\Huge{32}{36}}
+\newcommand\HUGE{\@setfontsize\Huge{28}{32}}
 \makeatother
 
 %---------- Define new commands ----------
@@ -145,26 +152,9 @@
 \newcommand{\blue}[1]{\textcolor{blue}{#1}}
 
 
-%---------- Show the outline ----------
-\AtBeginSection[]{
-\begin{frame}
-  \frametitle{Outline} %\small
-  \vskip -5pt
-  \hspace*{1.5em}
-  \parbox[t]{.95\textwidth}{
-  \begin{minipage}[c][0.6\textheight]{\textwidth}
-  \tableofcontents[currentsection,hideallsubsections]
-  %\tableofcontents[currentsection,currentsubsection,subsectionstyle=show/show/shaded]
-  \end{minipage}
-  }
-  \addtocounter{framenumber}{-1}
-\end{frame}
-}
-
 %--------------------------------------------------------------------------------
 %	TITLE PAGE
 %--------------------------------------------------------------------------------
-
 
 \title[Short title]{Full Title of the Talk} % The short title appears at the bottom of every slide, the full title is only on the title page
 
@@ -175,7 +165,7 @@
 \textit{xyz@math.univ.edu} % Your email address
 }
 
-\date[Nov. 23, 2020]{\small Very Large Conference \\[5pt] Nov. 23, 2020} % Date, can be changed to a custom date
+\date[Nov. 23, 2020]{Nov. 23, 2020} % Date, can be changed to a custom date
 
 
 \graphicspath{{./figures/}}
@@ -186,15 +176,20 @@
 % only change the spacing of body text
 \setlength{\baselineskip}{15pt}
 
-%\thispagestyle{empty}
+{\setbeamertemplate{footline}{}
 \begin{frame}
 \titlepage % Print the title page as the first slide
-\end{frame}
+\end{frame}}
 
+
+%\begin{frame}
+%\frametitle{Outline}
+%\tableofcontents[hideallsubsections] % Throughout your presentation, if you choose to use \section{} and \subsection{} commands, these will automatically be printed on this slide as an overview of your presentation
+%\end{frame}
 
 \begin{frame}
 \frametitle{Outline}
-\vskip -5.6pt
+%\vskip -5.6pt
 \hspace*{1.5em}
 \parbox[t]{.95\textwidth}{
   \begin{minipage}[c][0.6\textheight]{\textwidth}
@@ -313,7 +308,6 @@ This is a theorem environment.
 \begin{proof}
   This is a proof environment.
 \end{proof}
-
 \end{frame}
 
 
@@ -434,6 +428,7 @@ An example of the \verb|\cite| command to cite within the presentation:\\~
 This statement requires citation \cite{Smith2012}.
 \end{frame}
 
+
 %------------------------------------------------
 
 
@@ -447,31 +442,20 @@ This statement requires citation \cite{Smith2012}.
 \end{frame}
 
 
-%------------------------------------------------
-%\thispagestyle{empty}
 %\setbeamertemplate{headline}{}
-%\setbeamertemplate{footline}{%
-%  \hfill%
-%  %\usebeamercolor[fg]{page number in head/foot}%
-%  \usebeamercolor[footer]{page number in head/foot}%
-%  \usebeamerfont{page number in head/foot}%
-%  \insertframenumber \,/\,\inserttotalframenumber
-%  \kern1em\vskip2pt%
-%}
+%\begin{frame}
+%\rmfamily
+%\begin{center}
+%\HUGE{\textcolor{red}{Thank you!}}
+%\end{center}
+%\end{frame}
 
-%------------------------------------------------
-%\setbeamertemplate{background canvas}[vertical shading][bottom=white,top=structure.fg!25]
-%\setbeamertemplate{headline}{}
-\begin{frame}
-\begin{center}
-\HUGE{\textcolor[RGB]{165,3,3}{Thank~you!}}
-\end{center}
+\begin{frame}[standout]
+\HUGE{Thank you!}
 \end{frame}
 
 
 %------------------------------------------------
-
-%\thispagestyle{empty}
 %%\setbeamertemplate{background canvas}[vertical shading][bottom=white,top=structure.fg!25]
 %\begin{frame}
 %\Huge{\centerline{The End}}
@@ -479,3 +463,4 @@ This statement requires citation \cite{Smith2012}.
 
 
 \end{document}
+
