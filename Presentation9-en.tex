@@ -17,11 +17,12 @@
 
 %\definecolor{iron}{RGB}{0,82,67}
 \definecolor{footer}{rgb}{0.5,0.2,0.5}
-\setbeamercolor{frametitle}{fg=black,bg=black!2}
+\setbeamercolor{frametitle}{fg=black,bg=white} %black!2
 \definecolor{color1}{rgb}{0.2,0.3,0.96}
 \definecolor{color2}{rgb}{0.75,0.75,0.75}
 \setbeamercolor{progress bar}{fg=color1,bg=color2}
-%\setbeamercolor{background canvas}{bg=white}
+\setbeamercolor{background canvas}{bg=white}
+\setbeamercolor{block title}{bg=white}
 
 \makeatletter
 \setlength{\metropolis@titleseparator@linewidth}{1pt}
@@ -138,6 +139,8 @@
 
 \setbeamerfont{caption name}{family=\rmfamily,series=\normalfont}
 \setbeamertemplate{caption}[numbered]
+\setlength\abovecaptionskip{-1pt}
+\setlength\belowcaptionskip{-1pt}
 \numberwithin{figure}{section}
 \numberwithin{table}{section}
 \numberwithin{equation}{section}

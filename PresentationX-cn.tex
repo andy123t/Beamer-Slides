@@ -1,85 +1,58 @@
 %======================================================%
 %   Beamer Presentation
 %   LaTeX Template
-%   compile using PDFTeXify, PDFLaTeX
+%   compile using PDFTeXify, PDFLaTeX or XeLaTeX
 %======================================================%
 
 %--------------------------------------------------------------------------------
 %   PACKAGES AND THEMES
 %--------------------------------------------------------------------------------
 
-\documentclass[notheorems,11pt,compress]{beamer}
+\documentclass[noamsthm,notheorem,11pt,compress]{beamer}
 
 
-%------- Beamer theme ------
-\usetheme[progressbar=frametitle]{metropolis}
-%\metroset{sectionpage=none}
-
-%\definecolor{iron}{RGB}{0,82,67}
-\definecolor{footer}{rgb}{0.5,0.2,0.5}
-\setbeamercolor{frametitle}{fg=black,bg=white}
-\definecolor{color1}{rgb}{0.2,0.3,0.96}
-\definecolor{color2}{rgb}{0.75,0.75,0.75}
-\setbeamercolor{progress bar}{fg=color1,bg=color2}
-\setbeamercolor{background canvas}{bg=white}
-\setbeamercolor{block title}{bg=white}
-
-\makeatletter
-\setlength{\metropolis@titleseparator@linewidth}{1pt}
-\setlength{\metropolis@progressonsectionpage@linewidth}{1pt}
-\setlength{\metropolis@progressinheadfoot@linewidth}{1pt}
-\makeatother
-
-\makeatletter
-\setlength{\metropolis@frametitle@padding}{1.6ex} % <- default 2.2 ex
-\makeatother
-
-%\setbeamertemplate{footline}{}
-\setbeamertemplate{footline}{
-  \hfill%
-  %\usebeamercolor[fg]{page number in head/foot}%
-  \usebeamercolor[footer]{page number in head/foot}%
-  \usebeamerfont{page number in head/foot} \tiny
-  \insertframenumber \,/\,\inserttotalframenumber
-  \kern1.5em\vskip5pt%
-}
-
-
-%\setbeamertemplate{headline}{}
-%\setbeamertemplate{footline}{}
-%\setbeamertemplate{blocks}[rounded][shadow=false]
-\setbeamertemplate{blocks}[default]
+%------- Beamer Setting ------
 \setbeamertemplate{navigation symbols}{}
-%\setbeamertemplate{itemize items}[square]  % ball, circle
-%\setbeamertemplate{enumerate items}[square]
-%\setbeamertemplate{section in toc}[square]
+\setbeamercolor{myfootline}{bg=white,fg=blue}
+\definecolor{myfoot}{rgb}{0.5,0.2,0.5}
+\definecolor{darkblue}{rgb}{0.1,0,0.85}
+\definecolor{darkgreen}{rgb}{0,0.8,0.2}
+\definecolor{linehead}{rgb}{0.18,0.18,0.64}
+\setbeamercolor{structure}{fg=darkblue}
 
-%\usefonttheme[onlymath]{serif}
-\usefonttheme{serif}
+\usefonttheme[onlymath]{serif}
 \usefonttheme{professionalfonts}
 
+\setbeamersize{text margin left=0.75cm, text margin right=0.75cm}
+
 %\setbeamertemplate{headline}{}
 %\setbeamertemplate{footline}{}
-\setbeamertemplate{blocks}[shadow=true]
+\setbeamertemplate{blocks}[rounded][shadow=true]
 \setbeamertemplate{navigation symbols}{}
-\setbeamertemplate{itemize items}[circle]  % ball, circle
-\setbeamertemplate{enumerate items}[default]
-%\setbeamertemplate{section in toc}[square]
-
-
-\setbeamersize{text margin left=0.5cm, text margin right=0.5cm}
 
 \setbeamertemplate{section in toc}[sections numbered]
 %\setbeamertemplate{subsection in toc}[subsections numbered]
-%\setbeamertemplate{section in toc}[ball unnumbered]
-%\setbeamertemplate{subsection in toc}[ball unnumbered]
+\setbeamertemplate{subsection in toc}{\leavevmode\leftskip=3.2em\rlap{ \hskip-2em\inserttocsectionnumber.\inserttocsubsectionnumber}\inserttocsubsection\par}
 
-%\usepackage{caption}
-%\captionsetup{labelformat={default},labelsep=quad}
-%\captionsetup[figure]{position=bottom,skip={8pt},name={图}}
-%\captionsetup[table]{position=top,skip={-4pt},name={表}}
+\definecolor{footer}{rgb}{0.5,0.2,0.5}
+\setbeamertemplate{footline}{%
+  \hfill%
+  \usebeamercolor[footer]{page number in head/foot}%
+  \usebeamerfont{page number in head/foot}%
+  \insertframenumber \,/\,\inserttotalframenumber
+  \kern1em\vskip2pt%
+}
 
-%--------- Package  ----------
+% Itemize items: default (triangle), circle, square, ball
+\setbeamertemplate{itemize items}[circle] % ball, circle, square
+\setbeamertemplate{enumerate items}[default]
+
+% Enumerate items: default, circle, square, ball
+%\setbeamertemplate{enumerate items}[square]
+%\setbeamertemplate{enumerate items}[circle]
+
+
+%--------- 宏包  ----------
 \usepackage[UTF8,noindent]{ctex}
 %\usepackage[english]{babel}
 \usepackage{amsmath,amssymb,version}
@@ -90,88 +63,140 @@
 \usepackage{tabularx,array,makecell}
 \usepackage{color,xcolor}
 \usepackage{cases}
-\usepackage{tcolorbox}
 \usepackage{mathtools}
 \usepackage{tikz}
 
-%---------- Set line spacing ----------
+% \setbeamertemplate{blocks}[default] % beamer块（含定理类环境）不要阴影
+\setbeamertemplate{bibliography entry title}{}{}
+\setbeamertemplate{bibliography entry location}{}{}
+\setbeamertemplate*{bibliography entry note}{}{}
+
+%---------- 定义行距 ----------
 %\renewcommand{\baselinestretch}{1.15}
 
-
-%---------- Define new table commands ----------
+%---------- 定义表格新命令 ----------
 \newcolumntype{P}[1]{>{\centering \arraybackslash}p{#1}}
 \newcolumntype{L}{X}
 \newcolumntype{C}{>{\centering \arraybackslash}X}
 \newcolumntype{R}{>{\raggedleft \arraybackslash}X}
 
-
-%---------- Set fonts ----------
+%---------- 设置字体  ----------
 \setbeamerfont{normal text}{family=\rmfamily}
-%\setbeamerfont{frametitle}{family=\sffamily}
-\setbeamerfont{frametitle}{family=\rmfamily,series=\bfseries}
-\setbeamerfont{title}{family=\rmfamily,series=\bfseries}
-\setbeamerfont{subtitle}{family=\rmfamily,series=\bfseries}
+\setbeamerfont{title}{family=\sffamily}
+\setbeamerfont{subtitle}{family=\rmfamily}
+\setbeamerfont{frametitle}{family=\sffamily,size=\Large}
+\setbeamerfont{framesubtitle}{family=\sffamily,size=\large}
 \setbeamerfont{institute}{family=\rmfamily}
 \setbeamerfont{author}{family=\rmfamily}
 \setbeamerfont{date}{family=\rmfamily}
-\setbeamerfont{headline}{family=\sffamily}
-\setbeamerfont{footline}{family=\rmfamily}
-\setbeamerfont{section in toc}{family=\rmfamily}
+\setbeamerfont{footline}{family=\kaishu}
+\setbeamerfont{section in toc}{family=\sffamily}
 \setbeamerfont{subsection in toc}{family=\rmfamily}
 \AtBeginDocument{\usebeamerfont{normal text}}
 
-
-%---------- 定理设置  --------------
-\theoremstyle{plain}
-\setbeamertemplate{theorems}[numbered]
-\addtobeamertemplate{theorem begin}{\normalfont}{}
-%\theoremstyle{definition}
-%\newtheorem{theorem}{Theorem}
-\newtheorem{theorem}{定理} %\sffamily
-\numberwithin{theorem}{section}
-%\newtheorem{definition}{Definition}
-\newtheorem{definition}{定义}
-\numberwithin{definition}{section}
-%\newtheorem{lemma}{Lemma}
-\newtheorem{lemma}{引理}
-\numberwithin{lemma}{section}
-%\newtheorem{proposition}{Proposition}
-\newtheorem{proposition}{命题}
-\numberwithin{proposition}{section}
-%\newtheorem{corollary}{Corollary}
-\newtheorem{corollary}{引理}
-\numberwithin{corollary}{section}
-\theoremstyle{example}
-%\newtheorem{example}{Example}
-\newtheorem{example}{例}
-%\numberwithin{example}{section}
-\renewenvironment{proof}[1][证明]{\textbf{#1}:~~}{\qed\par}
-\newenvironment{solution}{\par\noindent\textbf{解}:~~}{\par}
-
-
 \setbeamerfont{caption name}{family=\rmfamily,series=\normalfont}
 \setbeamertemplate{caption}[numbered]
-\setlength\abovecaptionskip{-1pt}
-\setlength\belowcaptionskip{-1pt}
 \numberwithin{figure}{section}
 \numberwithin{table}{section}
 \numberwithin{equation}{section}
 
+%---------- 定理设置  --------------
+\usepackage[framemethod=tikz]{mdframed}
+\usepackage[amsmath,thref,thmmarks,hyperref]{ntheorem}
+\theorempreskipamount1.2em  % spacing before the environment
+\theorempostskipamount0em % spacing after the environment
+\theorempostwork{\noindent}
+\theoremstyle{numberplain} %numberplain{nonumberbreak}
+\theoremheaderfont{\bfseries\color{structure.fg}\upshape} % blue
+\theorembodyfont{\upshape} %\kaishu\color{black}
+\theoremindent0em
+\theoremseparator{\hspace{0.2em}}
+\theoremnumbering{arabic}
+\colorlet{thmcolor}{darkgreen}
+\newmdtheoremenv[linecolor=thmcolor,middlelinewidth=0.5pt,
+    roundcorner=3pt,backgroundcolor=white,%
+    innertopmargin=0.5em,innerbottommargin=0.5em,%
+    innerleftmargin=3pt,innerrightmargin=3pt,%
+    skipbelow=0.5em,skipabove=1em,%
+    splittopskip=\topskip,ntheorem]{theorem}%
+    {定理}[section]
+\newmdtheoremenv[linecolor=thmcolor,middlelinewidth=0.5pt,
+    roundcorner=3pt,backgroundcolor=white,%
+    innertopmargin=0.5em,innerbottommargin=0.5em,%
+    innerleftmargin=3pt,innerrightmargin=3pt,%
+    skipbelow=0.5em,skipabove=1em,%
+    splittopskip=\topskip,ntheorem]{corollary}%
+    {推论}[section]
+\newmdtheoremenv[linecolor=thmcolor,middlelinewidth=0.5pt,
+    roundcorner=3pt,backgroundcolor=white,%
+    innertopmargin=0.5em,innerbottommargin=0.5em,%
+    innerleftmargin=3pt,innerrightmargin=3pt,%
+    skipbelow=0.5em,skipabove=1em,%
+    splittopskip=\topskip,ntheorem]{lemma}%
+    {引理}[section]
+\newmdtheoremenv[linecolor=thmcolor,middlelinewidth=0.5pt,
+    roundcorner=3pt,backgroundcolor=white,%
+    innertopmargin=0.5em,innerbottommargin=0.5em,%
+    innerleftmargin=3pt,innerrightmargin=3pt,%
+    skipbelow=0.5em,skipabove=1em,%
+    splittopskip=\topskip,ntheorem]{proposition}%
+    {命题}[section]
+\newmdtheoremenv[linecolor=thmcolor,middlelinewidth=0.5pt,
+    roundcorner=3pt,backgroundcolor=white,%
+    innertopmargin=0.5em,innerbottommargin=0.5em,%
+    innerleftmargin=3pt,innerrightmargin=3pt,%
+    skipbelow=0.5em,skipabove=1em,%
+    splittopskip=\topskip,ntheorem]{definition}%
+    {定义}[section]
 
-%---------- Adjust the spacing of formulas ----------
-%\AtBeginDocument{
-%	\setlength{\abovedisplayskip}{4pt plus 1pt minus 1pt}
-%	\setlength{\belowdisplayskip}{4pt plus 1pt minus 1pt}
-%	\setlength{\abovedisplayshortskip}{2pt}
-%	\setlength{\belowdisplayshortskip}{2pt}
-%	\setlength{\arraycolsep}{2pt}
-%}
+%----- numbered environment -----
+\newcounter{example}[section]
+\newenvironment{example}[1][]{\refstepcounter{example}\par\medskip
+   \noindent {\color{structure.fg}{\textbf{例~\thesection.\theexample}}} #1 \rmfamily}{\medskip}
+
+%\newenvironment{example}{\par\noindent\textbf{例~\thesection\}:~~}{\par}
+\newenvironment{proof}[1][证明]{\textbf{#1}:~~}{\qed\par}
+\newenvironment{solution}{\par\noindent\textbf{解}:~~}{\par}
+
+
+%---------- 证明符号 ----------
+\newcommand{\QED}{\hfill\ensuremath{\square}}
+
+%---------- 定义章节 ----------
+\newcommand{\sect}{\thesection.~~\secname}
+\newcommand{\subsect}{\thesection.\thesubsection~~\subsecname}
+
+%---------- 调节公式的间距 ----------
+\AtBeginDocument{
+	\setlength{\abovedisplayskip}{4pt plus 1pt minus 1pt}
+	\setlength{\belowdisplayskip}{4pt plus 1pt minus 1pt}
+	\setlength{\abovedisplayshortskip}{2pt}
+	\setlength{\belowdisplayshortskip}{2pt}
+	\setlength{\arraycolsep}{2pt}
+}
+
 
 \makeatletter
 \newcommand\HUGE{\@setfontsize\Huge{28}{32}}
 \makeatother
 
-%---------- Define new commands ----------
+
+%\AtBeginSection[]{
+%\begin{frame}
+%  \frametitle{目录} %\small
+%  \vskip -5pt
+%  \hspace*{1.5em}
+%  \parbox[t]{.95\textwidth}{
+%  \begin{minipage}[c][0.6\textheight]{\textwidth}
+%  \tableofcontents[currentsection,currentsubsection,subsectionstyle=show/show/shaded]
+%  \end{minipage}
+%  }
+%  \addtocounter{framenumber}{-1}
+%\end{frame}
+%}
+
+
+%---------- 自定义命令 ----------
 \newcommand{\red}[1]{\textcolor{red}{#1}}
 \newcommand{\blue}[1]{\textcolor{blue}{#1}}
 
@@ -180,24 +205,27 @@
 %	TITLE PAGE
 %--------------------------------------------------------------------------------
 
-
 \title[报告题目]{这是报告的题目这是报告的题目}
 
 \author[姓名]{报告人姓名}
+\institute[XX大学]{\vskip -10pt
+\small \textcolor{blue}{XX\,大学数学系}
+\vskip 10pt
+}
 
-\institute[XX大学]{\small XX大学数学系 }
+\date[2021\,年\,X\,月\,X\,日]{第\,X\,届学术会议 \\[5pt] 2021\,年\,X\,月\,X\,日 }
 
-\date[2021.x.x]{2021.x.x}
 
 \graphicspath{{./figures/}}
 
 \begin{document}
 
+
 % only change the spacing of body text
 \setlength{\baselineskip}{15pt}
 
 
-{\setbeamertemplate{footline}{}
+{\setbeamertemplate{headline}{}
 \begin{frame}
 \titlepage % Print the title page as the first slide
 \end{frame}}
@@ -205,7 +233,7 @@
 
 \begin{frame}
 \frametitle{目录}
-%\vskip -5.6pt
+\vskip -5.6pt
 \hspace*{1.5em}
 \parbox[t]{.95\textwidth}{
   \begin{minipage}[c][0.6\textheight]{\textwidth}
@@ -213,7 +241,6 @@
   \end{minipage}
 }
 \end{frame}
-
 
 %--------------------------------------------------------------------------------
 %	PRESENTATION SLIDES
@@ -265,7 +292,7 @@ This is the alertblock environment. The quick brown fox jumps over the lazy dog.
 
 \vspace{2ex}
 不计数列表环境
-\begin{itemize}[<+-| alert@+>]
+\begin{itemize}
 \item 这是一个不计数列表环境.
 \item 这是一个不计数列表环境.
 \item 这是一个不计数列表环境.
@@ -348,7 +375,6 @@ has a unique solution. Moreover, we have
 
 \begin{frame}[fragile] % Need to use the fragile option when verbatim is used in the slide
 \frametitle{Verbatim}
-
 \begin{example}[Theorem Slide Code]
 \begin{verbatim}
 \begin{frame}
@@ -493,27 +519,19 @@ This statement requires citation \cite{Smith2012}. \\~
 
 %------------------------------------------------
 
-%\setbeamertemplate{headline}{}
-%\begin{frame}
-%%\sffamily
-%\begin{center}
-%\HUGE \textcolor[RGB]{165,3,3}{谢\quad 谢! \\[8pt]
-%Thank you!}
-%\end{center}
-%\end{frame}
 
-\setbeamertemplate{footline}{}
-\begin{frame}[standout]
-\HUGE{谢\quad 谢! \\[8pt]
+%\setbeamertemplate{background canvas}[vertical shading][bottom=white,top=structure.fg!25]
+%\setbeamertemplate{headline}{}
+\begin{frame}
+%\sffamily
+\begin{center}
+\HUGE \textcolor[RGB]{165,3,3}{谢\quad 谢! \\[8pt]
 Thank you!}
+\end{center}
 \end{frame}
 
 
 %------------------------------------------------
-%%\setbeamertemplate{background canvas}[vertical shading][bottom=white,top=structure.fg!25]
-%\begin{frame}
-%\Huge{\centerline{The End}}
-%\end{frame}
 
 
 \end{document}
