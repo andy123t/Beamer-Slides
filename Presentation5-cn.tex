@@ -38,6 +38,11 @@
 \setbeamertemplate{enumerate items}[default]
 %\setbeamertemplate{section in toc}[square]
 
+\setbeamertemplate{section in toc}[sections numbered]
+%\setbeamertemplate{subsection in toc}[subsections numbered]
+%\setbeamertemplate{section in toc}[ball unnumbered]
+%\setbeamertemplate{subsection in toc}[ball unnumbered]
+
 \setbeamersize{text margin left=0.75cm, text margin right=0.75cm}
 
 % change the style of headline
@@ -160,13 +165,15 @@
 
 %\AtBeginSection[]{
 %\begin{frame}
-%  \frametitle{Outline} %\small
-%  \vskip -5pt
+%  \frametitle{目录}
+%  \vskip 10.6pt
 %  \hspace*{1.5em}
 %  \parbox[t]{.95\textwidth}{
-%  \begin{minipage}[c][0.6\textheight]{\textwidth}
+%  \begin{minipage}[c]{\textwidth}
+%  \setlength{\baselineskip}{2.8em}
 %  \tableofcontents[currentsection,currentsubsection,subsectionstyle=show/show/shaded]
-%  \end{minipage} }
+%  \end{minipage}
+%  }
 %  \addtocounter{framenumber}{-1}
 %\end{frame}
 %}
@@ -208,14 +215,16 @@
 
 \begin{frame}
 \frametitle{目录}
-\vskip -5.6pt
-\hspace*{1.5em}
-\parbox[t]{.95\textwidth}{
-  \begin{minipage}[c][0.6\textheight]{\textwidth}
+  \vskip 10pt
+  \hspace*{1.5em}
+  \parbox[t]{.95\textwidth}{
+  \begin{minipage}[c]{\textwidth}
+  \setlength{\baselineskip}{2.8em}
   \tableofcontents
   \end{minipage}
-}
+  }
 \end{frame}
+
 
 %--------------------------------------------------------------------------------
 %	PRESENTATION SLIDES
