@@ -45,9 +45,7 @@
 \setbeamertemplate{itemize items}[circle]
 
 % Enumerate items: default, circle, square, ball
-%\setbeamertemplate{enumerate items}[square]
 %\setbeamertemplate{enumerate items}[circle]
-
 %\setbeamertemplate{section in toc}[square]
 
 \setbeamertemplate{footline}{%
@@ -62,7 +60,7 @@
 { \leavevmode\begin{beamercolorbox}[wd=\paperwidth,ht=0.5ex,dp=1ex,left]{}
 \end{beamercolorbox} }
 
-\setbeamercolor{lower separation line head}{bg=darkblue}
+\setbeamercolor{lower separation line head}{bg=linecolor}
 
 %---------- frametitle add a line ----------
 \setbeamertemplate{frametitle}{%
@@ -72,9 +70,11 @@
 }
 
 %\useoutertheme{split}
-\definecolor{darkblue}{rgb}{0.18,0.18,0.64}
+\definecolor{linecolor}{rgb}{0.18,0.18,0.64}
+\definecolor{darkblue}{rgb}{0.18,0.18,0.8}
 \definecolor{footer}{rgb}{0.5,0.2,0.5}
-\setbeamercolor{frametitle}{fg=blue}
+\setbeamercolor{structure}{fg=darkblue}
+%\setbeamercolor{frametitle}{fg=blue}
 
 %\setbeamercolor{title}{bg=black!10!white, fg=blue}
 %\setbeamercolor{subtitle}{bg=black!10!white, fg=blue}
@@ -170,21 +170,27 @@
 \makeatother
 
 
+%\AtBeginSection[]{
+%\begin{frame}
+%  \frametitle{目录}
+%  \vskip 10pt
+%  \hspace*{0.5em}
+%  \parbox[t]{.95\textwidth}{
+%  \begin{minipage}[c]{\textwidth}
+%  \setlength{\baselineskip}{2.8em}
+%  \tableofcontents[currentsection,currentsubsection,subsectionstyle=show/show/shaded]
+%  \end{minipage}
+%  }
+%  \addtocounter{framenumber}{-1}
+%\end{frame}
+%}
 \AtBeginSection[]{
-\begin{frame}
-  \frametitle{目录}
-  \vskip 10pt
-  \hspace*{0.5em}
-  \parbox[t]{.95\textwidth}{
-  \begin{minipage}[c]{\textwidth}
-  \setlength{\baselineskip}{2.8em}
-  \tableofcontents[currentsection,currentsubsection,subsectionstyle=show/show/shaded]
-  \end{minipage}
-  }
+\begin{frame}[plain]{}
+  \LARGE\centering
+  \tableofcontents[currentsection,sectionstyle=show/hide]
   \addtocounter{framenumber}{-1}
 \end{frame}
 }
-
 
 %---------- 自定义命令 ----------
 \newcommand{\red}[1]{\textcolor{red}{#1}}
