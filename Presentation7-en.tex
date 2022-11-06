@@ -68,7 +68,12 @@
 \definecolor{darkgreen}{rgb}{0.02,0.18,0.20}
 \definecolor{footer}{rgb}{0.5,0.2,0.5}
 
-\setbeamercolor{frametitle}{fg=darkblue,bg=black!5}
+\setbeamercolor{title}{fg=darkblue}
+\setbeamercolor{subtitle}{fg=darkblue!80}
+%\setbeamercolor{institute}{fg=white}
+%\setbeamercolor{author}{fg=white}
+%\setbeamercolor{date}{fg=white}
+\setbeamercolor{frametitle}{fg=darkblue}
 \setbeamercolor{section in head/foot}{bg=black,fg=darkorange}
 \setbeamercolor{lower separation line head}{bg=darkblue}
 \setbeamertemplate{section in head/foot shaded}{\color{lightgray}
@@ -113,11 +118,15 @@
 %  \kern1em\vskip3pt%
 %}
 
+% change the style of footline
+\makeatletter
 \setbeamertemplate{footline}
 {%
   \leavevmode%
   \begin{beamercolorbox}[wd=0.25\paperwidth,ht=2.5ex,dp=1.125ex,leftskip=.3cm,rightskip=.3cm plus1fil]{title in head/foot}%
-    \usebeamerfont{title in head/foot} ~~\insertshortauthor~(\insertshortinstitute) \hfill
+    \usebeamerfont{title in head/foot} ~~\insertshortauthor\ifx\insertinstitute\empty\else\expandafter
+    \ifblank\expandafter{\beamer@shortinstitute}{}{~~(\insertshortinstitute)}\fi
+    \hfill
   \end{beamercolorbox}%
   \begin{beamercolorbox}[wd=0.5\paperwidth,ht=2.5ex,dp=1.125ex,leftskip=.3cm,rightskip=.3cm plus1fil]{title in head/foot}%
     \usebeamerfont{title in head/foot}\centering \insertshorttitle
@@ -128,6 +137,7 @@
   \end{beamercolorbox}%
   \vskip0pt%
 }
+\makeatother
 
 
 %----------- Packages -------------
@@ -174,12 +184,6 @@
 \setbeamerfont{section in toc}{family=\rmfamily}
 \setbeamerfont{subsection in toc}{family=\rmfamily}
 \AtBeginDocument{\usebeamerfont{normal text}}
-
-\setbeamercolor{title}{fg=darkblue,bg=black!10}
-\setbeamercolor{subtitle}{fg=darkblue!80}
-%\setbeamercolor{institute}{fg=white}
-%\setbeamercolor{author}{fg=white}
-%\setbeamercolor{date}{fg=white}
 
 
 %---------- Theorem environment ----------
