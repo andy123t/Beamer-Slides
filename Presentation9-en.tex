@@ -14,24 +14,38 @@
 %------- Beamer theme ------
 \usetheme[progressbar=frametitle]{metropolis}
 %\metroset{sectionpage=none}
+\usecolortheme{spruce}
 
+% Define color
 %\definecolor{iron}{RGB}{0,82,67}
 \definecolor{footer}{rgb}{0.5,0.2,0.5}
-\setbeamercolor{frametitle}{fg=black,bg=white} %black!2
-\definecolor{color1}{rgb}{0.2,0.3,0.96}
-\definecolor{color2}{rgb}{0.75,0.75,0.75}
+\definecolor{color1}{RGB}{51,132,91}
+\definecolor{color2}{RGB}{229,239,234}
+\definecolor{darkgray}{RGB}{0,61,30}
+\definecolor{lightgreen}{RGB}{229,239,234}
+\definecolor{darkgreen}{rgb}{0.1,0.5,0.2}
+\definecolor{darkblue}{rgb}{0.1,0,0.85}
+
+\setbeamercolor{frametitle}{fg=black,bg=white}
 \setbeamercolor{progress bar}{fg=color1,bg=color2}
 \setbeamercolor{background canvas}{bg=white}
 \setbeamercolor{block title}{bg=white}
 
-\makeatletter
-\setlength{\metropolis@titleseparator@linewidth}{1pt}
-\setlength{\metropolis@progressonsectionpage@linewidth}{1pt}
-\setlength{\metropolis@progressinheadfoot@linewidth}{1pt}
-\makeatother
+% Color Theme Setting
+%\setbeamercolor{title}{fg=darkred}
+\setbeamercolor{title}{bg=lightgreen,fg=darkgray}
+\setbeamercolor{subtitle}{bg=lightgreen,fg=darkgray}
+\setbeamercolor{frametitle}{bg=lightgreen,fg=darkgray}
+%\setbeamercolor{section in toc}{fg=darkred}
+%\setbeamercolor{subsection in toc}{fg=darkred}
+\setbeamercolor{example text}{fg=darkgreen}
+\setbeamercolor{alerted text}{fg=magenta}
 
 \makeatletter
-\setlength{\metropolis@frametitle@padding}{1.8ex} % <- default 2.2 ex
+\setlength{\metropolis@titleseparator@linewidth}{0.5pt}
+\setlength{\metropolis@progressonsectionpage@linewidth}{0.5pt}
+%\setlength{\metropolis@progressinheadfoot@linewidth}{0.5pt}
+\setlength{\metropolis@frametitle@padding}{1.6ex} % <- default 2.2 ex
 \makeatother
 
 %\setbeamertemplate{footline}{}
@@ -117,6 +131,7 @@
 \setbeamerfont{footline}{family=\rmfamily}
 \setbeamerfont{section in toc}{family=\rmfamily}
 \setbeamerfont{subsection in toc}{family=\rmfamily}
+%\setbeamerfont{caption name}{family=\rmfamily,series=\normalfont}
 \AtBeginDocument{\usebeamerfont{normal text}}
 
 
@@ -140,7 +155,6 @@
 \newenvironment{solution}{\par\noindent\textbf{Solution}:~~}{\par}
 
 
-\setbeamerfont{caption name}{family=\rmfamily,series=\normalfont}
 \setbeamertemplate{caption}[numbered]
 \setlength\abovecaptionskip{-1pt}
 \setlength\belowcaptionskip{-1pt}
