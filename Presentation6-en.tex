@@ -14,7 +14,6 @@
 % which change the colors and layouts of slides. Below this is a list
 % of all the themes, uncomment each in turn to see what they look like.
 
-
 %------- Beamer theme ------
 \usetheme{default}
 %\usetheme{Boadilla}
@@ -119,28 +118,30 @@
 
 %---------- Theorem environment ----------
 \setbeamertemplate{theorems}[numbered]
-\addtobeamertemplate{theorem begin}{\normalfont}{}
+%\addtobeamertemplate{theorem begin}{\normalfont}{}
 \newtheorem{theorem}{Theorem}
 \numberwithin{theorem}{section}
-\newtheorem{definition}{Definition}
-\numberwithin{definition}{section}
 \newtheorem{lemma}{Lemma}
 \numberwithin{lemma}{section}
-\newtheorem{proposition}{Proposition}
-\numberwithin{proposition}{section}
 \newtheorem{corollary}{Corollary}
 \numberwithin{corollary}{section}
+%\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+\numberwithin{definition}{section}
+\newtheorem{proposition}{Proposition}
+\numberwithin{proposition}{section}
 \theoremstyle{example}
 \newtheorem{example}{Example}
 %\numberwithin{example}{section}
-\renewenvironment{proof}[1][Proof]{\textit{#1}:~~}{\qed\par}
-\newenvironment{solution}{\par\noindent\textbf{Solution}:~~}{\par}
+\renewenvironment{proof}[1][Proof]{\textit{#1}.~~}{\qed\par}
+\newenvironment{solution}{\textit{Solution}.~}{\par}
 
 \setbeamertemplate{caption}[numbered]
 \numberwithin{figure}{section}
 \numberwithin{table}{section}
 \numberwithin{equation}{section}
 
+\graphicspath{{./figures/}}
 
 %---------- Adjust the spacing of formulas ----------
 %\AtBeginDocument{
@@ -164,14 +165,8 @@
 %\AtBeginSection[]{
 %\begin{frame}
 %  \frametitle{Outline}
-%  \vskip 10pt
-%  \hspace*{0.5em}
-%  \parbox[t]{.95\textwidth}{
-%  \begin{minipage}[c]{\textwidth}
-%  \setlength{\baselineskip}{2.8em}
+%  \leftskip=1em
 %  \tableofcontents[currentsection,currentsubsection,subsectionstyle=show/show/shaded]
-%  \end{minipage}
-%  }
 %  \addtocounter{framenumber}{-1}
 %\end{frame}
 %}
@@ -199,9 +194,6 @@
 \date[Nov. 23, 2020]{\small Very Large Conference \\[5pt] Nov. 23, 2020} % Date, can be changed to a custom date
 
 
-\graphicspath{{./figures/}}
-
-
 \begin{document}
 
 
@@ -216,14 +208,8 @@
 
 \begin{frame}
 \frametitle{Outline}
-  \vskip 10pt
-  \hspace*{0.5em}
-  \parbox[t]{.95\textwidth}{
-  \begin{minipage}[c]{\textwidth}
-  \setlength{\baselineskip}{2.8em}
-  \tableofcontents
-  \end{minipage}
-  }
+\leftskip=1em
+\tableofcontents
 \end{frame}
 
 

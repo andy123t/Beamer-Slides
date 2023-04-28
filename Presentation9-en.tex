@@ -80,7 +80,6 @@
 \setbeamertemplate{enumerate items}[default]
 %\setbeamertemplate{section in toc}[square]
 
-
 \setbeamersize{text margin left=0.5cm, text margin right=0.5cm}
 
 \setbeamertemplate{section in toc}[sections numbered]
@@ -110,13 +109,11 @@
 %---------- Set line spacing ----------
 %\renewcommand{\baselinestretch}{1.15}
 
-
 %---------- Define new table commands ----------
 \newcolumntype{P}[1]{>{\centering \arraybackslash}p{#1}}
 \newcolumntype{L}{X}
 \newcolumntype{C}{>{\centering \arraybackslash}X}
 \newcolumntype{R}{>{\raggedleft \arraybackslash}X}
-
 
 %---------- Set fonts ----------
 \setbeamerfont{normal text}{family=\rmfamily}
@@ -137,23 +134,23 @@
 
 %---------- Theorem environment ----------
 \setbeamertemplate{theorems}[numbered]
-\addtobeamertemplate{theorem begin}{\normalfont}{}
+%\addtobeamertemplate{theorem begin}{\normalfont}{}
 \newtheorem{theorem}{Theorem}
 \numberwithin{theorem}{section}
-\newtheorem{definition}{Definition}
-\numberwithin{definition}{section}
 \newtheorem{lemma}{Lemma}
 \numberwithin{lemma}{section}
-\newtheorem{proposition}{Proposition}
-\numberwithin{proposition}{section}
 \newtheorem{corollary}{Corollary}
 \numberwithin{corollary}{section}
+%\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+\numberwithin{definition}{section}
+\newtheorem{proposition}{Proposition}
+\numberwithin{proposition}{section}
 \theoremstyle{example}
 \newtheorem{example}{Example}
 %\numberwithin{example}{section}
-\renewenvironment{proof}[1][Proof]{\textit{#1}:~~}{\qed\par}
-\newenvironment{solution}{\par\noindent\textbf{Solution}:~~}{\par}
-
+\renewenvironment{proof}[1][Proof]{\textit{#1}.~~}{\qed\par}
+\newenvironment{solution}{\textit{Solution}.~}{\par}
 
 \setbeamertemplate{caption}[numbered]
 \setlength\abovecaptionskip{-1pt}
@@ -162,6 +159,7 @@
 \numberwithin{table}{section}
 \numberwithin{equation}{section}
 
+\graphicspath{{./figures/}}
 
 %---------- Adjust the spacing of formulas ----------
 %\AtBeginDocument{
@@ -181,7 +179,6 @@
 \newcommand{\blue}[1]{\textcolor{blue}{#1}}
 
 
-
 %--------------------------------------------------------------------------------
 %	TITLE PAGE
 %--------------------------------------------------------------------------------
@@ -196,9 +193,6 @@
 }
 
 \date[Nov. 23, 2020]{Nov. 23, 2020} % Date, can be changed to a custom date
-
-
-\graphicspath{{./figures/}}
 
 
 \begin{document}
@@ -219,14 +213,8 @@
 
 \begin{frame}
 \frametitle{Outline}
-  \vskip 10pt
-  \hspace*{1.5em}
-  \parbox[t]{.95\textwidth}{
-  \begin{minipage}[c]{\textwidth}
-  \setlength{\baselineskip}{2.8em}
-  \tableofcontents
-  \end{minipage}
-  }
+\leftskip=1.5em
+\tableofcontents
 \end{frame}
 
 

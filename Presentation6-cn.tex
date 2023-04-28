@@ -83,7 +83,7 @@
 
 
 %--------- 宏包  ----------
-\usepackage[UTF8,noindent]{ctex}
+\usepackage[UTF8]{ctex}
 %\usepackage[english]{babel}
 \usepackage{amsmath,amssymb,version}
 \usepackage{graphicx,fancybox,mathrsfs,multirow}
@@ -126,41 +126,37 @@
 \numberwithin{table}{section}
 \numberwithin{equation}{section}
 
+\graphicspath{{./figures/}}
+
 \setbeamertemplate{section in toc}[sections numbered]
 \setbeamertemplate{subsection in toc}[subsections numbered]
 
 %---------- 定理设置  --------------
 \theoremstyle{plain}
 \setbeamertemplate{theorems}[numbered]
-\addtobeamertemplate{theorem begin}{\normalfont}{}
-%\theoremstyle{definition}
-%\newtheorem{theorem}{Theorem}
-\newtheorem{theorem}{定理} %\sffamily
+%\addtobeamertemplate{theorem begin}{\normalfont\rmfamily}{}
+\newtheorem{theorem}{定理}
 \numberwithin{theorem}{section}
-%\newtheorem{definition}{Definition}
-\newtheorem{definition}{定义}
-\numberwithin{definition}{section}
-%\newtheorem{lemma}{Lemma}
 \newtheorem{lemma}{引理}
 \numberwithin{lemma}{section}
-%\newtheorem{proposition}{Proposition}
+\newtheorem{corollary}{推论}
+\numberwithin{corollary}{section}
+%\theoremstyle{definition}
+\newtheorem{definition}{定义}
+\numberwithin{definition}{section}
 \newtheorem{proposition}{命题}
 \numberwithin{proposition}{section}
-%\newtheorem{corollary}{Corollary}
-\newtheorem{corollary}{引理}
-\numberwithin{corollary}{section}
 \theoremstyle{example}
-%\newtheorem{example}{Example}
 \newtheorem{example}{例}
 %\numberwithin{example}{section}
 \renewenvironment{proof}[1][证明]{\textbf{#1}:~~}{\qed\par}
-\newenvironment{solution}{\par\noindent\textbf{解}:~~}{\par}
+\newenvironment{solution}{\textbf{解}:~}{\par}
 
 
 %---------- 调节公式的间距 ----------
 %\AtBeginDocument{
-%	\setlength{\abovedisplayskip}{4pt plus 1pt minus 1pt}
-%	\setlength{\belowdisplayskip}{4pt plus 1pt minus 1pt}
+%	\setlength{\abovedisplayskip}{6pt plus 1pt minus 1pt}
+%	\setlength{\belowdisplayskip}{6pt plus 1pt minus 1pt}
 %	\setlength{\abovedisplayshortskip}{2pt}
 %	\setlength{\belowdisplayshortskip}{2pt}
 %	\setlength{\arraycolsep}{2pt}
@@ -175,14 +171,8 @@
 %\AtBeginSection[]{
 %\begin{frame}
 %  \frametitle{目录}
-%  \vskip 10pt
-%  \hspace*{0.5em}
-%  \parbox[t]{.95\textwidth}{
-%  \begin{minipage}[c]{\textwidth}
-%  \setlength{\baselineskip}{2.8em}
+%  \leftskip=1em
 %  \tableofcontents[currentsection,currentsubsection,subsectionstyle=show/show/shaded]
-%  \end{minipage}
-%  }
 %  \addtocounter{framenumber}{-1}
 %\end{frame}
 %}
@@ -214,8 +204,6 @@
 \date[2021\,年\,X\,月\,X\,日]{第\,X\,届学术会议 \\[5pt] 2021\,年\,X\,月\,X\,日 }
 
 
-\graphicspath{{./figures/}}
-
 \begin{document}
 
 
@@ -231,14 +219,8 @@
 
 \begin{frame}
 \frametitle{目录}
-  \vskip 10pt
-  \hspace*{0.5em}
-  \parbox[t]{.95\textwidth}{
-  \begin{minipage}[c]{\textwidth}
-  \setlength{\baselineskip}{2.8em}
-  \tableofcontents
-  \end{minipage}
-  }
+\leftskip=1em
+\tableofcontents
 \end{frame}
 
 
@@ -354,7 +336,7 @@ This is a theorem environment. 这是一个定理环境.
 \begin{frame}
 \frametitle{定理示例}
 
-\begin{theorem}[Lax-Milgram Lemma] \upshape
+\begin{theorem}[Lax-Milgram Lemma]
 Let $X$ be a Hilbert space, let $a(\cdot, \cdot)$ : $X \times X \rightarrow \mathbb{R}$ be a continuous and coercive bilinear form, and let $F : X \rightarrow \mathbb{R}$ be a linear functional in $X^{\prime}$. Then the variational problem:
 \begin{equation}
   \alert{

@@ -14,8 +14,6 @@
 % which change the colors and layouts of slides. Below this is a list
 % of all the themes, uncomment each in turn to see what they look like.
 
-\mode<presentation>{
-
 %------- Beamer theme ------
 \usetheme{default}
 %\usetheme{Madrid}
@@ -34,6 +32,8 @@
 %\usefonttheme{serif}
 %\setbeamercovered{transparent}
 %\usetheme{boxes}
+
+\setbeamersize{text margin left=0.75cm, text margin right=0.75cm}
 
 %\setbeamertemplate{headline}{}
 %\setbeamertemplate{footline}{}
@@ -64,14 +64,13 @@
 \setbeamercolor{section in toc}{fg=darkred}
 \setbeamercolor{subsection in toc}{fg=darkred}
 
-}
-
 
 %----------- Packages -------------
 %\usepackage[latin1]{inputenc}
 %\usepackage{times}
 %\usepackage[T1]{fontenc}
 
+%\usepackage[UTF8]{ctex}
 \usepackage[english]{babel}
 \usepackage{amsmath,amssymb,version}
 \usepackage{graphicx,fancybox,mathrsfs,multirow}
@@ -83,7 +82,7 @@
 \usepackage{cases}
 \usepackage{mathtools}
 \usepackage{tikz}
-%\usepackage[UTF8,noindent]{ctex}
+
 
 %---------- Set line spacing ----------
 %\renewcommand{\baselinestretch}{1.15}
@@ -103,29 +102,30 @@
 
 %---------- Theorem environment ----------
 \setbeamertemplate{theorems}[numbered]
-\addtobeamertemplate{theorem begin}{\normalfont}{}
+%\addtobeamertemplate{theorem begin}{\normalfont}{}
 \newtheorem{theorem}{Theorem}
 \numberwithin{theorem}{section}
-\newtheorem{definition}{Definition}
-\numberwithin{definition}{section}
 \newtheorem{lemma}{Lemma}
 \numberwithin{lemma}{section}
-\newtheorem{proposition}{Proposition}
-\numberwithin{proposition}{section}
 \newtheorem{corollary}{Corollary}
 \numberwithin{corollary}{section}
+%\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+\numberwithin{definition}{section}
+\newtheorem{proposition}{Proposition}
+\numberwithin{proposition}{section}
 \theoremstyle{example}
 \newtheorem{example}{Example}
 %\numberwithin{example}{section}
-\renewenvironment{proof}[1][Proof]{\textit{#1}:~~}{\qed\par}
-\newenvironment{solution}{\par\noindent\textbf{Solution}:~~}{\par}
-
+\renewenvironment{proof}[1][Proof]{\textit{#1}.~~}{\qed\par}
+\newenvironment{solution}{\textit{Solution}.~}{\par}
 
 \setbeamertemplate{caption}[numbered]
 \numberwithin{figure}{section}
 \numberwithin{table}{section}
 \numberwithin{equation}{section}
 
+\graphicspath{{./figures/}}
 
 %---------- Adjust the spacing of formulas ----------
 %\AtBeginDocument{
@@ -149,14 +149,8 @@
 \AtBeginSection[]{
 \begin{frame}
   \frametitle{Outline}
-  \vskip 10pt
-  \hspace*{0.5em}
-  \parbox[t]{.95\textwidth}{
-  \begin{minipage}[c]{\textwidth}
-  \setlength{\baselineskip}{2.8em}
+  \leftskip=1.0em
   \tableofcontents[currentsection,currentsubsection,subsectionstyle=show/show/shaded]
-  \end{minipage}
-  }
   \addtocounter{framenumber}{-1}
 \end{frame}
 }
@@ -175,10 +169,7 @@
 \textit{xyz@math.univ.edu} % Your email address
 }
 
-\date[Nov. 23, 2020]{\small Very Large Conference \\[5pt] Nov. 23, 2020} % Date, can be changed to a custom date
-
-
-\graphicspath{{./figures/}}
+\date[Nov. 23, 2020]{\small Very Large Conference \\[5pt] Nov. 23, 2020}
 
 
 \begin{document}
@@ -194,14 +185,8 @@
 
 \begin{frame}
 \frametitle{Outline}
-  \vskip 10pt
-  \hspace*{0.5em}
-  \parbox[t]{.95\textwidth}{
-  \begin{minipage}[c]{\textwidth}
-  \setlength{\baselineskip}{2.8em}
-  \tableofcontents
-  \end{minipage}
-  }
+\leftskip=1.0em
+\tableofcontents
 \end{frame}
 
 

@@ -51,6 +51,12 @@
 %\setbeamertemplate{section in toc}[ball unnumbered]
 %\setbeamertemplate{subsection in toc}[ball unnumbered]
 
+\setbeamertemplate{footline}{%
+  \leavevmode%
+  \hskip3em \normalfont \insertshortauthor ~~$|$~~ \insertshorttitle \hfill
+  \insertframenumber\,/\,\inserttotalframenumber  \hskip2em \hfill
+  \vskip6pt%
+}
 
 %----------- Packages -------------
 %\usepackage[latin1]{inputenc}
@@ -70,24 +76,14 @@
 \usepackage{mathtools}
 \usepackage{tikz}
 
-
-\setbeamertemplate{footline}{%
-  \leavevmode%
-  \hskip3em \normalfont \insertshortauthor ~~$|$~~ \insertshorttitle \hfill
-  \insertframenumber\,/\,\inserttotalframenumber  \hskip2em \hfill
-  \vskip6pt%
-}
-
 %---------- Set line spacing ----------
 %\renewcommand{\baselinestretch}{1.15}
-
 
 %---------- Define new table commands ----------
 \newcolumntype{P}[1]{>{\centering \arraybackslash}p{#1}}
 \newcolumntype{L}{X}
 \newcolumntype{C}{>{\centering \arraybackslash}X}
 \newcolumntype{R}{>{\raggedleft \arraybackslash}X}
-
 
 %---------- Set fonts ----------
 \setbeamerfont{normal text}{family=\rmfamily}
@@ -112,23 +108,23 @@
 
 %---------- Theorem environment ----------
 \setbeamertemplate{theorems}[numbered]
-\addtobeamertemplate{theorem begin}{\normalfont}{}
+%\addtobeamertemplate{theorem begin}{\normalfont}{}
 \newtheorem{theorem}{Theorem}
 \numberwithin{theorem}{section}
-\newtheorem{definition}{Definition}
-\numberwithin{definition}{section}
 \newtheorem{lemma}{Lemma}
 \numberwithin{lemma}{section}
-\newtheorem{proposition}{Proposition}
-\numberwithin{proposition}{section}
 \newtheorem{corollary}{Corollary}
 \numberwithin{corollary}{section}
+%\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+\numberwithin{definition}{section}
+\newtheorem{proposition}{Proposition}
+\numberwithin{proposition}{section}
 \theoremstyle{example}
 \newtheorem{example}{Example}
 %\numberwithin{example}{section}
-\renewenvironment{proof}[1][Proof]{\textit{#1}:~~}{\qed\par}
-\newenvironment{solution}{\par\noindent\textbf{Solution}:~~}{\par}
-
+\renewenvironment{proof}[1][Proof]{\textit{#1}.~~}{\qed\par}
+\newenvironment{solution}{\textit{Solution}.~}{\par}
 
 \setbeamerfont{caption name}{family=\rmfamily,series=\normalfont}
 \setbeamertemplate{caption}[numbered]
@@ -136,11 +132,12 @@
 \numberwithin{table}{section}
 \numberwithin{equation}{section}
 
+\graphicspath{{./figures/}}
 
 %---------- Adjust the spacing of formulas ----------
 %\AtBeginDocument{
-%	\setlength{\abovedisplayskip}{4pt plus 1pt minus 1pt}
-%	\setlength{\belowdisplayskip}{4pt plus 1pt minus 1pt}
+%	\setlength{\abovedisplayskip}{6pt plus 1pt minus 1pt}
+%	\setlength{\belowdisplayskip}{6pt plus 1pt minus 1pt}
 %	\setlength{\abovedisplayshortskip}{2pt}
 %	\setlength{\belowdisplayshortskip}{2pt}
 %	\setlength{\arraycolsep}{2pt}
@@ -171,9 +168,6 @@
 \date[Nov. 23, 2020]{Nov. 23, 2020} % Date, can be changed to a custom date
 
 
-\graphicspath{{./figures/}}
-
-
 \begin{document}
 
 % only change the spacing of body text
@@ -184,22 +178,10 @@
 \titlepage % Print the title page as the first slide
 \end{frame}}
 
-
-%\begin{frame}
-%\frametitle{Outline}
-%\tableofcontents[hideallsubsections] % Throughout your presentation, if you choose to use \section{} and \subsection{} commands, these will automatically be printed on this slide as an overview of your presentation
-%\end{frame}
-
 \begin{frame}
 \frametitle{Outline}
-  \vskip 10pt
-  \hspace*{1em}
-  \parbox[t]{.95\textwidth}{
-  \begin{minipage}[c]{\textwidth}
-  \setlength{\baselineskip}{2.8em}
-  \tableofcontents
-  \end{minipage}
-  }
+\leftskip=1.0em
+\tableofcontents
 \end{frame}
 
 

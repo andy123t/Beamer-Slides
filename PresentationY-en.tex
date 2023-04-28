@@ -14,8 +14,6 @@
 % which change the colors and layouts of slides. Below this is a list
 % of all the themes, uncomment each in turn to see what they look like.
 
-\mode<presentation>{
-
 %------- Beamer theme ------
 \usetheme{default}
 %\usetheme{Madrid}
@@ -38,6 +36,8 @@
 %\setbeamercovered{transparent}
 %\usetheme{boxes}
 
+\setbeamersize{text margin left=0.5cm, text margin right=0.5cm}
+
 %\setbeamertemplate{headline}{}
 %\setbeamertemplate{footline}{}
 %\setbeamertemplate{blocks}[rounded][shadow=true]
@@ -46,6 +46,9 @@
 \setbeamertemplate{itemize items}[circle]  %square, ball, circle
 \setbeamertemplate{enumerate items}[default]
 %\setbeamertemplate{section in toc}[square]
+
+\setbeamertemplate{section in toc}[sections numbered]
+\setbeamertemplate{subsection in toc}[subsections numbered]
 
 \setbeamertemplate{footline}{%
   \hfill%
@@ -56,19 +59,14 @@
 }
 
 \setbeamertemplate{frametitle}[default][center]
-\setbeamertemplate{section in toc}[sections numbered]
-
-\setbeamersize{text margin left=0.5cm, text margin right=0.5cm}
 
 \setbeamertemplate{frametitle}{%
-    \nointerlineskip%
-    \begin{beamercolorbox}[wd=\paperwidth,ht=4ex,dp=1ex]{frametitle}
+  \nointerlineskip%
+  \begin{beamercolorbox}[wd=\paperwidth,ht=4ex,dp=1ex]{frametitle}
     \centering\large\bfseries \tcbox[on line,boxsep=4pt,left=0pt,right=0pt,
-      top=0pt,bottom=0pt,colframe=green!10!black,colback=green!10,
-      boxrule=0.8pt]{\color{darkred}\insertframetitle}
-    \end{beamercolorbox}%
-}
-
+    top=0pt,bottom=0pt,colframe=green!10!black,colback=green!10,boxrule=0.8pt]{
+    \color{darkred}\insertframetitle}
+  \end{beamercolorbox}%
 }
 
 % Define color
@@ -192,8 +190,8 @@
 
 %---------- Adjust the spacing of formulas ----------
 %\AtBeginDocument{
-%	\setlength{\abovedisplayskip}{4pt plus 1pt minus 1pt}
-%	\setlength{\belowdisplayskip}{4pt plus 1pt minus 1pt}
+%	\setlength{\abovedisplayskip}{6pt plus 1pt minus 1pt}
+%	\setlength{\belowdisplayskip}{6pt plus 1pt minus 1pt}
 %	\setlength{\abovedisplayshortskip}{2pt}
 %	\setlength{\belowdisplayshortskip}{2pt}
 %	\setlength{\arraycolsep}{2pt}
@@ -212,14 +210,8 @@
 %\AtBeginSection[]{
 %\begin{frame}
 %  \frametitle{Outline}
-%  \vskip 10pt
-%  \hspace*{0.5em}
-%  \parbox[t]{.95\textwidth}{
-%  \begin{minipage}[c]{\textwidth}
-%  \setlength{\baselineskip}{2.8em}
+%  \leftskip=2.0em
 %  \tableofcontents[currentsection,currentsubsection,subsectionstyle=show/show/shaded]
-%  \end{minipage}
-%  }
 %  \addtocounter{framenumber}{-1}
 %\end{frame}
 %}
@@ -265,14 +257,8 @@
 
 \begin{frame}
 \frametitle{Outline}
-  \vskip 10pt
-  \hspace*{0.5em}
-  \parbox[t]{.95\textwidth}{
-  \begin{minipage}[c]{\textwidth}
-  \setlength{\baselineskip}{2.8em}
-  \tableofcontents
-  \end{minipage}
-  }
+\leftskip=2.0em
+\tableofcontents
 \end{frame}
 
 

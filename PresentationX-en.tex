@@ -34,9 +34,25 @@
 \setbeamertemplate{blocks}[rounded][shadow=true]
 \setbeamertemplate{navigation symbols}{}
 
-\setbeamertemplate{section in toc}[sections numbered]
+%\setbeamertemplate{section in toc}[sections numbered]
 %\setbeamertemplate{subsection in toc}[subsections numbered]
-\setbeamertemplate{subsection in toc}{\leavevmode\leftskip=3.2em\rlap{ \hskip-2em\inserttocsectionnumber.\inserttocsubsectionnumber}\inserttocsubsection\par}
+\setbeamertemplate{section in toc}{
+  \leavevmode\leftskip=2.0em
+  \llap{
+    \usebeamerfont*{section number projected}%
+    \usebeamercolor{section number projected}%
+    \inserttocsectionnumber.
+  }
+  \inserttocsection\par
+}
+\setbeamertemplate{subsection in toc}{
+  \leavevmode\leftskip=4.0em
+  \llap{
+    \usebeamerfont*{subsection number projected}%
+    \usebeamercolor{subsection number projected}%
+    \inserttocsectionnumber.\inserttocsubsectionnumber}
+  \inserttocsubsection\par
+}
 
 \definecolor{footer}{rgb}{0.5,0.2,0.5}
 \setbeamertemplate{footline}{%
@@ -60,7 +76,7 @@
 %\usepackage{times}
 %\usepackage[T1]{fontenc}
 
-%\usepackage[UTF8,noindent]{ctex}
+%\usepackage[UTF8]{ctex}
 \usepackage[english]{babel}
 \usepackage{amsmath,amssymb,version}
 \usepackage{graphicx,fancybox,mathrsfs,multirow}
@@ -124,35 +140,35 @@
 \theoremnumbering{arabic}
 \colorlet{thmcolor}{darkgreen}
 \newmdtheoremenv[linecolor=thmcolor,middlelinewidth=0.5pt,
-    roundcorner=3pt,backgroundcolor=white,%
+    roundcorner=2pt,backgroundcolor=white,%
     innertopmargin=0.5em,innerbottommargin=0.5em,%
     innerleftmargin=3pt,innerrightmargin=3pt,%
     skipbelow=0.5em,skipabove=1em,%
     splittopskip=\topskip,ntheorem]{theorem}%
     {Theorem}[section]
 \newmdtheoremenv[linecolor=thmcolor,middlelinewidth=0.5pt,
-    roundcorner=3pt,backgroundcolor=white,%
+    roundcorner=2pt,backgroundcolor=white,%
     innertopmargin=0.5em,innerbottommargin=0.5em,%
     innerleftmargin=3pt,innerrightmargin=3pt,%
     skipbelow=0.5em,skipabove=1em,%
     splittopskip=\topskip,ntheorem]{corollary}%
     {Corollary}[section]
 \newmdtheoremenv[linecolor=thmcolor,middlelinewidth=0.5pt,
-    roundcorner=3pt,backgroundcolor=white,%
+    roundcorner=2pt,backgroundcolor=white,%
     innertopmargin=0.5em,innerbottommargin=0.5em,%
     innerleftmargin=3pt,innerrightmargin=3pt,%
     skipbelow=0.5em,skipabove=1em,%
     splittopskip=\topskip,ntheorem]{lemma}%
     {Lemma}[section]
 \newmdtheoremenv[linecolor=thmcolor,middlelinewidth=0.5pt,
-    roundcorner=3pt,backgroundcolor=white,%
+    roundcorner=2pt,backgroundcolor=white,%
     innertopmargin=0.5em,innerbottommargin=0.5em,%
     innerleftmargin=3pt,innerrightmargin=3pt,%
     skipbelow=0.5em,skipabove=1em,%
     splittopskip=\topskip,ntheorem]{proposition}%
     {Proposition}[section]
 \newmdtheoremenv[linecolor=thmcolor,middlelinewidth=0.5pt,
-    roundcorner=3pt,backgroundcolor=white,%
+    roundcorner=2pt,backgroundcolor=white,%
     innertopmargin=0.5em,innerbottommargin=0.5em,%
     innerleftmargin=3pt,innerrightmargin=3pt,%
     skipbelow=0.5em,skipabove=1em,%

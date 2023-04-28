@@ -15,8 +15,6 @@
 % which change the colors and layouts of slides. Below this is a list
 % of all the themes, uncomment each in turn to see what they look like.
 
-\mode<presentation>{
-
 %------- Beamer theme ------
 \usetheme{Warsaw}
 %\usetheme{Madrid}
@@ -35,6 +33,8 @@
 %\setbeamercovered{transparent}
 %\usetheme{boxes}
 
+\setbeamersize{text margin left=0.75cm, text margin right=0.75cm}
+
 %\setbeamertemplate{headline}{}
 %\setbeamertemplate{footline}{}
 \setbeamertemplate{blocks}[rounded][shadow=true]
@@ -43,8 +43,7 @@
 \setbeamertemplate{enumerate items}[default]
 %\setbeamertemplate{section in toc}[square]
 
-\setbeamertemplate{footline}
-{
+\setbeamertemplate{footline}{%
   \leavevmode%
   \hbox{%
   \begin{beamercolorbox}[wd=.5\paperwidth,ht=2.25ex,dp=1ex,right]{author in head/foot}%
@@ -60,14 +59,13 @@
   \vskip0pt%
 }
 
-}
-
 
 %----------- Packages -------------
 %\usepackage[latin1]{inputenc}
 %\usepackage{times}
 %\usepackage[T1]{fontenc}
 
+%\usepackage[UTF8]{ctex}
 \usepackage[english]{babel}
 \usepackage{amsmath,amssymb,version}
 \usepackage{graphicx,fancybox,mathrsfs,multirow}
@@ -77,9 +75,10 @@
 \usepackage{tabularx,array,makecell}
 \usepackage{color,xcolor}
 \usepackage{cases}
+\usepackage{caption}
 \usepackage{mathtools}
 \usepackage{tikz}
-%\usepackage[UTF8,noindent]{ctex}
+
 
 %---------- Set line spacing ----------
 %\renewcommand{\baselinestretch}{1.15}
@@ -90,6 +89,9 @@
 \newcolumntype{C}{>{\centering \arraybackslash}X}
 \newcolumntype{R}{>{\raggedleft \arraybackslash}X}
 
+%---------- Caption Setting ----------
+\captionsetup[figure]{position=bottom,skip={6pt}}
+\captionsetup[table]{position=top,skip={3pt}}
 
 %---------- Set fonts ----------
 %\setbeamerfont{normal text}{family=\rmfamily}
@@ -98,33 +100,35 @@
 
 %---------- Theorem environment ----------
 \setbeamertemplate{theorems}[numbered]
-\addtobeamertemplate{theorem begin}{\normalfont}{}
+%\addtobeamertemplate{theorem begin}{\normalfont}{}
 \newtheorem{theorem}{Theorem}
 \numberwithin{theorem}{section}
-\newtheorem{definition}{Definition}
-\numberwithin{definition}{section}
 \newtheorem{lemma}{Lemma}
 \numberwithin{lemma}{section}
-\newtheorem{proposition}{Proposition}
-\numberwithin{proposition}{section}
 \newtheorem{corollary}{Corollary}
 \numberwithin{corollary}{section}
+%\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+\numberwithin{definition}{section}
+\newtheorem{proposition}{Proposition}
+\numberwithin{proposition}{section}
 \theoremstyle{example}
 \newtheorem{example}{Example}
 %\numberwithin{example}{section}
-\renewenvironment{proof}[1][Proof]{\textit{#1}:~~}{\qed\par}
-\newenvironment{solution}{\par\noindent\textbf{Solution}:~~}{\par}
+\renewenvironment{proof}[1][Proof]{\textit{#1}.~~}{\qed\par}
+\newenvironment{solution}{\textit{Solution}.~}{\par}
 
 \setbeamertemplate{caption}[numbered]
 \numberwithin{figure}{section}
 \numberwithin{table}{section}
 \numberwithin{equation}{section}
 
+\graphicspath{{./figures/}}
 
 %---------- Adjust the spacing of formulas ----------
 %\AtBeginDocument{
-%	\setlength{\abovedisplayskip}{4pt plus 1pt minus 1pt}
-%	\setlength{\belowdisplayskip}{4pt plus 1pt minus 1pt}
+%	\setlength{\abovedisplayskip}{6pt plus 1pt minus 1pt}
+%	\setlength{\belowdisplayskip}{6pt plus 1pt minus 1pt}
 %	\setlength{\abovedisplayshortskip}{2pt}
 %	\setlength{\belowdisplayshortskip}{2pt}
 %	\setlength{\arraycolsep}{2pt}
@@ -170,9 +174,6 @@
 }
 
 \date[Nov. 23, 2020]{\small Very Large Conference \\[5pt] Nov. 23, 2020} % Date, can be changed to a custom date
-
-
-\graphicspath{{./figures/}}
 
 
 \begin{document}
@@ -308,6 +309,7 @@ This is a theorem environment.
 \begin{proof}
   This is a proof environment.
 \end{proof}
+
 \end{frame}
 
 

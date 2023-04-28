@@ -43,7 +43,6 @@
 \setbeamertemplate{enumerate items}[default]
 %\setbeamertemplate{section in toc}[square]
 
-
 \setbeamersize{text margin left=0.5cm, text margin right=0.5cm}
 
 \setbeamertemplate{section in toc}[sections numbered]
@@ -51,9 +50,16 @@
 %\setbeamertemplate{section in toc}[ball unnumbered]
 %\setbeamertemplate{subsection in toc}[ball unnumbered]
 
+\setbeamertemplate{footline}{%
+  \leavevmode%
+  \hskip3em \normalfont \insertshortauthor ~~$|$~~ \insertshorttitle \hfill
+  \insertframenumber\,/\,\inserttotalframenumber  \hskip2em \hfill
+  \vskip6pt%
+}
+
 
 %--------- Package  ----------
-\usepackage[UTF8,noindent]{ctex}
+\usepackage[UTF8]{ctex}
 %\usepackage[english]{babel}
 \usepackage{amsmath,amssymb,version}
 \usepackage{graphicx,fancybox,mathrsfs,multirow}
@@ -67,24 +73,14 @@
 \usepackage{mathtools}
 \usepackage{tikz}
 
-
-\setbeamertemplate{footline}{%
-  \leavevmode%
-  \hskip3em \normalfont \insertshortauthor ~~$|$~~ \insertshorttitle \hfill
-  \insertframenumber\,/\,\inserttotalframenumber  \hskip2em \hfill
-  \vskip6pt%
-}
-
 %---------- Set line spacing ----------
 %\renewcommand{\baselinestretch}{1.15}
-
 
 %---------- Define new table commands ----------
 \newcolumntype{P}[1]{>{\centering \arraybackslash}p{#1}}
 \newcolumntype{L}{X}
 \newcolumntype{C}{>{\centering \arraybackslash}X}
 \newcolumntype{R}{>{\raggedleft \arraybackslash}X}
-
 
 %---------- Set fonts ----------
 \setbeamerfont{normal text}{family=\rmfamily}
@@ -106,34 +102,26 @@
 \setbeamercolor{frametitle}{bg=iron}
 %\setbeamercolor{progress bar}{fg=iron,bg=iron}
 
-
 %---------- 定理设置  --------------
 \theoremstyle{plain}
 \setbeamertemplate{theorems}[numbered]
-\addtobeamertemplate{theorem begin}{\normalfont}{}
-%\theoremstyle{definition}
-%\newtheorem{theorem}{Theorem}
-\newtheorem{theorem}{定理} %\sffamily
+%\addtobeamertemplate{theorem begin}{\normalfont\rmfamily}{}
+\newtheorem{theorem}{定理}
 \numberwithin{theorem}{section}
-%\newtheorem{definition}{Definition}
-\newtheorem{definition}{定义}
-\numberwithin{definition}{section}
-%\newtheorem{lemma}{Lemma}
 \newtheorem{lemma}{引理}
 \numberwithin{lemma}{section}
-%\newtheorem{proposition}{Proposition}
+\newtheorem{corollary}{推论}
+\numberwithin{corollary}{section}
+%\theoremstyle{definition}
+\newtheorem{definition}{定义}
+\numberwithin{definition}{section}
 \newtheorem{proposition}{命题}
 \numberwithin{proposition}{section}
-%\newtheorem{corollary}{Corollary}
-\newtheorem{corollary}{引理}
-\numberwithin{corollary}{section}
 \theoremstyle{example}
-%\newtheorem{example}{Example}
 \newtheorem{example}{例}
 %\numberwithin{example}{section}
 \renewenvironment{proof}[1][证明]{\textbf{#1}:~~}{\qed\par}
-\newenvironment{solution}{\par\noindent\textbf{解}:~~}{\par}
-
+\newenvironment{solution}{\textbf{解}:~}{\par}
 
 \setbeamerfont{caption name}{family=\rmfamily,series=\normalfont}
 \setbeamertemplate{caption}[numbered]
@@ -141,11 +129,12 @@
 \numberwithin{table}{section}
 \numberwithin{equation}{section}
 
+\graphicspath{{./figures/}}
 
 %---------- Adjust the spacing of formulas ----------
 %\AtBeginDocument{
-%	\setlength{\abovedisplayskip}{4pt plus 1pt minus 1pt}
-%	\setlength{\belowdisplayskip}{4pt plus 1pt minus 1pt}
+%	\setlength{\abovedisplayskip}{6pt plus 1pt minus 1pt}
+%	\setlength{\belowdisplayskip}{6pt plus 1pt minus 1pt}
 %	\setlength{\abovedisplayshortskip}{2pt}
 %	\setlength{\belowdisplayshortskip}{2pt}
 %	\setlength{\arraycolsep}{2pt}
@@ -173,7 +162,6 @@
 
 \date[2021.x.x]{2021.x.x}
 
-\graphicspath{{./figures/}}
 
 \begin{document}
 
@@ -189,14 +177,8 @@
 
 \begin{frame}
 \frametitle{目录}
-  \vskip 10pt
-  \hspace*{1em}
-  \parbox[t]{.95\textwidth}{
-  \begin{minipage}[c]{\textwidth}
-  \setlength{\baselineskip}{2.8em}
-  \tableofcontents
-  \end{minipage}
-  }
+\leftskip=1.0em
+\tableofcontents
 \end{frame}
 
 
@@ -312,7 +294,7 @@ This is a theorem environment. 这是一个定理环境.
 \begin{frame}
 \frametitle{定理示例}
 
-\begin{theorem}[Lax-Milgram Lemma] \upshape
+\begin{theorem}[Lax-Milgram Lemma]
 Let $X$ be a Hilbert space, let $a(\cdot, \cdot)$ : $X \times X \rightarrow \mathbb{R}$ be a continuous and coercive bilinear form, and let $F : X \rightarrow \mathbb{R}$ be a linear functional in $X^{\prime}$. Then the variational problem:
 \begin{equation}
   \alert{

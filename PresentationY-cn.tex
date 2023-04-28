@@ -11,8 +11,6 @@
 \documentclass[noamsthm,notheorem,11pt,compress]{beamer}
 
 
-\mode<presentation>{
-
 %------- Beamer theme ------
 \usetheme{default}
 %\usetheme{Madrid}
@@ -44,6 +42,9 @@
 \setbeamertemplate{enumerate items}[default]
 %\setbeamertemplate{section in toc}[square]
 
+\setbeamertemplate{section in toc}[sections numbered]
+\setbeamertemplate{subsection in toc}[subsections numbered]
+
 \setbeamertemplate{footline}{%
   \hfill%
   \usebeamercolor[footer]{page number in head/foot}%
@@ -53,7 +54,6 @@
 }
 
 \setbeamertemplate{frametitle}[default][center]
-\setbeamertemplate{section in toc}[sections numbered]
 
 % Define color
 \definecolor{darkred}{rgb}{0.72,0.2,0.15}
@@ -64,26 +64,24 @@
 
 % Color Theme Setting
 \setbeamercolor{title}{fg=darkred}
-\setbeamercolor{subtitle}{bg=white, fg=darkred}
+\setbeamercolor{subtitle}{bg=white,fg=darkred}
 \setbeamercolor{section in toc}{fg=darkred}
 \setbeamercolor{subsection in toc}{fg=darkred}
 
 \setbeamersize{text margin left=0.5cm, text margin right=0.5cm}
 
 \setbeamertemplate{frametitle}{%
-    \nointerlineskip%
-    \begin{beamercolorbox}[wd=\paperwidth,ht=4ex,dp=1ex]{frametitle}
+  \nointerlineskip%
+  \begin{beamercolorbox}[wd=\paperwidth,ht=4ex,dp=1ex]{frametitle}
     \centering\large\bfseries \tcbox[on line,boxsep=4pt,left=0pt,right=0pt,
-      top=0pt,bottom=0pt,colframe=green!10!black,colback=green!10,
-      boxrule=0.8pt]{\color{darkred}\insertframetitle}
-    \end{beamercolorbox}%
-}
-
+    top=0pt,bottom=0pt,colframe=green!10!black,colback=green!10,
+    boxrule=0.8pt]{\color{darkred}\insertframetitle}
+  \end{beamercolorbox}%
 }
 
 
 %--------- 宏包  ----------
-\usepackage[UTF8,noindent]{ctex}
+\usepackage[UTF8]{ctex}
 %\usepackage[english]{babel}
 \usepackage{amsmath,amssymb,version}
 \usepackage{graphicx,fancybox,mathrsfs,multirow}
@@ -208,18 +206,11 @@
 %\AtBeginSection[]{
 %\begin{frame}
 %  \frametitle{目录}
-%  \vskip 10.8pt
-%  \hspace*{1.5em}
-%  \parbox[t]{.95\textwidth}{
-%  \begin{minipage}[c]{\textwidth}
-%  \setlength{\baselineskip}{2.8em}
+%  \leftskip=2.0em
 %  \tableofcontents[currentsection,currentsubsection,subsectionstyle=show/show/shaded]
-%  \end{minipage}
-%  }
 %  \addtocounter{framenumber}{-1}
 %\end{frame}
 %}
-
 
 \AtBeginSection[]{
 \begin{frame}[plain]{}
@@ -267,14 +258,8 @@
 
 \begin{frame}
 \frametitle{目录}
-  \vskip 10pt
-  \hspace*{1.5em}
-  \parbox[t]{.95\textwidth}{
-  \begin{minipage}[c]{\textwidth}
-  \setlength{\baselineskip}{2.8em}
-  \tableofcontents
-  \end{minipage}
-  }
+\leftskip=2.0em
+\tableofcontents
 \end{frame}
 
 
@@ -390,7 +375,7 @@ This is a theorem environment. 这是一个定理环境.
 \begin{frame}
 \frametitle{定理示例}
 
-\begin{theorem}[Lax-Milgram Lemma] \upshape
+\begin{theorem}[Lax-Milgram Lemma]
 Let $X$ be a Hilbert space, let $a(\cdot, \cdot)$ : $X \times X \rightarrow \mathbb{R}$ be a continuous and coercive bilinear form, and let $F : X \rightarrow \mathbb{R}$ be a linear functional in $X^{\prime}$. Then the variational problem:
 \begin{equation}
   \alert{

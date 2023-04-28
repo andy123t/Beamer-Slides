@@ -46,11 +46,11 @@
 \setbeamersize{text margin left=0.75cm, text margin right=0.75cm}
 
 % change the style of headline
-\setbeamertemplate{headline}{	% navigation bar of section (second headline)
+\setbeamertemplate{headline}{%
 \begin{beamercolorbox}{section in head/foot}
    \vskip0pt\insertnavigation{\paperwidth}\vskip2pt
 \end{beamercolorbox}
-\begin{beamercolorbox}[colsep=1.5pt,ht=.3ex]{upper separation line head}  % separator [colsep=1.5pt,ht=.3ex]
+\begin{beamercolorbox}[colsep=1.5pt,ht=.3ex]{upper separation line head}
 \end{beamercolorbox}
 }
 
@@ -64,13 +64,35 @@
 %  \kern1em\vskip2pt%
 %}
 
+\makeatletter
+\setbeamertemplate{frametitle}{%
+  \ifbeamercolorempty[bg]{frametitle}{}{\nointerlineskip}%
+  \@tempdima=\textwidth%
+  \advance\@tempdima by\beamer@leftmargin%
+  \advance\@tempdima by\beamer@rightmargin%
+  \hfill%
+  \begin{beamercolorbox}[wd=\paperwidth,sep=8pt,left]{frametitle}
+    \usebeamerfont{frametitle}%
+    \vbox{}\vskip-1.4ex%
+    \if@tempswa\else\csname beamer@fteleft\endcsname\fi%
+    \strut\insertframetitle\strut\par%
+    {%
+      \ifx\insertframesubtitle\@empty%
+      \else%
+      {\usebeamerfont{framesubtitle}\usebeamercolor[fg]{framesubtitle}\strut\insertframesubtitle\strut\par}%
+      \fi
+    }%
+    \vskip-1ex%
+    \if@tempswa\else\vskip-8pt\fi
+  \end{beamercolorbox}%
+}
+\makeatother
 
 \makeatletter
 \let\beamer@writeslidentry@miniframeson=\beamer@writeslidentry%
 \def\beamer@writeslidentry@miniframesoff{%
-  \expandafter\beamer@ifempty\expandafter{\beamer@framestartpage}{}% does not happen normally
-  {%else
-    % removed \addtocontents commands
+  \expandafter\beamer@ifempty\expandafter{\beamer@framestartpage}{}%
+  { % removed \addtocontents commands
     \clearpage\beamer@notesactions%
   }
 }
@@ -80,7 +102,7 @@
 
 
 %--------- 宏包  ----------
-\usepackage[UTF8,noindent]{ctex}
+\usepackage[UTF8]{ctex}
 %\usepackage[english]{babel}
 \usepackage{amsmath,amssymb,version}
 \usepackage{graphicx,fancybox,mathrsfs,multirow}
@@ -117,41 +139,38 @@
 \setbeamerfont{subsection in toc}{family=\rmfamily}
 \AtBeginDocument{\usebeamerfont{normal text}}
 
-
 \setbeamertemplate{caption}[numbered]
 \numberwithin{figure}{section}
 \numberwithin{table}{section}
 \numberwithin{equation}{section}
 
+\graphicspath{{./figures/}}
+
 %---------- 定理设置  --------------
+\theoremstyle{plain}
 \setbeamertemplate{theorems}[numbered]
-\addtobeamertemplate{theorem begin}{\normalfont}{}
-%\newtheorem{theorem}{Theorem}
+%\addtobeamertemplate{theorem begin}{\normalfont\rmfamily}{}
 \newtheorem{theorem}{定理}
 \numberwithin{theorem}{section}
-%\newtheorem{definition}{Definition}
-\newtheorem{definition}{定义}
-\numberwithin{definition}{section}
-%\newtheorem{lemma}{Lemma}
 \newtheorem{lemma}{引理}
 \numberwithin{lemma}{section}
-%\newtheorem{proposition}{Proposition}
-\newtheorem{proposition}{命题}
-\numberwithin{proposition}{section}
-%\newtheorem{corollary}{Corollary}
 \newtheorem{corollary}{推论}
 \numberwithin{corollary}{section}
+%\theoremstyle{definition}
+\newtheorem{definition}{定义}
+\numberwithin{definition}{section}
+\newtheorem{proposition}{命题}
+\numberwithin{proposition}{section}
 \theoremstyle{example}
-%\newtheorem{example}{Example}
 \newtheorem{example}{例}
 %\numberwithin{example}{section}
 \renewenvironment{proof}[1][证明]{\textbf{#1}:~~}{\qed\par}
-\newenvironment{solution}{\par\noindent\textbf{解}:~~}{\par}
+\newenvironment{solution}{\textbf{解}:~}{\par}
 
 %---------- 调节公式的间距 ----------
 %\AtBeginDocument{
-%	\setlength{\abovedisplayskip}{4pt plus 1pt minus 1pt}
-%	\setlength{\belowdisplayskip}{4pt plus 1pt minus 1pt}
+%	\setlength{\abovedisplayskip}{6pt plus 1pt minus 1pt}
+%	\setlength{\belowdisplayskip}{6pt plus 1pt minus 1pt}
 %	\setlength{\abovedisplayshortskip}{2pt}
 %	\setlength{\belowdisplayshortskip}{2pt}
 %	\setlength{\arraycolsep}{2pt}
@@ -166,14 +185,8 @@
 %\AtBeginSection[]{
 %\begin{frame}
 %  \frametitle{目录}
-%  \vskip 10.6pt
-%  \hspace*{1.5em}
-%  \parbox[t]{.95\textwidth}{
-%  \begin{minipage}[c]{\textwidth}
-%  \setlength{\baselineskip}{2.8em}
+%  \leftskip=1.5em
 %  \tableofcontents[currentsection,currentsubsection,subsectionstyle=show/show/shaded]
-%  \end{minipage}
-%  }
 %  \addtocounter{framenumber}{-1}
 %\end{frame}
 %}
@@ -199,8 +212,6 @@
 \date[2021\,年\,X\,月\,X\,日]{第\,X\,届学术会议 \\[5pt] 2021\,年\,X\,月\,X\,日 }
 
 
-\graphicspath{{./figures/}}
-
 \begin{document}
 
 % only change the spacing of body text
@@ -215,14 +226,8 @@
 
 \begin{frame}
 \frametitle{目录}
-  \vskip 10pt
-  \hspace*{1.5em}
-  \parbox[t]{.95\textwidth}{
-  \begin{minipage}[c]{\textwidth}
-  \setlength{\baselineskip}{2.8em}
-  \tableofcontents
-  \end{minipage}
-  }
+\leftskip=1.5em
+\tableofcontents
 \end{frame}
 
 
@@ -338,7 +343,7 @@ This is a theorem environment. 这是一个定理环境.
 \begin{frame}
 \frametitle{定理示例}
 
-\begin{theorem}[Lax-Milgram Lemma] \upshape
+\begin{theorem}[Lax-Milgram Lemma]
 Let $X$ be a Hilbert space, let $a(\cdot, \cdot)$ : $X \times X \rightarrow \mathbb{R}$ be a continuous and coercive bilinear form, and let $F : X \rightarrow \mathbb{R}$ be a linear functional in $X^{\prime}$. Then the variational problem:
 \begin{equation}
   \alert{

@@ -32,6 +32,8 @@
 \usefonttheme{serif}
 \usefonttheme{professionalfonts}
 
+\setbeamersize{text margin left=0.5cm, text margin right=0.5cm}
+
 %\setbeamertemplate{headline}{}
 %\setbeamertemplate{footline}{}
 \setbeamertemplate{blocks}[rounded][shadow=true]
@@ -39,23 +41,21 @@
 \setbeamertemplate{itemize items}[circle]  % ball, circle
 \setbeamertemplate{enumerate items}[default]
 %\setbeamertemplate{section in toc}[square]
-\setbeamertemplate{section in toc}
-{\leavevmode\leftskip=2.5em%
+\setbeamertemplate{section in toc}{
+  \leavevmode\leftskip=2.5em%
   \llap{%
     \usebeamerfont*{section number projected}%
     \usebeamercolor{section number projected}%
-    \begin{pgfpicture}{-1ex}{0ex}{1ex}{2ex}
+    \begin{pgfpicture}{-1ex}{-0.1ex}{1ex}{2ex}
       \color{darkorange}
       \pgfpathcircle{\pgfpoint{0pt}{.75ex}}{1.3ex}
       \pgfusepath{fill}
       \pgftext[base]{\color{fg}\inserttocsectionnumber}
-    \end{pgfpicture}\kern1.25ex%
+    \end{pgfpicture}\kern1.5ex%
   }%
   \inserttocsection\par
 }
 
-
-\setbeamersize{text margin left=0.5cm, text margin right=0.5cm}
 
 \definecolor{darkblue}{rgb}{0.02,0.24,0.44}
 \definecolor{darkorange}{rgb}{0.80,0.4,0.1}
@@ -128,7 +128,7 @@
 
 
 %--------- 宏包  ----------
-\usepackage[UTF8,noindent]{ctex}
+\usepackage[UTF8]{ctex}
 %\usepackage[english]{babel}
 \usepackage{amsmath,amssymb,version}
 \usepackage{graphicx,fancybox,mathrsfs,multirow}
@@ -155,56 +155,50 @@
 %---------- 设置字体  ----------
 \setbeamerfont{normal text}{family=\rmfamily}
 \setbeamerfont{frametitle}{family=\rmfamily,series=\bfseries}
-\setbeamerfont{title}{family=\sffamily}
-\setbeamerfont{subtitle}{family=\sffamily}
+\setbeamerfont{title}{family=\sffamily\heiti}
+\setbeamerfont{subtitle}{family=\sffamily\heiti}
 \setbeamerfont{institute}{family=\rmfamily}
 \setbeamerfont{author}{family=\rmfamily}
 \setbeamerfont{date}{family=\rmfamily}
-\setbeamerfont{headline}{family=\sffamily} %,series=\bfseries
-\setbeamerfont{footline}{family=\sffamily} %\kaishu
+\setbeamerfont{headline}{family=\sffamily\heiti}
+\setbeamerfont{footline}{family=\rmfamily} %\kaishu
 \setbeamerfont{section in toc}{family=\rmfamily}
 \setbeamerfont{subsection in toc}{family=\rmfamily}
 \AtBeginDocument{\usebeamerfont{normal text}}
-
 
 \setbeamertemplate{caption}[numbered]
 \numberwithin{figure}{section}
 \numberwithin{table}{section}
 \numberwithin{equation}{section}
 
+\graphicspath{{./figures/}}
 
 %---------- 定理设置  --------------
 \theoremstyle{plain}
 \setbeamertemplate{theorems}[numbered]
-\addtobeamertemplate{theorem begin}{\normalfont}{}
-%\theoremstyle{definition}
-%\newtheorem{theorem}{Theorem}
-\newtheorem{theorem}{定理} %\sffamily
+%\addtobeamertemplate{theorem begin}{\normalfont\rmfamily}{}
+\newtheorem{theorem}{定理}
 \numberwithin{theorem}{section}
-%\newtheorem{definition}{Definition}
-\newtheorem{definition}{定义}
-\numberwithin{definition}{section}
-%\newtheorem{lemma}{Lemma}
 \newtheorem{lemma}{引理}
 \numberwithin{lemma}{section}
-%\newtheorem{proposition}{Proposition}
+\newtheorem{corollary}{推论}
+\numberwithin{corollary}{section}
+%\theoremstyle{definition}
+\newtheorem{definition}{定义}
+\numberwithin{definition}{section}
 \newtheorem{proposition}{命题}
 \numberwithin{proposition}{section}
-%\newtheorem{corollary}{Corollary}
-\newtheorem{corollary}{引理}
-\numberwithin{corollary}{section}
 \theoremstyle{example}
-%\newtheorem{example}{Example}
 \newtheorem{example}{例}
 %\numberwithin{example}{section}
 \renewenvironment{proof}[1][证明]{\textbf{#1}:~~}{\qed\par}
-\newenvironment{solution}{\par\noindent\textbf{解}:~~}{\par}
+\newenvironment{solution}{\textbf{解}:~}{\par}
 
 
 %---------- 调节公式的间距 ----------
 %\AtBeginDocument{
-%	\setlength{\abovedisplayskip}{4pt plus 1pt minus 1pt}
-%	\setlength{\belowdisplayskip}{4pt plus 1pt minus 1pt}
+%	\setlength{\abovedisplayskip}{6pt plus 1pt minus 1pt}
+%	\setlength{\belowdisplayskip}{6pt plus 1pt minus 1pt}
 %	\setlength{\abovedisplayshortskip}{2pt}
 %	\setlength{\belowdisplayshortskip}{2pt}
 %	\setlength{\arraycolsep}{2pt}
@@ -245,8 +239,6 @@
 
 \date[2021.x.x]{第X届学术会议 \\[5pt] 2021.x.x }
 
-
-\graphicspath{{./figures/}}
 
 \begin{document}
 
@@ -378,7 +370,7 @@ This is a theorem environment. 这是一个定理环境.
 \begin{frame}
 \frametitle{定理示例}
 
-\begin{theorem}[Lax-Milgram Lemma] \upshape
+\begin{theorem}[Lax-Milgram Lemma]
 Let $X$ be a Hilbert space, let $a(\cdot, \cdot)$ : $X \times X \rightarrow \mathbb{R}$ be a continuous and coercive bilinear form, and let $F : X \rightarrow \mathbb{R}$ be a linear functional in $X^{\prime}$. Then the variational problem:
 \begin{equation}
   \alert{

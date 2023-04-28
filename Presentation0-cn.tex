@@ -11,8 +11,6 @@
 \documentclass[notheorems,11pt,compress]{beamer}
 
 
-\mode<presentation>{
-
 %------- Beamer theme ------
 \usetheme{default}
 %\usetheme{Madrid}
@@ -67,11 +65,9 @@
 \setbeamercolor{section in toc}{fg=darkred}
 \setbeamercolor{subsection in toc}{fg=darkred}
 
-}
-
 
 %--------- 宏包  ----------
-\usepackage[UTF8,noindent]{ctex}
+\usepackage[UTF8]{ctex}
 %\usepackage[english]{babel}
 \usepackage{amsmath,amssymb,version}
 \usepackage{graphicx,fancybox,mathrsfs,multirow}
@@ -95,54 +91,51 @@
 
 
 %---------- 设置字体  ----------
-\setbeamerfont{normal text}{family=\rmfamily}
-\setbeamerfont{frametitle}{family=\sffamily}
-\setbeamerfont{title}{family=\sffamily}
-\setbeamerfont{subtitle}{family=\sffamily}
+\setbeamerfont{normal text}{family=\sffamily\songti}
+\setbeamerfont{frametitle}{family=\sffamily\heiti}
+\setbeamerfont{title}{family=\sffamily\heiti}
+\setbeamerfont{subtitle}{family=\sffamily\heiti}
 %\setbeamerfont{institute}{family=\kaishu}
 %\setbeamerfont{author}{family=\kaishu}
 %\setbeamerfont{date}{family=\rmfamily}
 \setbeamerfont{footline}{family=\rmfamily}
-\setbeamerfont{headline}{family=\sffamily}
-\setbeamerfont{section in toc}{family=\sffamily}
-\setbeamerfont{subsection in toc}{family=\sffamily}
+\setbeamerfont{headline}{family=\sffamily\heiti}
+\setbeamerfont{section in toc}{family=\sffamily\heiti}
+\setbeamerfont{subsection in toc}{family=\sffamily\heiti}
+\setbeamerfont{block title}{family=\sffamily\heiti}
+\setbeamerfont{block title alert}{family=\sffamily\heiti}
+\setbeamerfont{block title example}{family=\sffamily\heiti}
 \AtBeginDocument{\usebeamerfont{normal text}}
 
 \setbeamerfont{caption}{family=\rmfamily}
-
 
 \setbeamertemplate{caption}[numbered]
 \numberwithin{figure}{section}
 \numberwithin{table}{section}
 \numberwithin{equation}{section}
 
+\graphicspath{{./figures/}}
 
 %---------- 定理设置  --------------
 \theoremstyle{plain}
 \setbeamertemplate{theorems}[numbered]
 \addtobeamertemplate{theorem begin}{\normalfont\rmfamily}{}
-%\theoremstyle{definition}
-%\newtheorem{theorem}{Theorem}
-\newtheorem{theorem}{定理} %\sffamily
+\newtheorem{theorem}{定理}
 \numberwithin{theorem}{section}
-%\newtheorem{definition}{Definition}
-\newtheorem{definition}{定义}
-\numberwithin{definition}{section}
-%\newtheorem{lemma}{Lemma}
 \newtheorem{lemma}{引理}
 \numberwithin{lemma}{section}
-%\newtheorem{proposition}{Proposition}
+\newtheorem{corollary}{推论}
+\numberwithin{corollary}{section}
+%\theoremstyle{definition}
+\newtheorem{definition}{定义}
+\numberwithin{definition}{section}
 \newtheorem{proposition}{命题}
 \numberwithin{proposition}{section}
-%\newtheorem{corollary}{Corollary}
-\newtheorem{corollary}{引理}
-\numberwithin{corollary}{section}
 \theoremstyle{example}
-%\newtheorem{example}{Example}
 \newtheorem{example}{例}
 %\numberwithin{example}{section}
 \renewenvironment{proof}[1][证明]{\textbf{#1}:~~}{\qed\par}
-\newenvironment{solution}{\par\noindent\textbf{解}:~~}{\par}
+\newenvironment{solution}{\textbf{解}:~}{\par}
 
 %---------- 调节公式的间距 ----------
 %\AtBeginDocument{
@@ -162,14 +155,8 @@
 \AtBeginSection[]{
 \begin{frame}
   \frametitle{目录}
-  \vskip 10.8pt
-  \hspace*{1.5em}
-  \parbox[t]{.95\textwidth}{
-  \begin{minipage}[c]{\textwidth}
-  \setlength{\baselineskip}{2.8em}
+  \leftskip=1.0em
   \tableofcontents[currentsection,currentsubsection,subsectionstyle=show/show/shaded]
-  \end{minipage}
-  }
   \addtocounter{framenumber}{-1}
 \end{frame}
 }
@@ -194,8 +181,6 @@
 \date[2021\,年\,X\,月\,X\,日]{第\,X\,届学术会议 \\[5pt] 2021\,年\,X\,月\,X\,日 }
 
 
-\graphicspath{{./figures/}}
-
 \begin{document}
 
 
@@ -211,14 +196,8 @@
 
 \begin{frame}
 \frametitle{目录}
-  \vskip 10pt
-  \hspace*{1.5em}
-  \parbox[t]{.95\textwidth}{
-  \begin{minipage}[c]{\textwidth}
-  \setlength{\baselineskip}{2.8em}
-  \tableofcontents
-  \end{minipage}
-  }
+\leftskip=1.0em
+\tableofcontents
 \end{frame}
 
 
@@ -334,7 +313,7 @@ This is a theorem environment. 这是一个定理环境.
 \begin{frame}
 \frametitle{定理示例}
 
-\begin{theorem}[Lax-Milgram Lemma] \upshape
+\begin{theorem}[Lax-Milgram Lemma]
 Let $X$ be a Hilbert space, let $a(\cdot, \cdot)$ : $X \times X \rightarrow \mathbb{R}$ be a continuous and coercive bilinear form, and let $F : X \rightarrow \mathbb{R}$ be a linear functional in $X^{\prime}$. Then the variational problem:
 \begin{equation}
   \alert{

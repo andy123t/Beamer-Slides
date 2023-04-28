@@ -36,6 +36,8 @@
 \usefonttheme{serif}
 \usefonttheme{professionalfonts}
 
+\setbeamersize{text margin left=0.5cm, text margin right=0.5cm}
+
 %\setbeamertemplate{headline}{}
 %\setbeamertemplate{footline}{}
 \setbeamertemplate{blocks}[rounded][shadow=true]
@@ -43,23 +45,21 @@
 \setbeamertemplate{itemize items}[circle]  % ball, circle
 \setbeamertemplate{enumerate items}[default]
 %\setbeamertemplate{section in toc}[square]
-\setbeamertemplate{section in toc}
-{\leavevmode\leftskip=2.5em%
+\setbeamertemplate{section in toc}{
+  \leavevmode\leftskip=2.5em%
   \llap{%
     \usebeamerfont*{section number projected}%
     \usebeamercolor{section number projected}%
-    \begin{pgfpicture}{-1ex}{0ex}{1ex}{2ex}
+    \begin{pgfpicture}{-1ex}{-0.1ex}{1ex}{2ex}
       \color{darkorange}
       \pgfpathcircle{\pgfpoint{0pt}{.75ex}}{1.3ex}
       \pgfusepath{fill}
       \pgftext[base]{\color{fg}\inserttocsectionnumber}
-    \end{pgfpicture}\kern1.25ex%
+    \end{pgfpicture}\kern1.5ex%
   }%
   \inserttocsection\par
 }
 
-
-\setbeamersize{text margin left=0.5cm, text margin right=0.5cm}
 
 \definecolor{darkblue}{rgb}{0.02,0.24,0.44}
 \definecolor{darkorange}{rgb}{0.80,0.4,0.1}
@@ -180,7 +180,7 @@
 \setbeamerfont{author}{family=\rmfamily}
 \setbeamerfont{date}{family=\rmfamily}
 \setbeamerfont{headline}{family=\sffamily}
-\setbeamerfont{footline}{family=\sffamily}
+\setbeamerfont{footline}{family=\rmfamily}
 \setbeamerfont{section in toc}{family=\rmfamily}
 \setbeamerfont{subsection in toc}{family=\rmfamily}
 \AtBeginDocument{\usebeamerfont{normal text}}
@@ -188,33 +188,35 @@
 
 %---------- Theorem environment ----------
 \setbeamertemplate{theorems}[numbered]
-\addtobeamertemplate{theorem begin}{\normalfont}{}
+%\addtobeamertemplate{theorem begin}{\normalfont}{}
 \newtheorem{theorem}{Theorem}
 \numberwithin{theorem}{section}
-\newtheorem{definition}{Definition}
-\numberwithin{definition}{section}
 \newtheorem{lemma}{Lemma}
 \numberwithin{lemma}{section}
-\newtheorem{proposition}{Proposition}
-\numberwithin{proposition}{section}
 \newtheorem{corollary}{Corollary}
 \numberwithin{corollary}{section}
+%\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+\numberwithin{definition}{section}
+\newtheorem{proposition}{Proposition}
+\numberwithin{proposition}{section}
 \theoremstyle{example}
 \newtheorem{example}{Example}
 %\numberwithin{example}{section}
-\renewenvironment{proof}[1][Proof]{\textit{#1}:~~}{\qed\par}
-\newenvironment{solution}{\par\noindent\textbf{Solution}:~~}{\par}
+\renewenvironment{proof}[1][Proof]{\textit{#1}.~~}{\qed\par}
+\newenvironment{solution}{\textit{Solution}.~}{\par}
 
 \setbeamertemplate{caption}[numbered]
 \numberwithin{figure}{section}
 \numberwithin{table}{section}
 \numberwithin{equation}{section}
 
+\graphicspath{{./figures/}}
 
 %---------- Adjust the spacing of formulas ----------
 %\AtBeginDocument{
-%	\setlength{\abovedisplayskip}{4pt plus 1pt minus 1pt}
-%	\setlength{\belowdisplayskip}{4pt plus 1pt minus 1pt}
+%	\setlength{\abovedisplayskip}{6pt plus 1pt minus 1pt}
+%	\setlength{\belowdisplayskip}{6pt plus 1pt minus 1pt}
 %	\setlength{\abovedisplayshortskip}{2pt}
 %	\setlength{\belowdisplayshortskip}{2pt}
 %	\setlength{\arraycolsep}{2pt}
@@ -245,9 +247,6 @@
 \date[Nov. 23, 2020]{\small Very Large Conference \\[5pt] Nov. 23, 2020} % Date, can be changed to a custom date
 
 
-\graphicspath{{./figures/}}
-
-
 \begin{document}
 
 % only change the spacing of body text
@@ -257,12 +256,6 @@
 \begin{frame}
 \titlepage % Print the title page as the first slide
 \end{frame}
-
-
-%\begin{frame}
-%\frametitle{Outline}
-%\tableofcontents[hideallsubsections] % Throughout your presentation, if you choose to use \section{} and \subsection{} commands, these will automatically be printed on this slide as an overview of your presentation
-%\end{frame}
 
 \begin{frame}
 \frametitle{Outline}
