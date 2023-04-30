@@ -55,7 +55,7 @@
   \hfill%
   \usebeamercolor[footer]{page number in head/foot}%
   \usebeamerfont{page number in head/foot}%
-  \insertframenumber \,/\,\inserttotalframenumber
+  \insertframenumber/\inserttotalframenumber
   \kern1em\vskip4pt%
 }
 
@@ -99,13 +99,13 @@
 %---------- 设置字体  ----------
 \setbeamerfont{normal text}{family=\rmfamily}
 \setbeamerfont{title}{family=\sffamily\heiti}
-\setbeamerfont{subtitle}{family=\rmfamily}
-\setbeamerfont{frametitle}{family=\sffamily,size=\Large}
-\setbeamerfont{framesubtitle}{family=\sffamily,size=\large}
+\setbeamerfont{subtitle}{family=\sffamily\heiti}
+\setbeamerfont{frametitle}{family=\sffamily\heiti}
+\setbeamerfont{framesubtitle}{family=\sffamily\heiti}
 \setbeamerfont{institute}{family=\rmfamily}
 \setbeamerfont{author}{family=\rmfamily}
 \setbeamerfont{date}{family=\rmfamily}
-\setbeamerfont{footline}{family=\kaishu}
+\setbeamerfont{footline}{family=\rmfamily}
 \setbeamerfont{section in toc}{family=\sffamily\heiti}
 \setbeamerfont{subsection in toc}{family=\rmfamily}
 \AtBeginDocument{\usebeamerfont{normal text}}
@@ -116,63 +116,76 @@
 \numberwithin{table}{section}
 \numberwithin{equation}{section}
 
+%---------- fix label spacing ----------
+\makeatletter
+\def\beamer@inserttarget#1{%
+  \ifbeamer@inframe%
+    #1%
+  \else% defer to next frame
+    \expandafter\gdef\expandafter\beamer@framehypertargets\expandafter{\beamer@framehypertargets#1}%
+  \fi%
+}
+\makeatother
+
 %---------- 定理设置  --------------
 \usepackage[framemethod=tikz]{mdframed}
 \usepackage[amsmath,thref,thmmarks,hyperref]{ntheorem}
 \theorempreskipamount1.2em  % spacing before the environment
 \theorempostskipamount0em % spacing after the environment
 \theorempostwork{\noindent}
-\theoremstyle{numberplain} %numberplain{nonumberbreak}
+\theoremstyle{plain} %break,plain,nonumberbreak
 \theoremheaderfont{\bfseries\color{structure.fg}\upshape} % blue
-\theorembodyfont{\rmfamily} %\itshape\kaishu\color{black}
+\theorembodyfont{} %\itshape\kaishu\color{black}
 \theoremindent0em
-\theoremseparator{\hspace{0.2em}}
+\theoremseparator{.\hspace{0.2em}} %if break -> add \vspace{0.2em}
 \theoremnumbering{arabic}
 \colorlet{thmcolor}{darkgreen}
 \newmdtheoremenv[linecolor=thmcolor,middlelinewidth=0.5pt,
-    roundcorner=2pt,backgroundcolor=white,%
+    roundcorner=1pt,backgroundcolor=white,%
     innertopmargin=0.5em,innerbottommargin=0.5em,%
-    innerleftmargin=3pt,innerrightmargin=3pt,%
+    innerleftmargin=5pt,innerrightmargin=5pt,%
     skipbelow=0.5em,skipabove=1em,%
     splittopskip=\topskip,ntheorem]{theorem}%
     {定理}[section]
 \newmdtheoremenv[linecolor=thmcolor,middlelinewidth=0.5pt,
-    roundcorner=2pt,backgroundcolor=white,%
+    roundcorner=1pt,backgroundcolor=white,%
     innertopmargin=0.5em,innerbottommargin=0.5em,%
-    innerleftmargin=3pt,innerrightmargin=3pt,%
+    innerleftmargin=5pt,innerrightmargin=5pt,%
     skipbelow=0.5em,skipabove=1em,%
     splittopskip=\topskip,ntheorem]{corollary}%
     {推论}[section]
 \newmdtheoremenv[linecolor=thmcolor,middlelinewidth=0.5pt,
-    roundcorner=2pt,backgroundcolor=white,%
+    roundcorner=1pt,backgroundcolor=white,%
     innertopmargin=0.5em,innerbottommargin=0.5em,%
-    innerleftmargin=3pt,innerrightmargin=3pt,%
+    innerleftmargin=5pt,innerrightmargin=5pt,%
     skipbelow=0.5em,skipabove=1em,%
     splittopskip=\topskip,ntheorem]{lemma}%
     {引理}[section]
 \newmdtheoremenv[linecolor=thmcolor,middlelinewidth=0.5pt,
-    roundcorner=2pt,backgroundcolor=white,%
+    roundcorner=1pt,backgroundcolor=white,%
     innertopmargin=0.5em,innerbottommargin=0.5em,%
-    innerleftmargin=3pt,innerrightmargin=3pt,%
+    innerleftmargin=5pt,innerrightmargin=5pt,%
     skipbelow=0.5em,skipabove=1em,%
     splittopskip=\topskip,ntheorem]{proposition}%
     {命题}[section]
 \newmdtheoremenv[linecolor=thmcolor,middlelinewidth=0.5pt,
-    roundcorner=2pt,backgroundcolor=white,%
+    roundcorner=1pt,backgroundcolor=white,%
     innertopmargin=0.5em,innerbottommargin=0.5em,%
-    innerleftmargin=3pt,innerrightmargin=3pt,%
+    innerleftmargin=5pt,innerrightmargin=5pt,%
     skipbelow=0.5em,skipabove=1em,%
     splittopskip=\topskip,ntheorem]{definition}%
     {定义}[section]
+\newmdtheoremenv[linecolor=white,middlelinewidth=0.5pt,
+    roundcorner=1pt,backgroundcolor=none,%
+    innertopmargin=0em,innerbottommargin=0em,%
+    innerleftmargin=0pt,innerrightmargin=0pt,%
+    skipbelow=0.5em,skipabove=1em,%
+    splittopskip=\topskip,ntheorem]{example}%
+    {例}[section]
 
-%----- numbered environment -----
-\newcounter{example}[section]
-\newenvironment{example}[1][]{\refstepcounter{example}\par\medskip
-   \noindent {\color{structure.fg}{\textbf{例~\thesection.\theexample}}} #1 \rmfamily}{\medskip}
-
-%\newenvironment{example}{\par\noindent\textbf{例~\thesection\}:~~}{\par}
-\newenvironment{proof}[1][证明]{\textbf{#1}:~~}{\qed\par}
-\newenvironment{solution}{\par\noindent\textbf{解}:~~}{\par}
+%----- proof and solution environment -----
+\newenvironment{proof}[1][证明]{\textbf{#1}:~}{\qed\par}
+\newenvironment{solution}{\par\textbf{解}:~}{\par}
 
 
 %---------- 证明符号 ----------
@@ -506,19 +519,20 @@ An example of the \verb|\cite| command to cite within the presentation:\\~
 
 This statement requires citation \cite{Smith2012}. \\~
 
-文献引用示例 \cite{LiLiu1997}, 可以修改引用文献样式.
+文献引用示例 \cite{LiLiu2009}, 可以修改引用文献样式.
 \end{frame}
+
 
 %------------------------------------------------
 
 \begin{frame}
 \frametitle{References}
-\footnotesize{
+\small
 \begin{thebibliography}{99} % Beamer does not support BibTeX so references must be inserted manually as below
 \bibitem[Smith, 2012]{Smith2012} John Smith, Title of the publication, \emph{Journal Name}, 12(3):45--678, 2012.
-\bibitem[李荣华, 1997]{LiLiu1997} 李荣华, 刘播. 微分方程数值解法. 东南大学出版社, 1997.
+\bibitem[李荣华, 2009]{LiLiu2009} 李荣华, 刘播. 微分方程数值解法. 北京: 高等教育出版社, 2009.
 \end{thebibliography}
-}
+
 \end{frame}
 
 

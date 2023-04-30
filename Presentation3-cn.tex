@@ -49,14 +49,14 @@
 {
   \leavevmode%
   \hbox{%
-  \begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.25ex,dp=1ex,center]{author in head/foot}%
+  \begin{beamercolorbox}[wd=.3\paperwidth,ht=2.25ex,dp=1ex,center]{author in head/foot}%
     \usebeamerfont{author in head/foot}\insertshortauthor\ifx\insertinstitute\empty\else\expandafter
     \ifblank\expandafter{\beamer@shortinstitute}{}{~~(\insertshortinstitute)}\fi
   \end{beamercolorbox}%
-  \begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.25ex,dp=1ex,center]{title in head/foot}%
+  \begin{beamercolorbox}[wd=.4\paperwidth,ht=2.25ex,dp=1ex,center]{title in head/foot}%
     \usebeamerfont{title in head/foot}\insertshorttitle \hfill
   \end{beamercolorbox}%
-  \begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.25ex,dp=1ex,right]{date in head/foot}%
+  \begin{beamercolorbox}[wd=.3\paperwidth,ht=2.25ex,dp=1ex,right]{date in head/foot}%
     \usebeamerfont{date in head/foot}\hfill\insertshortdate{}\hfill %\kern1ex
     \makebox[3em][r]{\insertframenumber\,/\,\inserttotalframenumber}\kern2ex
   \end{beamercolorbox}}%
@@ -101,7 +101,7 @@
 %\setbeamerfont{author}{family=\kaishu}
 %\setbeamerfont{date}{family=\rmfamily}
 \setbeamerfont{footline}{family=\rmfamily}
-\setbeamerfont{headline}{family=\sffamily}
+\setbeamerfont{headline}{family=\rmfamily,series=\bfseries}
 \setbeamerfont{section in toc}{family=\rmfamily}
 \setbeamerfont{subsection in toc}{family=\rmfamily}
 \AtBeginDocument{\usebeamerfont{normal text}}
@@ -112,6 +112,17 @@
 \numberwithin{equation}{section}
 
 \graphicspath{{./figures/}}
+
+%---------- fix label spacing ----------
+\makeatletter
+\def\beamer@inserttarget#1{%
+  \ifbeamer@inframe%
+    #1%
+  \else% defer to next frame
+    \expandafter\gdef\expandafter\beamer@framehypertargets\expandafter{\beamer@framehypertargets#1}%
+  \fi%
+}
+\makeatother
 
 %---------- 定理设置  --------------
 \theoremstyle{plain}
@@ -470,19 +481,20 @@ An example of the \verb|\cite| command to cite within the presentation:\\~
 
 This statement requires citation \cite{Smith2012}. \\~
 
-文献引用示例 \cite{LiLiu1997}, 可以修改引用文献样式.
+文献引用示例 \cite{LiLiu2009}, 可以修改引用文献样式.
 \end{frame}
+
 
 %------------------------------------------------
 
 \begin{frame}
 \frametitle{References}
-\footnotesize{
+\small
 \begin{thebibliography}{99} % Beamer does not support BibTeX so references must be inserted manually as below
 \bibitem[Smith, 2012]{Smith2012} John Smith, Title of the publication, \emph{Journal Name}, 12(3):45--678, 2012.
-\bibitem[李荣华, 1997]{LiLiu1997} 李荣华, 刘播. 微分方程数值解法. 东南大学出版社, 1997.
+\bibitem[李荣华, 2009]{LiLiu2009} 李荣华, 刘播. 微分方程数值解法. 北京: 高等教育出版社, 2009.
 \end{thebibliography}
-}
+
 \end{frame}
 
 

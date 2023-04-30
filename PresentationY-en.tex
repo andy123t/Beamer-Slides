@@ -54,8 +54,8 @@
   \hfill%
   \usebeamercolor[footer]{page number in head/foot}%
   \usebeamerfont{page number in head/foot}%
-  \insertframenumber \,/\,\inserttotalframenumber
-  \kern1em\vskip3pt%
+  \insertframenumber/\inserttotalframenumber
+  \kern1em\vskip4pt%
 }
 
 \setbeamertemplate{frametitle}[default][center]
@@ -78,7 +78,7 @@
 
 % Color Theme Setting
 \setbeamercolor{title}{fg=darkred}
-\setbeamercolor{subtitle}{bg=white, fg=darkred}
+\setbeamercolor{subtitle}{bg=white,fg=darkred}
 \setbeamercolor{section in toc}{fg=darkred}
 \setbeamercolor{subsection in toc}{fg=darkred}
 
@@ -118,6 +118,16 @@
 \setbeamerfont{section in toc}{series=\bfseries}
 %\AtBeginDocument{\usebeamerfont{normal text}}
 
+%---------- fix label spacing ----------
+\makeatletter
+\def\beamer@inserttarget#1{%
+  \ifbeamer@inframe%
+    #1%
+  \else% defer to next frame
+    \expandafter\gdef\expandafter\beamer@framehypertargets\expandafter{\beamer@framehypertargets#1}%
+  \fi%
+}
+\makeatother
 
 %---------- Theorem environment ----------
 \usepackage[framemethod=tikz]{mdframed}
@@ -125,58 +135,59 @@
 \theorempreskipamount1.2em  % spacing before the environment
 \theorempostskipamount0em  % spacing after the environment
 \theorempostwork{\noindent}
-\theoremstyle{numberplain} %numberplain{nonumberbreak}
+\theoremstyle{plain} %break,plain,nonumberbreak
 \theoremheaderfont{\color{structure.fg}\sffamily\upshape} % blue
-\theorembodyfont{\rmfamily} %\kaishu\color{black}
+\theorembodyfont{} %\itshape\kaishu\color{black}
 \theoremindent0em
-\theoremseparator{\hspace{0.2em}}
+\theoremseparator{.\hspace{0.2em}} %if break -> add \vspace{0.2em}
 \theoremnumbering{arabic}
 \colorlet{thmcolor}{darkgreen}
 \newmdtheoremenv[linecolor=thmcolor,middlelinewidth=0.5pt,
-    roundcorner=3pt,backgroundcolor=white,%
+    roundcorner=2pt,backgroundcolor=white,%
     innertopmargin=0.5em,innerbottommargin=0.5em,%
-    innerleftmargin=3pt,innerrightmargin=3pt,%
+    innerleftmargin=5pt,innerrightmargin=5pt,%
     skipbelow=0.5em,skipabove=1em,%
     splittopskip=\topskip,ntheorem]{theorem}%
     {Theorem}[section]
 \newmdtheoremenv[linecolor=thmcolor,middlelinewidth=0.5pt,
-    roundcorner=3pt,backgroundcolor=white,%
+    roundcorner=2pt,backgroundcolor=white,%
     innertopmargin=0.5em,innerbottommargin=0.5em,%
-    innerleftmargin=3pt,innerrightmargin=3pt,%
+    innerleftmargin=5pt,innerrightmargin=5pt,%
     skipbelow=0.5em,skipabove=1em,%
     splittopskip=\topskip,ntheorem]{corollary}%
     {Corollary}[section]
 \newmdtheoremenv[linecolor=thmcolor,middlelinewidth=0.5pt,
-    roundcorner=3pt,backgroundcolor=white,%
+    roundcorner=2pt,backgroundcolor=white,%
     innertopmargin=0.5em,innerbottommargin=0.5em,%
-    innerleftmargin=3pt,innerrightmargin=3pt,%
+    innerleftmargin=5pt,innerrightmargin=5pt,%
     skipbelow=0.5em,skipabove=1em,%
     splittopskip=\topskip,ntheorem]{lemma}%
     {Lemma}[section]
 \newmdtheoremenv[linecolor=thmcolor,middlelinewidth=0.5pt,
-    roundcorner=3pt,backgroundcolor=white,%
+    roundcorner=2pt,backgroundcolor=white,%
     innertopmargin=0.5em,innerbottommargin=0.5em,%
-    innerleftmargin=3pt,innerrightmargin=3pt,%
+    innerleftmargin=5pt,innerrightmargin=5pt,%
     skipbelow=0.5em,skipabove=1em,%
     splittopskip=\topskip,ntheorem]{proposition}%
     {Proposition}[section]
 \newmdtheoremenv[linecolor=thmcolor,middlelinewidth=0.5pt,
-    roundcorner=3pt,backgroundcolor=white,%
+    roundcorner=2pt,backgroundcolor=white,%
     innertopmargin=0.5em,innerbottommargin=0.5em,%
-    innerleftmargin=3pt,innerrightmargin=3pt,%
+    innerleftmargin=5pt,innerrightmargin=5pt,%
     skipbelow=0.5em,skipabove=1em,%
     splittopskip=\topskip,ntheorem]{definition}%
     {Definition}[section]
+\newmdtheoremenv[linecolor=white,middlelinewidth=0.5pt,
+    roundcorner=1pt,backgroundcolor=none,%
+    innertopmargin=0em,innerbottommargin=0em,%
+    innerleftmargin=0pt,innerrightmargin=0pt,%
+    skipbelow=0.5em,skipabove=1em,%
+    splittopskip=\topskip,ntheorem]{example}%
+    {Example}[section]
 
-%----- numbered environment -----
-\newcounter{example}[section]
-\newenvironment{example}[1][]{\refstepcounter{example}\par\medskip
-   \noindent{\sffamily\color{structure.fg}{Example~\thesection.\theexample}} \rmfamily #1}{\medskip}
-
-%\newenvironment{example}{\par\noindent\textbf{Example~\thesection\}:~~}{\par}
-\newenvironment{proof}[1][]{\noindent{\color{structure.fg}{Proof.}}~\rmfamily #1}{\medskip}
-%\newenvironment{proof}[1][Proof]{\textit{#1}:~~}{\rmfamily\hfill\ensuremath{\square}\par}
-\newenvironment{solution}{\par\noindent{\color{structure.fg}{Solution}:}~}{\par}
+%----- proof and solution environment -----
+\newenvironment{proof}[1][Proof]{\textit{#1}:~}{\qed\par}
+\newenvironment{solution}{\par\textit{Solution}:~}{\par}
 
 %---------- proof symbol ----------
 \newcommand{\QED}{\hfill\ensuremath{\square}}

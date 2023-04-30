@@ -95,8 +95,20 @@
 
 %---------- Set fonts ----------
 %\setbeamerfont{normal text}{family=\rmfamily}
+\setbeamerfont{footline}{family=\rmfamily}
+\setbeamerfont{headline}{family=\sffamily}
 %\AtBeginDocument{\usebeamerfont{normal text}}
 
+%---------- fix label spacing ----------
+\makeatletter
+\def\beamer@inserttarget#1{%
+  \ifbeamer@inframe%
+    #1%
+  \else% defer to next frame
+    \expandafter\gdef\expandafter\beamer@framehypertargets\expandafter{\beamer@framehypertargets#1}%
+  \fi%
+}
+\makeatother
 
 %---------- Theorem environment ----------
 \setbeamertemplate{theorems}[numbered]

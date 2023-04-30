@@ -129,9 +129,6 @@
 
 %---------- Set fonts ----------
 %\setbeamerfont{normal text}{family=\rmfamily}
-%\AtBeginDocument{\usebeamerfont{normal text}}
-
-%\setbeamerfont{normal text}{family=\rmfamily}
 %\setbeamerfont{frametitle}{family=\rmfamily}
 %\setbeamerfont{title}{family=\rmfamily}
 %\setbeamerfont{subtitle}{family=\rmfamily}
@@ -143,6 +140,17 @@
 %\setbeamerfont{section in toc}{family=\rmfamily}
 %\setbeamerfont{subsection in toc}{family=\rmfamily}
 %\AtBeginDocument{\usebeamerfont{normal text}}
+
+%---------- fix label spacing ----------
+\makeatletter
+\def\beamer@inserttarget#1{%
+  \ifbeamer@inframe%
+    #1%
+  \else% defer to next frame
+    \expandafter\gdef\expandafter\beamer@framehypertargets\expandafter{\beamer@framehypertargets#1}%
+  \fi%
+}
+\makeatother
 
 %---------- Theorem environment ----------
 \setbeamertemplate{theorems}[numbered]

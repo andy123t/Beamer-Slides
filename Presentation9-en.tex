@@ -54,7 +54,7 @@
   %\usebeamercolor[fg]{page number in head/foot}%
   \usebeamercolor[footer]{page number in head/foot}%
   \usebeamerfont{page number in head/foot} \tiny
-  \insertframenumber \,/\,\inserttotalframenumber
+  \insertframenumber/\inserttotalframenumber
   \kern1.5em\vskip4pt%
 }
 
@@ -131,6 +131,16 @@
 %\setbeamerfont{caption name}{family=\rmfamily,series=\normalfont}
 \AtBeginDocument{\usebeamerfont{normal text}}
 
+%---------- fix label spacing ----------
+\makeatletter
+\def\beamer@inserttarget#1{%
+  \ifbeamer@inframe%
+    #1%
+  \else% defer to next frame
+    \expandafter\gdef\expandafter\beamer@framehypertargets\expandafter{\beamer@framehypertargets#1}%
+  \fi%
+}
+\makeatother
 
 %---------- Theorem environment ----------
 \setbeamertemplate{theorems}[numbered]

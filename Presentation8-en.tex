@@ -28,7 +28,7 @@
 \newcommand{\themename}{\textbf{\textsc{metropolis}}\xspace}
 
 \makeatletter
-\setlength{\metropolis@frametitle@padding}{1.8ex} % <- default 2.2 ex
+\setlength{\metropolis@frametitle@padding}{1.6ex} % <- default 2.2 ex
 \makeatother
 
 %\usefonttheme[onlymath]{serif}
@@ -54,7 +54,7 @@
 \setbeamertemplate{footline}{%
   \leavevmode%
   \hskip3em \normalfont \insertshortauthor ~~$|$~~ \insertshorttitle \hfill
-  \insertframenumber\,/\,\inserttotalframenumber  \hskip2em \hfill
+  \insertframenumber/\inserttotalframenumber \kern1.5em
   \vskip6pt%
 }
 
@@ -84,6 +84,17 @@
 \newcolumntype{L}{X}
 \newcolumntype{C}{>{\centering \arraybackslash}X}
 \newcolumntype{R}{>{\raggedleft \arraybackslash}X}
+
+%---------- fix label spacing ----------
+\makeatletter
+\def\beamer@inserttarget#1{%
+  \ifbeamer@inframe%
+    #1%
+  \else% defer to next frame
+    \expandafter\gdef\expandafter\beamer@framehypertargets\expandafter{\beamer@framehypertargets#1}%
+  \fi%
+}
+\makeatother
 
 %---------- Set fonts ----------
 \setbeamerfont{normal text}{family=\rmfamily}
