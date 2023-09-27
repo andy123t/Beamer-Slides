@@ -4,9 +4,9 @@
 %   compile using PDFTeXify, PDFLaTeX or XeLaTeX
 %======================================================%
 
-%--------------------------------------------------------------------------------
+%-------------------------------------------------------
 %   PACKAGES AND THEMES
-%--------------------------------------------------------------------------------
+%-------------------------------------------------------
 
 \documentclass[notheorems,11pt,compress]{beamer}
 
@@ -48,7 +48,7 @@
    \vskip2pt\insertsectionnavigationhorizontal{\textwidth}{}{}\vskip2pt
    %\vskip2pt\insertnavigation{\paperwidth}\vskip2pt
 \end{beamercolorbox}
-\begin{beamercolorbox}[colsep=1.5pt,ht=.3ex]{upper separation line head}
+\begin{beamercolorbox}[colsep=1.5pt,ht=.3ex]{upper separation line}
 \end{beamercolorbox}
 }
 
@@ -118,7 +118,8 @@
   \ifbeamer@inframe%
     #1%
   \else% defer to next frame
-    \expandafter\gdef\expandafter\beamer@framehypertargets\expandafter{\beamer@framehypertargets#1}%
+    \expandafter\gdef\expandafter\beamer@framehypertargets%
+    \expandafter{\beamer@framehypertargets#1}%
   \fi%
 }
 \makeatother
@@ -180,9 +181,9 @@
 \newcommand{\blue}[1]{\textcolor{blue}{#1}}
 
 
-%--------------------------------------------------------------------------------
+%-------------------------------------------------------
 %	TITLE PAGE
-%--------------------------------------------------------------------------------
+%-------------------------------------------------------
 
 \title[报告题目]{这是报告的题目这是报告的题目}
 
@@ -220,9 +221,9 @@
 \end{frame}
 
 
-%--------------------------------------------------------------------------------
+%-------------------------------------------------------
 %	PRESENTATION SLIDES
-%--------------------------------------------------------------------------------
+%-------------------------------------------------------
 
 %------------------------------------------------
 \section{研究背景}

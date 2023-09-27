@@ -4,9 +4,9 @@
 %   compile using PDFTeXify, PDFLaTeX or XeLaTeX
 %======================================================%
 
-%--------------------------------------------------------------------------------
+%-------------------------------------------------------
 %   PACKAGES AND THEMES
-%--------------------------------------------------------------------------------
+%-------------------------------------------------------
 
 \documentclass[noamsthm,notheorem,11pt,compress]{beamer}
 
@@ -122,7 +122,8 @@
   \ifbeamer@inframe%
     #1%
   \else% defer to next frame
-    \expandafter\gdef\expandafter\beamer@framehypertargets\expandafter{\beamer@framehypertargets#1}%
+    \expandafter\gdef\expandafter\beamer@framehypertargets%
+    \expandafter{\beamer@framehypertargets#1}%
   \fi%
 }
 \makeatother

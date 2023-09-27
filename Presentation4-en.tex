@@ -4,9 +4,9 @@
 %   compile using PDFTeXify or PDFLaTeX
 %======================================================%
 
-%--------------------------------------------------------------------------------
+%-------------------------------------------------------
 %   PACKAGES AND THEMES
-%--------------------------------------------------------------------------------
+%-------------------------------------------------------
 
 \documentclass[notheorems,11pt,compress]{beamer}
 
@@ -47,7 +47,7 @@
    \vskip2pt\insertsectionnavigationhorizontal{\textwidth}{}{}\vskip2pt
    %\vskip2pt\insertnavigation{\paperwidth}\vskip2pt
 \end{beamercolorbox}
-\begin{beamercolorbox}[colsep=1.5pt,ht=.3ex]{upper separation line head}
+\begin{beamercolorbox}[colsep=1.5pt,ht=.3ex]{upper separation line}
 \end{beamercolorbox}
 }
 
@@ -114,7 +114,8 @@
   \ifbeamer@inframe%
     #1%
   \else% defer to next frame
-    \expandafter\gdef\expandafter\beamer@framehypertargets\expandafter{\beamer@framehypertargets#1}%
+    \expandafter\gdef\expandafter\beamer@framehypertargets%
+    \expandafter{\beamer@framehypertargets#1}%
   \fi%
 }
 \makeatother
@@ -183,9 +184,9 @@
 %}
 
 
-%--------------------------------------------------------------------------------
+%-------------------------------------------------------
 %	TITLE PAGE
-%--------------------------------------------------------------------------------
+%-------------------------------------------------------
 
 \title[Short title]{Full Title of the Talk} % The short title appears at the bottom of every slide, the full title is only on the title page
 
@@ -227,9 +228,9 @@
   }
 \end{frame}
 
-%--------------------------------------------------------------------------------
+%-------------------------------------------------------
 %	PRESENTATION SLIDES
-%--------------------------------------------------------------------------------
+%-------------------------------------------------------
 
 %------------------------------------------------
 \section{Introduction} %

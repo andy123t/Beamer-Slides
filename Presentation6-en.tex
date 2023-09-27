@@ -4,9 +4,9 @@
 %   compile using PDFTeXify or PDFLaTeX
 %======================================================%
 
-%--------------------------------------------------------------------------------
+%-------------------------------------------------------
 %   PACKAGES AND THEMES
-%--------------------------------------------------------------------------------
+%-------------------------------------------------------
 
 \documentclass[notheorems,11pt,compress]{beamer}
 
@@ -121,7 +121,8 @@
   \ifbeamer@inframe%
     #1%
   \else% defer to next frame
-    \expandafter\gdef\expandafter\beamer@framehypertargets\expandafter{\beamer@framehypertargets#1}%
+    \expandafter\gdef\expandafter\beamer@framehypertargets%
+    \expandafter{\beamer@framehypertargets#1}%
   \fi%
 }
 \makeatother
@@ -188,9 +189,9 @@
 \end{frame}
 }
 
-%--------------------------------------------------------------------------------
+%-------------------------------------------------------
 %	TITLE PAGE
-%--------------------------------------------------------------------------------
+%-------------------------------------------------------
 
 \title[Short title]{Full Title of the Talk} % The short title appears at the bottom of every slide, the full title is only on the title page
 
@@ -223,9 +224,9 @@
 \end{frame}
 
 
-%--------------------------------------------------------------------------------
+%--------------------------------------------------------
 %	PRESENTATION SLIDES
-%--------------------------------------------------------------------------------
+%--------------------------------------------------------
 
 %------------------------------------------------
 \section{Introduction} %

@@ -4,9 +4,9 @@
 %   compile using PDFTeXify, PDFLaTeX or XeLaTeX
 %======================================================%
 
-%--------------------------------------------------------------------------------
+%-------------------------------------------------------
 %   PACKAGES AND THEMES
-%--------------------------------------------------------------------------------
+%-------------------------------------------------------
 
 \documentclass[notheorems,11pt,compress]{beamer}
 
@@ -111,8 +111,8 @@
 {%
   \leavevmode%
   \begin{beamercolorbox}[wd=0.25\paperwidth,ht=2.5ex,dp=1.125ex,leftskip=.3cm,rightskip=.3cm plus1fil]{title in head/foot}%
-    \usebeamerfont{title in head/foot} ~~\insertshortauthor\ifx\insertinstitute\empty\else\expandafter
-    \ifblank\expandafter{\beamer@shortinstitute}{}{~~(\insertshortinstitute)}\fi
+    \usebeamerfont{title in head/foot} ~~\insertshortauthor\ifx\insertshortinstitute\empty\else%
+    \expandafter\ifblank\expandafter{\beamer@shortinstitute}{}{~~(\insertshortinstitute)}\fi
     \hfill
   \end{beamercolorbox}%
   \begin{beamercolorbox}[wd=0.5\paperwidth,ht=2.5ex,dp=1.125ex,leftskip=.3cm,rightskip=.3cm plus1fil]{title in head/foot}%
@@ -179,7 +179,8 @@
   \ifbeamer@inframe%
     #1%
   \else% defer to next frame
-    \expandafter\gdef\expandafter\beamer@framehypertargets\expandafter{\beamer@framehypertargets#1}%
+    \expandafter\gdef\expandafter\beamer@framehypertargets%
+    \expandafter{\beamer@framehypertargets#1}%
   \fi%
 }
 \makeatother
@@ -235,9 +236,9 @@
 \newcommand{\blue}[1]{\textcolor{blue}{#1}}
 
 
-%--------------------------------------------------------------------------------
+%-------------------------------------------------------
 %	TITLE PAGE
-%--------------------------------------------------------------------------------
+%-------------------------------------------------------
 
 
 \title[报告题目]{这是报告的题目这是报告的题目}
@@ -269,9 +270,9 @@
 \end{frame}
 
 
-%--------------------------------------------------------------------------------
+%-------------------------------------------------------
 %	PRESENTATION SLIDES
-%--------------------------------------------------------------------------------
+%-------------------------------------------------------
 
 %------------------------------------------------
 \section{研究背景}
