@@ -171,8 +171,15 @@
 \theoremstyle{example}
 \newtheorem{example}{Example}
 %\numberwithin{example}{section}
-\renewenvironment{proof}[1][Proof]{\textit{#1}.~~}{\qed\par}
-\newenvironment{solution}{\textit{Solution}.~}{\par}
+
+%----- proof and solution environment -----
+\renewenvironment{proof}[1][Proof]{\par\textit{#1.}%
+\enspace\ignorespaces}{\par}
+\newenvironment{solution}{\par\textit{Solution.}%
+\enspace\ignorespaces}{\par}
+
+%---------- proof symbol ----------
+\newcommand{\QED}{\hfill\ensuremath{\square}}
 
 \setbeamertemplate{caption}[numbered]
 \numberwithin{figure}{section}
@@ -222,7 +229,7 @@
 \institute[NU] % Your institution as it will appear on the bottom of every slide, may be shorthand to save space
 {\blue{Name of University} \\ % Your institution for the title page
 \medskip
-\textit{xyz@math.univ.edu} % Your email address
+\texttt{xyz@math.univ.edu} % Your email address
 }
 
 \date[Nov. 23, 2020]{\small Very Large Conference \\[5pt] Nov. 23, 2020} % Date, can be changed to a custom date
@@ -358,7 +365,7 @@ This is a theorem environment.
 \end{theorem}
 
 \begin{proof}
-  This is a proof environment.
+  This is a proof environment. \QED
 \end{proof}
 \end{frame}
 

@@ -83,6 +83,11 @@
 %---------- 定义行距 ----------
 %\renewcommand{\baselinestretch}{1.15}
 
+%---------- Justify text ----------
+%\usepackage{ragged2e}
+%\apptocmd{\frame}{}{\justifying}{}
+
+
 %---------- 定义表格新命令 ----------
 \newcolumntype{P}[1]{>{\centering \arraybackslash}p{#1}}
 \newcolumntype{L}{X}
@@ -131,7 +136,7 @@
 %---------- 定理设置  --------------
 \theoremstyle{plain}
 \setbeamertemplate{theorems}[numbered]
-\addtobeamertemplate{theorem begin}{\normalfont\rmfamily}{}
+%\addtobeamertemplate{theorem begin}{\normalfont\rmfamily}{}
 \newtheorem{theorem}{定理}
 \numberwithin{theorem}{section}
 \newtheorem{lemma}{引理}
@@ -146,8 +151,15 @@
 \theoremstyle{example}
 \newtheorem{example}{例}
 %\numberwithin{example}{section}
-\renewenvironment{proof}[1][证明]{\textbf{#1}:~~}{\qed\par}
-\newenvironment{solution}{\textbf{解}:~}{\par}
+
+%----- proof and solution environment -----
+\renewenvironment{proof}[1][证明]{\par{\heiti\bfseries #1:}%
+\enspace\ignorespaces}{\par}
+\newenvironment{solution}{\par{\heiti\bfseries 解:}%
+\enspace\ignorespaces}{\par}
+
+%---------- proof symbol ----------
+\newcommand{\QED}{\hfill\ensuremath{\square}}
 
 %---------- 调节公式的间距 ----------
 %\AtBeginDocument{
@@ -313,7 +325,7 @@ This is a theorem environment. 这是一个定理环境.
 \end{theorem}
 
 \begin{proof}
-  This is a proof environment. 这是一个证明环境.
+  This is a proof environment. 这是一个证明环境. \QED
 \end{proof}
 
 \end{frame}

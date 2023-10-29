@@ -138,7 +138,7 @@
 \theoremheaderfont{\bfseries\color{structure.fg}\upshape} % blue
 \theorembodyfont{} %\itshape\kaishu\color{black}
 \theoremindent0em
-\theoremseparator{.\hspace{0.2em}} %if break -> add \vspace{0.2em}
+\theoremseparator{.} %if break -> add \vspace{0.2em}
 \theoremnumbering{arabic}
 \colorlet{thmcolor}{darkgreen}
 \newmdtheoremenv[linecolor=thmcolor,middlelinewidth=0.5pt,
@@ -185,9 +185,10 @@
     {例}[section]
 
 %----- proof and solution environment -----
-\newenvironment{proof}[1][证明]{\textbf{#1}:~}{\qed\par}
-\newenvironment{solution}{\par\textbf{解}:~}{\par}
-
+\newenvironment{proof}[1][证明]{\par{\bfseries\color{structure.fg}#1:}%
+\enspace\ignorespaces}{\par}
+\newenvironment{solution}{\par{\bfseries\color{structure.fg}解:}%
+\enspace\ignorespaces}{\par}
 
 %---------- 证明符号 ----------
 \newcommand{\QED}{\hfill\ensuremath{\square}}
@@ -257,6 +258,7 @@
 
 \begin{frame}
 \frametitle{目录}
+\leftskip=1em
 \tableofcontents
 \end{frame}
 
@@ -361,7 +363,7 @@ This is a theorem environment. 这是一个定理环境.
 \end{theorem}
 
 \begin{proof}
-  This is a proof environment. 这是一个证明环境.
+  This is a proof environment. 这是一个证明环境. \QED
 \end{proof}
 
 \end{frame}
